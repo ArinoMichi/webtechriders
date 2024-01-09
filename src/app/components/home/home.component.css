@@ -3,6 +3,39 @@ body, html {
   padding: 0;
   height: 100%;
 }
+.tech-riders-container {
+  background-color: #000000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.text-banner {
+  text-align: left;
+  color: white; /* Cambia el color del texto según tu diseño */
+  padding: 70px 100px 40px 400px;
+  width: 70%;
+}
+
+.text-banner h1 {
+  font-size: 2.5em; /* Tamaño de fuente grande para el título */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+  font-weight: 700;
+  
+}
+
+.text-banner h4 {
+  font-size: 1.5em; /* Tamaño de fuente más pequeño para el subtitulo */
+  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+  font-weight: 600;
+  
+}
+
+.text-banner p {
+  font-size: 1em; /* Tamaño de fuente más pequeño para el contenido */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+}
+
 
 .main-container {
   display: flex;
@@ -10,37 +43,62 @@ body, html {
   min-height: 100vh;
   justify-content: center; /* Centra verticalmente */
   align-items: center;
-  margin: 0 auto;
+  margin-top: 30px;
 }
 .col-container {
-  width: 70%;
-  
+  width: 80%;
   overflow: hidden;
 }
 
-.section {
-  margin: 20px 0;
+.section1 {
+  margin: 25px 25px;
   color: #333;
   text-align: center;
+  height: 90vh;
   padding: 150px;
-  border-radius: 10px;
-  background-size: cover;
+  width: fit-content;
   background-position: center;
-  position: relative;
+  background-position: 10010px;
+  background-size: cover;
+}
+.section2 {
+  margin: 25px 25px;
+  color: #333;
+  text-align: center;
+  height: 90vh;
+  padding: 150px;
+  width: fit-content;
+  background-position: center;
+  
 }
 
-.section h2 {
-  font-size: 2rem;
+.section1 h2,
+.section1 p {
+  text-align: left;
+  font-size: 3rem;
   margin-bottom: 10px;
+  color: white;
+}
+.section2 h2,
+.section2 p {
+  text-align: right;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: white;
 }
 
 .section p {
   margin-bottom: 20px;
+  padding: 10px;
+  font-size: 1.5rem;
 }
 
 .btn-custom {
   color: #000;
   background-color: #fff;
+  padding: 15px;
+  width: 50%;
+  font-weight: 400;
   
 }
 
@@ -49,7 +107,7 @@ body, html {
   color: white;
   padding: 20px;
   text-align: center;
-  margin-top: auto;
+  margin-top: 30px;
   width: 100%;
   max-height: fit-content;
 }
