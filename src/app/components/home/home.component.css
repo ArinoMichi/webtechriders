@@ -57,8 +57,7 @@ body, html {
   height: 90vh;
   padding: 150px;
   width: fit-content;
-  background-position: center;
-  background-position: 10010px;
+  background-position: 1000px;
   background-size: cover;
 }
 .section2 {
