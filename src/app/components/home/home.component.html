@@ -1,13 +1,20 @@
 <div class="main-container">
-  <div class="column-container">
-    <div class="column" id="column1">
-      <!-- Contenido del primer div -->
-      <p>Unete</p>
-    </div>
-
-    <div class="column" id="column2">
-      <!-- Contenido del segundo div -->
-      <p>Solicita</p>
+  <div class="col-container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="section" [style.backgroundImage]="'url(' + imageUrlUnete + ')'">
+          <h2>ÚNETE AL EQUIPO</h2>
+          <p>Si eres un/a profesional de la tecnología y quieres impartir una charla técnica o motivacional en un centro educativo.</p>
+          <a href="#" class="btn btn-custom">ÚNETE</a>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="section" [style.backgroundImage]="'url(' + imageUrlSolicita + ')'">
+          <h2>SOLICITA UNA CHARLA</h2>
+          <p>Si eres un centro de formación y quieres solicitar una charla técnica, motivacional o soft skills para tus estudiantes de la rama de tecnología.</p>
+          <a href="#" class="btn btn-custom">SOLICITA</a>
+        </div>
+      </div>
     </div>
   </div>
 

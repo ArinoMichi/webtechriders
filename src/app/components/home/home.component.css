@@ -12,29 +12,36 @@ body, html {
   align-items: center;
   margin: 0 auto;
 }
-
-.column-container {
-  display: flex;
-  flex-direction: row;
-  max-width: 1200px;
-  justify-content: center; /* Centra los elementos horizontalmente */
-  align-items: center;
-  width: 100%;
+.col-container {
+  width: 70%;
+  
+  overflow: hidden;
 }
 
-.column {
-  box-sizing: border-box;
-  padding: 20px;
-  border: 1px solid #ddd;
-  flex: 1;
+.section {
+  margin: 20px 0;
+  color: #333;
+  text-align: center;
+  padding: 150px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-#column1 {
-  background-color: #aca5a5;
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-#column2 {
+.section p {
+  margin-bottom: 20px;
+}
+
+.btn-custom {
+  color: #000;
   background-color: #fff;
+  
 }
 
 #footer-wrap {
