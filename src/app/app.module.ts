@@ -9,6 +9,7 @@ import { routing,appRoutingProvider } from './app.routing';
 import { FooterComponent } from './components/footer/footer.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
+import { CharlasComponent } from './components/charlas/charlas.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './components/login/login.component';
     ContactanosComponent,
     FooterComponent,
     QuienesSomosComponent,
-    LoginComponent
+    LoginComponent,
+    CharlasComponent
   ],
   imports: [
     BrowserModule, routing
