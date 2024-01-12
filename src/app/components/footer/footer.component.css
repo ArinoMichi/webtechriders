@@ -1,0 +1,22 @@
+#footer-wrap {
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+  max-height: fit-content;
+}
+.footer-logo img {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-first {
+  font-size: 1.2em;
+}
+
+.site-info p {
+  margin: 0;
+}

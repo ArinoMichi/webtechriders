@@ -99,9 +99,7 @@ body, html {
   width: 50%;
   font-weight: 400;
   
-}
-
-#footer-wrap {
+}#footer-wrap {
   background-color: #000;
   color: white;
   padding: 20px;
@@ -123,3 +121,4 @@ body, html {
 .site-info p {
   margin: 0;
 }
+
