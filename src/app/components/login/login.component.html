@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="container d-flex justify-content-center align-items-center"
+    style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
+    <div class="col-md-8 p-4 rounded shadow-lg">
+        <h1 class="text-center mb-4">Login</h1>
+        <form #insertForm="ngForm">
+            <div class="mb-4">
+                <label>Correo</label>
+                <input type="text" class="form-control" #cajaemail name="cajaemail">
+            </div>
+
+            <div class="mb-4">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" #cajapasswd name="cajapasswd">
+            </div>
+
+            <div class="text-end mt-4">
+                <button class="btn btn-outline-success" (click)="login()">
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

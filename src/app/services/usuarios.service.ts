@@ -17,17 +17,17 @@ export class UsuariosService {
     var request = "api/usuarios"
     var url = environment.urlApi + request
     var headers = new HttpHeaders()
-    .set('Authorization', "bearer" + token)
+    .set('Authorization', "bearer " + token)
     return this._http.get(url, {headers: headers})
   }
 
-  insertUsuario(usuario: Usuario, token: string): Observable<any>{
+  insertUsuario(usuario: Usuario): Observable<any>{
     var json = JSON.stringify(usuario)
     var request = "api/usuarios"
     var url = environment.urlApi + request
     var headers = new HttpHeaders()
     .set('Content-type', 'application/json')
-    .set('Authorization', "bearer " + token)
+
     return this._http.post(url, json, {headers: headers})
   }
 
