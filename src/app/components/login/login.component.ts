@@ -34,18 +34,23 @@ export class LoginComponent implements OnInit {
     // Obtener los valores de los campos
     var email = this.cajaEmailRef.nativeElement.value;
     var passwd = this.cajaPasswdRef.nativeElement.value;
-
+  
     var usuarioLogin = {
       email: email,
       password: passwd,
     };
-
+  
     this._AuthService.auth(usuarioLogin).subscribe((response) => {
       console.log("Respuesta del Servicio:", response);
-      this.token = response.response
-      localStorage.setItem('token', this.token)
+      this.token = response.response;
+      localStorage.setItem('token', this.token);
+      
+      // Notificar el cambio en el estado de autenticación
+      this._AuthService.notifyAuthenticationChange(true);
+      
       this._router.navigate(['/']);
     });
+    
   }
 }
 

@@ -1,13 +1,12 @@
 <nav class="navbar">
-    <div class="navbar-logo">
-      <a routerLink="/"><img src="../../assets/images/techriderslogo.png" alt="Logo" /></a>
-    </div>
-    <div class="navbar-links">
-      <a routerLink="/contactanos">Contactanos</a>
-      <a routerLink="/quienes-somos">Quienes Somos</a>
-      
-      <a routerLink="/login">Identificate</a>
-      <!-- Mas cosas de relleno (?) -->
-    </div>
-  </nav>
-  
+  <div class="navbar-logo">
+    <a routerLink="/"><img src="../../assets/images/techriderslogo.png" alt="Logo" /></a>
+  </div>
+  <div class="navbar-links">
+    <a routerLink="/contactanos">Contactanos</a>
+    <a routerLink="/quienes-somos">Quienes Somos</a>
+    <!-- Mas cosas de relleno (?) -->
+    <a (click)="logout()" routerLink="/" *ngIf="isAuthenticated">Cerrar sesión</a>
+    <a routerLink="/login" *ngIf="!isAuthenticated">Identificate</a>
+  </div>
+</nav>
