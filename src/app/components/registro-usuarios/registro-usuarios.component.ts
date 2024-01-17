@@ -84,7 +84,7 @@ export class RegistroUsuariosComponent implements OnInit {
       idRole: rol,
       idProvincia: provincia,
       idEmpresaCentro: empresa,
-      estado: 0,
+      estado: 2,
     };
 
     this._UsuariosService.insertUsuario(nuevoUsuario).subscribe((response) => {
