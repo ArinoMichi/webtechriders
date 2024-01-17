@@ -6,12 +6,14 @@ import { ModuleWithProviders } from '@angular/core';
 import { ContactanosComponent } from './components/contactanos/contactanos.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomePublicoComponent } from './components/home-publico/home-publico.component';
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'contactanos', component: ContactanosComponent },
   { path: 'quienes-somos', component: QuienesSomosComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'publico', component: HomePublicoComponent },
 
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS

@@ -11,3 +11,5 @@ export class EmpresaCentro {
         public idTipoEmpresa: number
     ) {}
 }
+
+
