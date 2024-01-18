@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TipoEmpresaService } from 'src/app/services/tipo-empresa.service';
+import { EmpresaCentro } from 'src/app/models/empresa-centro.model';
+import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
 
 @Component({
   selector: 'app-home-publico',
@@ -8,17 +9,15 @@ import { TipoEmpresaService } from 'src/app/services/tipo-empresa.service';
 })
 export class HomePublicoComponent {
 
-  tiposEmpresas: any[] = [];
+  public empresas!: Array<EmpresaCentro>
 
-  constructor(private tipoEmpresasService: TipoEmpresaService) {}
+  constructor(private _empresasCentrosService: EmpresasCentrosService) {}
 
   ngOnInit(): void {
-    this.tipoEmpresasService.getTiposEmpresas().subscribe(
-      (empresasFiltradas: any) => {
-        this.tiposEmpresas = empresasFiltradas;
-      },
-      error => {
-        console.error('Error al obtener los tipos de empresas:', error);
+    this._empresasCentrosService.getEmpresas().subscribe(
+      (response: Array<EmpresaCentro>)=>{
+        this.empresas = response
+        console.log(response)
       }
     );
   }

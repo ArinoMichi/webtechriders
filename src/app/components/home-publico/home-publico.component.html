@@ -4,17 +4,15 @@
     <thead>
         <tr class="table-dark">
             <th>Nombre</th>
-            <th>Servicio</th>
-            <th>Enlace</th>
-            <th>Twitter</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let empresa of tiposEmpresas">
+        <tr *ngFor="let empresa of empresas">
             <td>{{ empresa.nombre }}</td>
-            <td>{{ empresa.servicio }}</td>
-            <td>{{ empresa.enlace }}</td>
-            <td>{{ empresa.twitter }}</td>
+            <td>{{ empresa.direccion }}</td>
+            <td>{{ empresa.telefono }}</td>
         </tr>
     </tbody>
 </table>
