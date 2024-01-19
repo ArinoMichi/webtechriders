@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EmpresaCentro } from '../models/empresa-centro.model';
 import { filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -21,13 +22,33 @@ export class EmpresasCentrosService {
     return this._http.get(url)
   }
 
-  getEmpresas(): Observable<any> {
-    var request = "api/empresascentros"
-    const url = environment.urlApi + request;
-    console.log(url)
+  // getEmpresas(): Observable<any> {
+  //   var request = "api/empresascentros"
+  //   const url = environment.urlApi + request;
+  //   console.log(url)
 
-    return this._http.get(url).pipe(
-      filter((empresa: any) => empresa.idTipoEmpresa === 1)
+  //   return this._http.get(url).pipe(
+  //     filter((empresa: any) => empresa.idTipoEmpresa === 1)
+  //   );
+  // }
+
+  getEmpresas(): Observable<any[]> {
+    const request = "api/empresascentros";
+    const url = environment.urlApi + request;
+    console.log(url);
+
+    return this._http.get<any[]>(url).pipe(
+      map(empresas => empresas.filter(empresa => empresa.idTipoEmpresa === 1))
+    );
+  }
+
+  getCentros(): Observable<any[]> {
+    const request = "api/empresascentros";
+    const url = environment.urlApi + request;
+    console.log(url);
+
+    return this._http.get<any[]>(url).pipe(
+      map(empresas => empresas.filter(empresa => empresa.idTipoEmpresa === 2))
     );
   }
 

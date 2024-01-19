@@ -1,5 +1,66 @@
+<h1 class="fw-bolder">CHARLAS</h1>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th>Tipo de Charla</th>
+            <th>Estado</th>
+            <th>TechRider</th>
+            <th>Curso</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let charla of charlas">
+            <td>{{ charla.descripcionCharla }}</td>
+            <td>{{ charla.estadoCharla }}</td>
+            <td>{{ charla.techRider }}</td>
+            <td>{{ charla.nombreCurso }}</td>
+            <td>{{ charla.fechaCharla }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 class="fw-bolder">TECHRIDERS</h1>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>LinkendIn</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tr of trs">
+            <td>{{ tr.techRider }}</td>
+            <td>{{ tr.email }}</td>
+            <td><a [href]="tr.linkedIn">{{tr.linkedIn}}</a></td>
+            <td>{{ tr.telefonoTechRider }}</td>
+        </tr>
+    </tbody>
+</table>
 
 <h1 class="fw-bolder">EMPRESAS COLABORADORAS</h1>
+<table class="table table-hover">
+    <thead>
+        <tr class="table-dark">
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Razon social</th>
+            <th>Telefono</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empresa of empresas">
+            <td>{{ empresa.nombre }}</td>
+            <td>{{ empresa.direccion }}</td>
+            <td>{{ empresa.razonSocial }}</td>
+            <td>{{ empresa.telefono }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h1 class="fw-bolder">CENTROS</h1>
 <table class="table table-hover">
     <thead>
         <tr class="table-dark">
@@ -9,10 +70,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let empresa of empresas">
-            <td>{{ empresa.nombre }}</td>
-            <td>{{ empresa.direccion }}</td>
-            <td>{{ empresa.telefono }}</td>
+        <tr *ngFor="let centro of centros">
+            <td>{{ centro.nombre }}</td>
+            <td>{{ centro.direccion }}</td>
+            <td>{{ centro.telefono }}</td>
         </tr>
     </tbody>
 </table>

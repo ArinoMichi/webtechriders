@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresaCentro } from 'src/app/models/empresa-centro.model';
 import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
+import { CharlasService } from 'src/app/services/charlas.service';
+import { CharlaQT } from 'src/app/models/charlaQT.model';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { TechRiderQT } from 'src/app/models/techridersQT.model';
 
 @Component({
   selector: 'app-home-publico',
@@ -10,15 +14,40 @@ import { EmpresasCentrosService } from 'src/app/services/empresas-centros.servic
 export class HomePublicoComponent {
 
   public empresas!: Array<EmpresaCentro>
+  public centros!: Array<EmpresaCentro>
+  public charlas!: Array<CharlaQT>
+  public trs!: Array<TechRiderQT>
 
-  constructor(private _empresasCentrosService: EmpresasCentrosService) {}
+  // public empresas: EmpresaCentro[] = [];
+  constructor(
+    private _empresasCentrosService: EmpresasCentrosService,
+    private _charlasService: CharlasService,
+    private _usuariosService: UsuariosService
+    ) {}
 
   ngOnInit(): void {
+    
+    this._charlasService.getCharlasDetalles().subscribe((response: Array<CharlaQT>)=>{
+      this.charlas = response
+      console.log(response)
+    });
+
+    this._usuariosService.getTechRiders().subscribe((response: Array<TechRiderQT>)=>{
+      this.trs = response
+      console.log(response)
+    });
+
+
     this._empresasCentrosService.getEmpresas().subscribe(
-      (response: Array<EmpresaCentro>)=>{
-        this.empresas = response
-        console.log(response)
-      }
-    );
-  }
+      (empresasFiltradas: EmpresaCentro[]) => {
+        this.empresas = empresasFiltradas;
+        console.log(empresasFiltradas);
+      });
+
+    this._empresasCentrosService.getCentros().subscribe(
+      (centrosFiltrados: EmpresaCentro[]) => {
+        this.centros = centrosFiltrados;
+        console.log(centrosFiltrados);
+      });
+}
 }

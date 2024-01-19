@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { TipoEmpresa } from '../models/tipo-empresa.model';
-import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +17,6 @@ export class TipoEmpresaService {
     var request = "api/tipoempresa"
     var url = environment.urlApi + request
     return this._http.get(url)
-  }
-
-  getEmpresas(): Observable<any> {
-    const request = 'api/tipoempresa';
-    const url = environment.urlApi + request;
-
-    return this._http.get(url).pipe(
-      filter((empresa: any) => empresa.idTipoEmpresa === 1)
-    );
   }
 
   insertTipoEmpresa(descripcion: string, token: string): Observable<any>{
