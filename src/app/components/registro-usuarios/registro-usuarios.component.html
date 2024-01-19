@@ -1,0 +1,73 @@
+<div class="container d-flex justify-content-center align-items-center"
+    style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
+    <div class="col-md-8 p-4 rounded shadow-lg">
+        <h1 class="text-center mb-4">Registrate!</h1>
+        <form #insertForm="ngForm">
+            <div class="mb-4">
+                <label>Como quieres registrarte?</label>
+                <select class="form-control" #cajarol name="cajarol" (change)="onRolChange()">
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="2">Profesor</option>
+                    <option value="3">TechRider</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Nombre</label>
+                <input type="text" class="form-control" #cajanombre name="cajanombre">
+            </div>
+
+            <div class="mb-4">
+                <label>Apellidos</label>
+                <input type="text" class="form-control" #cajaapellidos name="cajaapellidos">
+            </div>
+
+            <div class="mb-4">
+                <label>Email</label>
+                <input type="text" class="form-control" #cajaemail name="cajaemail">
+            </div>
+
+            <div class="mb-4">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" #cajapasswd name="cajapasswd">
+            </div>
+
+            <div class="mb-4">
+                <label>Telefono</label>
+                <input type="text" class="form-control" #cajatelefono name="cajatelefono">
+            </div>
+
+            <div class="mb-4">
+                <label>Linkedin</label>
+                <input type="text" class="form-control" #cajalinkedin name="cajalinkedin">
+            </div>
+
+            <div class="mb-4">
+                <label>Provincia:</label>
+                <select class="form-control" #cajaprovincia name="cajaprovincia">
+                    <option value="{{provincia.idProvincia}}" *ngFor="let provincia of provincias">
+                        {{provincia.nombreProvincia}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Empresa/Centro:</label>
+                <select class="form-control" #cajaempresa name="cajaempresa">
+                    <option value=null>
+                        -
+                    </option>
+                    <option value="{{empresa.idEmpresaCentro}}" *ngFor="let empresa of filteredEmpresas">
+                        {{empresa.nombre}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-dark" (click)="crearUsuario()" style="width: 100%;">
+                    Registrate
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
