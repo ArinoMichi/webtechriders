@@ -44,10 +44,6 @@ export class LoginComponent implements OnInit {
       console.log("Respuesta del Servicio:", response);
       this.token = response.response;
       localStorage.setItem('token', this.token);
-      
-      // Notificar el cambio en el estado de autenticación
-      this._AuthService.notifyAuthenticationChange(true);
-      
       this._router.navigate(['/']);
     });
     
