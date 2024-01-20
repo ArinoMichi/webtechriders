@@ -6,7 +6,7 @@
     <a routerLink="/contactanos">Contactanos</a>
     <a routerLink="/quienes-somos">Quienes Somos</a>
     <!-- Mas cosas de relleno (?) -->
-    <a (click)="logout()" routerLink="/" *ngIf="isAuthenticated">Cerrar sesión</a>
-    <a routerLink="/login" *ngIf="!isAuthenticated">Identificate</a>
+    <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar sesión</a>
+    <a routerLink="/login" *ngIf=!token>Identificate</a>
   </div>
 </nav>
