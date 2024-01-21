@@ -1,1 +1,55 @@
-<p>paneltr works!</p>
+<!-- En tu archivo HTML del componente -->
+<div class="container mt-4">
+    <h1>Charlas Asignadas:</h1>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Estado</th>
+          <th>Valoracion</th>
+          <th>Dato 3</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datos; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.dato1 }}</td>
+          <td>{{ item.dato2 }}</td>
+          <td>{{ item.dato3 }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editarItem(i)">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarItem(i)">Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container mt-4">
+    <h1>Charlas Disponibles:</h1>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Dato 1</th>
+          <th>Dato 2</th>
+          <th>Dato 3</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of datos; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.dato1 }}</td>
+          <td>{{ item.dato2 }}</td>
+          <td>{{ item.dato3 }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editarItem(i)">Aceptar</button>
+            <button class="btn btn-danger" (click)="eliminarItem(i)">Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
