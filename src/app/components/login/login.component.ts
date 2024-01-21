@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/models/usuario.model';
 
 
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _AuthService: AuthService,
     private _router: Router,
+    private _UserService : UsuariosService
   ) { }
 
   ngOnInit(): void {
@@ -39,12 +42,17 @@ export class LoginComponent implements OnInit {
       email: email,
       password: passwd,
     };
+
+    
   
     this._AuthService.auth(usuarioLogin).subscribe((response) => {
       console.log("Respuesta del Servicio:", response);
       this.token = response.response;
       localStorage.setItem('token', this.token);
       this._router.navigate(['/']);
+      this._UserService.getPerfilUsuario(this.token).subscribe((response)=>{
+        environment.currentUser=response;
+      })
     });
     
   }

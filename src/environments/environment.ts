@@ -1,3 +1,4 @@
 export const environment = {
-    urlApi: "https://apitechriders.azurewebsites.net/"
+    urlApi: "https://apitechriders.azurewebsites.net/",
+    currentUser: null
 };
