@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
       email: email,
       password: passwd,
     };
-  
+
+    
     this._AuthService.auth(usuarioLogin).subscribe((response) => {
       console.log("Respuesta del Servicio:", response);
       this.token = response.response;
