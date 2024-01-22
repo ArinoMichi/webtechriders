@@ -14,6 +14,9 @@ import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
 import { PaneltrComponent } from './components/paneltr/paneltr.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,10 @@ import { PaneltrComponent } from './components/paneltr/paneltr.component';
     CharlasComponent,
     RegistroUsuariosComponent,
     PaneltrComponent,
+    CalendarioComponent,
   ],
   imports: [
-    BrowserModule, routing, HttpClientModule, FormsModule
+    BrowserModule, routing, HttpClientModule, FormsModule, CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [appRoutingProvider],
   bootstrap: [AppComponent]
