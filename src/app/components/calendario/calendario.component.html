@@ -1,9 +1,12 @@
 <!-- calendario.component.html -->
-<div>
-  <mwl-calendar-month-view
-    [viewDate]="viewDate"
-    [events]="events"
-    (dayClicked)="dayClicked($event.day)"
-    (eventClicked)="eventClicked({ event: $event.event })"
-  ></mwl-calendar-month-view>
+<div style="width: 80%; margin: 0 auto; padding-top: 5%; padding-bottom: 5%; text-align: center;">
+  <h1>{{ viewDate | date: 'MMMM y' | titlecase }}</h1>
+  <hr>
+  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="eventClicked($event)"></mwl-calendar-month-view>
+  <hr>
+  <div style="margin: 0 auto;">
+    <button (click)="prevMonth()"  type="button" class="btn btn-outline-dark">←</button>
+    <button (click)="nextMonth()"  type="button" class="btn btn-outline-dark">→</button>
+  </div>
 </div>

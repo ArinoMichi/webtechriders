@@ -1,10 +1,11 @@
 // calendario.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
-
 import { CharlasService } from 'src/app/services/charlas.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { CharlaDetalleComponent } from 'src/app/components/charla-detalle/charla-detalle.component';
 import { Charla } from 'src/app/models/charla.model';
+import { LOCALE_ID } from '@angular/core';
 
 interface MyCalendarEvent extends CalendarEvent {
   charla: Charla;
@@ -13,17 +14,18 @@ interface MyCalendarEvent extends CalendarEvent {
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
-  styleUrls: ['./calendario.component.css']
+  styleUrls: ['./calendario.component.css'],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }]
 })
 export class CalendarioComponent implements OnInit {
   public charlas!: Array<Charla>;
+  viewDate: Date = new Date(); // Inicializamos con la fecha actual
+  events: MyCalendarEvent[] = [];
 
   constructor(
-    private _charlasService: CharlasService
+    private _charlasService: CharlasService,
+    private dialog: MatDialog
   ) { }
-
-  viewDate: Date = new Date();
-  events: MyCalendarEvent[] = [];
 
   ngOnInit(): void {
     this._charlasService.getCharlas().subscribe((response) => {
@@ -43,14 +45,50 @@ export class CalendarioComponent implements OnInit {
 
   dayClicked(day: CalendarMonthViewDay): void {
     console.log('Día clickeado', day);
+    const charlaSeleccionada = this.charlas.find(charla =>
+      new Date(charla.fechaCharla).getDate() === day.date.getDate() &&
+      new Date(charla.fechaCharla).getMonth() === day.date.getMonth() &&
+      new Date(charla.fechaCharla).getFullYear() === day.date.getFullYear()
+    );
+
+    if (charlaSeleccionada) {
+      this.openDialog(charlaSeleccionada);
+    } else {
+      console.log('No hay Charla para esta fecha.');
+    }
   }
 
-  eventClicked(event: { event: CalendarEvent<any> }): void {
+  eventClicked(event: { event: CalendarEvent }): void {
     console.log('Evento clickeado', event);
-    // Intentaremos acceder a la propiedad charla dentro del método
     if ('charla' in event.event) {
       const charlaSeleccionada: Charla = (event.event as MyCalendarEvent).charla;
-      // Hacer algo con la Charla seleccionada...
+      this.openDialog(charlaSeleccionada);
+    } else {
+      console.log('No hay Charla asociada a este evento.');
     }
+  }
+  
+
+  openDialog(charla: Charla): void {
+    const dialogRef = this.dialog.open(CharlaDetalleComponent, {
+      width: '400px',
+      data: charla
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Cuadro de diálogo cerrado');
+    });
+  }
+
+  // Método para cambiar al mes anterior
+  prevMonth(): void {
+    this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() - 1, 1);
+    this.mapCharlasToEvents();
+  }
+
+  // Método para cambiar al próximo mes
+  nextMonth(): void {
+    this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 1);
+    this.mapCharlasToEvents();
   }
 }
