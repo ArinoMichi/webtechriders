@@ -6,6 +6,7 @@
     <a routerLink="/contactanos">Contactanos</a>
     <a routerLink="/quienes-somos">Quienes Somos</a>
     <!-- Mas cosas de relleno (?) -->
+    <a *ngIf="identity && identity.nombre">{{identity.nombre}} {{identity.apellidos}} </a>
     <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar sesión</a>
     <a routerLink="/login" *ngIf=!token>Identificate</a>
   </div>
