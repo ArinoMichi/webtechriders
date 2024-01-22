@@ -8,6 +8,7 @@
     <!-- Mas cosas de relleno (?) -->
     <a  routerLink="/panel-tr" *ngIf=token>Panel User</a>
     <a routerLink="/login" *ngIf=!token>Identificate</a>
+    <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar Sesion</a>
     
   </div>
 </nav>
