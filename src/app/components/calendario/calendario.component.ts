@@ -35,12 +35,17 @@ export class CalendarioComponent implements OnInit {
   }
 
   mapCharlasToEvents(): void {
-    this.events = this.charlas.map(charla => ({
-      title: charla.descripcion,
-      start: new Date(charla.fechaCharla),
-      end: new Date(charla.fechaCharla),
-      charla: charla,
-    }));
+    this.events = this.charlas.map(charla => {
+      const hasTechRider = charla.idTechRider !== null && charla.idTechRider !== undefined;
+  
+      return {
+        title: charla.descripcion,
+        start: new Date(charla.fechaCharla),
+        end: new Date(charla.fechaCharla),
+        charla: charla,
+        color: hasTechRider ? { primary: '#1e90ff', secondary: '#D1E8FF' } : { primary: '#FF0000', secondary: '#FFCCCC' },
+      } as MyCalendarEvent;
+    });
   }
 
   dayClicked(day: CalendarMonthViewDay): void {

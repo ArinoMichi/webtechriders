@@ -1,12 +1,17 @@
 <!-- calendario.component.html -->
 <div style="width: 80%; margin: 0 auto; padding-top: 5%; padding-bottom: 5%; text-align: center;">
-  <h1>{{ viewDate | date: 'MMMM y' | titlecase }}</h1>
+  <h1>
+    <button (click)="prevMonth()" type="button" class="btn btn-outline-dark">←</button>
+    {{ viewDate | date: 'MMMM y' | titlecase }}
+    <button (click)="nextMonth()" type="button" class="btn btn-outline-dark">→</button>
+  </h1>
+
   <hr>
   <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event.day)"
     (eventClicked)="eventClicked($event)"></mwl-calendar-month-view>
   <hr>
-  <div style="margin: 0 auto;">
-    <button (click)="prevMonth()"  type="button" class="btn btn-outline-dark">←</button>
-    <button (click)="nextMonth()"  type="button" class="btn btn-outline-dark">→</button>
+  <div class="legend">
+    <div class="legend-item" style="background-color: #1e90ff;"></div> Charla Asignada <br>
+    <div class="legend-item" style="background-color: #FF0000;"></div> Charla sin asignar
   </div>
 </div>

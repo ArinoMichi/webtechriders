@@ -1,3 +1,7 @@
 <h2>Detalles de la Charla</h2>
-<p>ID de Charla: {{ data.idCharla }}</p>
-<p>Descripción: {{ data.descripcion }}</p>
+<div *ngIf="techrider">
+    <h1>Usuario: {{ techrider.techRider }}</h1>
+    <p>idtech: {{ techrider.idTechRider }}</p>
+</div>
+    <p>ID de Charla: {{ data.idCharla }}</p>
+    <p>Descripción: {{ data.descripcion }}</p>

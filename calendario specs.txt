@@ -1,0 +1,29 @@
+Calendario:
+- Todas las charlas organizadas por:
+	- Cancelada: 1, gris
+	- Pendiente: 2, amarillo (no tiene techrider)
+	- Proceso: 3, azul (tiene techrider pero no se ha completado)
+	- Cerrada: 4, rojo (????)
+	- Completada: 5, verde (ya se ha hecho)
+	- Acreditada: 6, morado (...)
+
+- Datos de la Charla:
+	- Modalidad y Fecha <h1>
+	- Estado <h2>
+	- Techrider *En caso de que tenga
+	- Datos:
+		- provincia 
+		- curso 
+		- email ** 
+		- telefono **
+		- descripcion **
+		- observaciones **
+**Solo lo puede ver el techrider y el profesor que ha pedido la charla; y en caso de que tenga
+
+
+¿Que charlas ve cada Rol?
+- Parte publica: Todas.
+- Admin(1): Todas.
+- Profesor(2): La charla que ha pedido.
+- TechRider(3): Charlas pendientes que esten asociadas a sus modalidades y las que tiene o ha hecho.
+- Representante(4): Charlas asisgnada a trabajadores de su empresa y a sus modalidades y las que tiene o ha hecho.
