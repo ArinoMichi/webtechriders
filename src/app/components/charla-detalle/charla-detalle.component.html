@@ -1,7 +1,26 @@
-<h2>Detalles de la Charla</h2>
-<div *ngIf="techrider">
-    <h1>Usuario: {{ techrider.techRider }}</h1>
-    <p>idtech: {{ techrider.idTechRider }}</p>
+<div class="detalles">
+    <h1>{{ data.descripcionCharla }}</h1>
+    <h2>{{ data.modalidad }} - {{ data.fechaCharla | date: 'dd/MM/yyyy' }}</h2>
+    <h3>Estado: {{ data.estadoCharla }}</h3>
+
+    <!-- Mostrar TechRider solo si tiene valor -->
+    <p *ngIf="data.techrider">Techrider: {{ data.techrider }}</p>
+
+    <p>Datos:</p>
+    <ul>
+        <li>
+            Provincia: {{ data.provincia }}
+        </li>
+        <li>
+            Curso: {{ data.nombreCurso }}
+        </li>
+        <li>
+            Correo: {{ data.email }}
+        </li>
+        <li>
+            Teléfono: {{ data.telefono }}
+        </li>
+    </ul>
+
+    <p>{{ data.observacionesCharla }}</p>
 </div>
-    <p>ID de Charla: {{ data.idCharla }}</p>
-    <p>Descripción: {{ data.descripcion }}</p>

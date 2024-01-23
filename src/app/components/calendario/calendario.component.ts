@@ -4,11 +4,11 @@ import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
 import { CharlasService } from 'src/app/services/charlas.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CharlaDetalleComponent } from 'src/app/components/charla-detalle/charla-detalle.component';
-import { Charla } from 'src/app/models/charla.model';
+import { CharlaDetalles } from 'src/app/models/charla-detalles';
 import { LOCALE_ID } from '@angular/core';
 
 interface MyCalendarEvent extends CalendarEvent {
-  charla: Charla;
+  charla: CharlaDetalles;
 }
 
 @Component({
@@ -18,7 +18,7 @@ interface MyCalendarEvent extends CalendarEvent {
   providers: [{ provide: LOCALE_ID, useValue: 'es' }]
 })
 export class CalendarioComponent implements OnInit {
-  public charlas!: Array<Charla>;
+  public charlas!: Array<CharlaDetalles>;
   viewDate: Date = new Date(); // Inicializamos con la fecha actual
   events: MyCalendarEvent[] = [];
 
@@ -28,7 +28,7 @@ export class CalendarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._charlasService.getCharlas().subscribe((response) => {
+    this._charlasService.getCharlasDetalles().subscribe((response) => {
       this.charlas = response;
       this.mapCharlasToEvents();
     });
@@ -36,17 +36,41 @@ export class CalendarioComponent implements OnInit {
 
   mapCharlasToEvents(): void {
     this.events = this.charlas.map(charla => {
-      const hasTechRider = charla.idTechRider !== null && charla.idTechRider !== undefined;
+      let color: any;
+      switch (charla.idEstadoCharla) {
+        case 1:
+          color = { primary: 'gray', secondary: 'lightgray' };
+          break;
+        case 2:
+          color = { primary: 'orange', secondary: 'lightorange' };
+          break;
+        case 3:
+          color = { primary: 'blue', secondary: 'lightblue' };
+          break;
+        case 4:
+          color = { primary: 'red', secondary: 'lightcoral' };
+          break;
+        case 5:
+          color = { primary: 'green', secondary: 'lightgreen' };
+          break;
+        case 6:
+          color = { primary: 'purple', secondary: 'lightpurple' };
+          break;
+        default:
+          color = { primary: 'black', secondary: 'lightgray' };
+          break;
+      }
   
       return {
-        title: charla.descripcion,
+        title: charla.descripcionCharla,
         start: new Date(charla.fechaCharla),
         end: new Date(charla.fechaCharla),
         charla: charla,
-        color: hasTechRider ? { primary: '#1e90ff', secondary: '#D1E8FF' } : { primary: '#FF0000', secondary: '#FFCCCC' },
+        color: color,
       } as MyCalendarEvent;
     });
   }
+  
 
   dayClicked(day: CalendarMonthViewDay): void {
     console.log('Día clickeado', day);
@@ -66,7 +90,7 @@ export class CalendarioComponent implements OnInit {
   eventClicked(event: { event: CalendarEvent }): void {
     console.log('Evento clickeado', event);
     if ('charla' in event.event) {
-      const charlaSeleccionada: Charla = (event.event as MyCalendarEvent).charla;
+      const charlaSeleccionada: CharlaDetalles = (event.event as MyCalendarEvent).charla;
       this.openDialog(charlaSeleccionada);
     } else {
       console.log('No hay Charla asociada a este evento.');
@@ -74,9 +98,9 @@ export class CalendarioComponent implements OnInit {
   }
   
 
-  openDialog(charla: Charla): void {
+  openDialog(charla: CharlaDetalles): void {
     const dialogRef = this.dialog.open(CharlaDetalleComponent, {
-      width: '400px',
+      width: '40%',
       data: charla
     });
 

@@ -1,7 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
-body{
-    margin: 0;
+body {
+  margin: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+::ng-deep .mat-dialog-container {
+  border-radius: 10px; /* Ajusta el valor según tu preferencia */
+  overflow: hidden; /* Para asegurar que el borde redondeado se aplique correctamente */
+  transition: transform 0.3s ease-out; /* Agrega una animación de transición */
+}
+
+::ng-deep .mat-dialog-container:hover {
+  transform: scale(1.02); /* Cambia la escala en el hover para la animación */
+}

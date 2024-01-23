@@ -1,5 +1,5 @@
 Calendario:
-- Todas las charlas organizadas por:
+- Todas las charlas organizadas por Estado:
 	- Cancelada: 1, gris
 	- Pendiente: 2, amarillo (no tiene techrider)
 	- Proceso: 3, azul (tiene techrider pero no se ha completado)
@@ -18,7 +18,8 @@ Calendario:
 		- telefono **
 		- descripcion **
 		- observaciones **
-**Solo lo puede ver el techrider y el profesor que ha pedido la charla; y en caso de que tenga
+**Solo lo puedes ver si tienes Token
+Solo lo puede ver el techrider y el profesor que ha pedido la charla; y en caso de que tenga
 
 
 ¿Que charlas ve cada Rol?
