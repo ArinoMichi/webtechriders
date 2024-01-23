@@ -13,6 +13,7 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
+import { RegistroCentroEmpresasComponent } from './components/registro-centro-empresas/registro-centro-empresas.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RegistroUsuariosComponent } from './components/registro-usuarios/regist
     LoginComponent,
     CharlasComponent,
     RegistroUsuariosComponent,
+    RegistroCentroEmpresasComponent,
   ],
   imports: [
     BrowserModule, routing, HttpClientModule, FormsModule

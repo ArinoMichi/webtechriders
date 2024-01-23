@@ -16,4 +16,14 @@ export class EmpresaCentroService {
 
         return this._http.get(url);
     }
+
+    postEmpresaCentro(empresa: EmpresaCentro): Observable<any> {
+        var json = JSON.stringify(empresa)
+        var request = 'api/empresascentros';
+        var url = environment.urlApi + request;
+        var headers = new HttpHeaders()
+            .set('Content-type', 'application/json')
+
+        return this._http.post(url, json, { headers: headers });
+    }
 }
