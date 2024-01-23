@@ -1,10 +1,10 @@
-<div class="container d-flex justify-content-center align-items-center"
-    style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
+<br>
+<div class="container d-flex justify-content-center align-items-center">
     <div class="col-md-8 p-4 rounded shadow-lg">
-        <h1 class="text-center mb-4">Registrate!</h1>
+        <h1 class="text-center mb-4">¡Regístrate!</h1>
         <form #insertForm="ngForm">
             <div class="mb-4">
-                <label>Como quieres registrarte?</label>
+                <label>¿Cómo quieres registrarte?</label>
                 <select class="form-control" #cajarol name="cajarol" (change)="onRolChange()">
                     <option value="" disabled selected>Selecciona una opción</option>
                     <option value="2">Profesor</option>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="mb-4">
-                <label>Telefono</label>
+                <label>Teléfono</label>
                 <input type="text" class="form-control" #cajatelefono name="cajatelefono">
             </div>
 
@@ -63,9 +63,22 @@
                 </select>
             </div>
 
+            <div class="mb-4">
+                <label>Tecnologías</label>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let tecnologia of tecnologias; let i = index">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [value]="tecnologia.idTecnologia"
+                                name="tecnologias">
+                            <label class="form-check-label">{{tecnologia.nombreTecnologia}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="text-center mt-4">
                 <button class="btn btn-dark" (click)="crearUsuario()" style="width: 100%;">
-                    Registrate
+                    ¡Regístrate!
                 </button>
             </div>
         </form>
