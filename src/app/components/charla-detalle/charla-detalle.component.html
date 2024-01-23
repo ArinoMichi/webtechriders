@@ -25,6 +25,6 @@
             Teléfono: {{ data.telefono }}
         </li>
     </ul>
-    <u>Descripción:</u>
+    <u *ngIf="data.observacionesCharla">Observaciones:</u>
     <p>{{ data.observacionesCharla }}</p>
 </div>
