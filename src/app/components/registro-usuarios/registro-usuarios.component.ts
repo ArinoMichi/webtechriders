@@ -62,7 +62,7 @@ export class RegistroUsuariosComponent implements OnInit {
   onRolChange(): void {
     const selectedTipo = parseInt(this.cajaRolRef.nativeElement.value);
 
-    if (selectedTipo == 2) {
+    if (selectedTipo == 2 ) {
       this.filteredEmpresas = this.empresas.filter(
         (empresa) => empresa.idTipoEmpresa === 2
       );
