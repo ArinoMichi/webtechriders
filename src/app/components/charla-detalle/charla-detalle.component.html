@@ -1,13 +1,17 @@
 <div class="detalles">
+    <button mat-icon-button (click)="closeDialog()" class="close-button">
+        <mat-icon aria-label="Cerrar">close</mat-icon>
+    </button>
     <h1>{{ data.descripcionCharla }}</h1>
+    <hr>
     <h2>{{ data.modalidad }} - {{ data.fechaCharla | date: 'dd/MM/yyyy' }}</h2>
     <h3>Estado: {{ data.estadoCharla }}</h3>
 
-    <!-- Mostrar TechRider solo si tiene valor -->
-    <p *ngIf="data.techrider">Techrider: {{ data.techrider }}</p>
-
-    <p>Datos:</p>
+    <u>Datos:</u>
     <ul>
+        <li *ngIf="data.techRider">
+            Techrider: {{ data.techRider }}
+        </li>
         <li>
             Provincia: {{ data.provincia }}
         </li>
@@ -21,6 +25,6 @@
             Teléfono: {{ data.telefono }}
         </li>
     </ul>
-
+    <u>Descripción:</u>
     <p>{{ data.observacionesCharla }}</p>
 </div>

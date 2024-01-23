@@ -15,7 +15,7 @@ interface MyCalendarEvent extends CalendarEvent {
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css'],
-  providers: [{ provide: LOCALE_ID, useValue: 'es' }]
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
 })
 export class CalendarioComponent implements OnInit {
   public charlas!: Array<CharlaDetalles>;
@@ -25,7 +25,7 @@ export class CalendarioComponent implements OnInit {
   constructor(
     private _charlasService: CharlasService,
     private dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._charlasService.getCharlasDetalles().subscribe((response) => {
@@ -35,32 +35,32 @@ export class CalendarioComponent implements OnInit {
   }
 
   mapCharlasToEvents(): void {
-    this.events = this.charlas.map(charla => {
+    this.events = this.charlas.map((charla) => {
       let color: any;
       switch (charla.idEstadoCharla) {
         case 1:
-          color = { primary: 'gray', secondary: 'lightgray' };
+          color = { primary: '#888888', secondary: 'lightgray' };
           break;
         case 2:
-          color = { primary: 'orange', secondary: 'lightorange' };
+          color = { primary: '#ffc400', secondary: 'lightorange' };
           break;
         case 3:
-          color = { primary: 'blue', secondary: 'lightblue' };
+          color = { primary: '#88cfff', secondary: 'lightblue' };
           break;
         case 4:
-          color = { primary: 'red', secondary: 'lightcoral' };
+          color = { primary: '#E74C3C', secondary: 'lightcoral' };
           break;
         case 5:
-          color = { primary: 'green', secondary: 'lightgreen' };
+          color = { primary: '#2ECC71', secondary: 'lightgreen' };
           break;
         case 6:
-          color = { primary: 'purple', secondary: 'lightpurple' };
+          color = { primary: '#9B59B6', secondary: 'lightpurple' };
           break;
         default:
           color = { primary: 'black', secondary: 'lightgray' };
           break;
       }
-  
+
       return {
         title: charla.descripcionCharla,
         start: new Date(charla.fechaCharla),
@@ -70,14 +70,14 @@ export class CalendarioComponent implements OnInit {
       } as MyCalendarEvent;
     });
   }
-  
 
   dayClicked(day: CalendarMonthViewDay): void {
     console.log('Día clickeado', day);
-    const charlaSeleccionada = this.charlas.find(charla =>
-      new Date(charla.fechaCharla).getDate() === day.date.getDate() &&
-      new Date(charla.fechaCharla).getMonth() === day.date.getMonth() &&
-      new Date(charla.fechaCharla).getFullYear() === day.date.getFullYear()
+    const charlaSeleccionada = this.charlas.find(
+      (charla) =>
+        new Date(charla.fechaCharla).getDate() === day.date.getDate() &&
+        new Date(charla.fechaCharla).getMonth() === day.date.getMonth() &&
+        new Date(charla.fechaCharla).getFullYear() === day.date.getFullYear()
     );
 
     if (charlaSeleccionada) {
@@ -90,34 +90,43 @@ export class CalendarioComponent implements OnInit {
   eventClicked(event: { event: CalendarEvent }): void {
     console.log('Evento clickeado', event);
     if ('charla' in event.event) {
-      const charlaSeleccionada: CharlaDetalles = (event.event as MyCalendarEvent).charla;
+      const charlaSeleccionada: CharlaDetalles = (
+        event.event as MyCalendarEvent
+      ).charla;
       this.openDialog(charlaSeleccionada);
     } else {
       console.log('No hay Charla asociada a este evento.');
     }
   }
-  
 
   openDialog(charla: CharlaDetalles): void {
     const dialogRef = this.dialog.open(CharlaDetalleComponent, {
-      width: '40%',
-      data: charla
+      width: '45%',
+      data: charla,
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Cuadro de diálogo cerrado');
     });
   }
 
   // Método para cambiar al mes anterior
   prevMonth(): void {
-    this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() - 1, 1);
+    this.viewDate = new Date(
+      this.viewDate.getFullYear(),
+      this.viewDate.getMonth() - 1,
+      1
+    );
     this.mapCharlasToEvents();
   }
 
   // Método para cambiar al próximo mes
   nextMonth(): void {
-    this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 1);
+    this.viewDate = new Date(
+      this.viewDate.getFullYear(),
+      this.viewDate.getMonth() + 1,
+      1
+    );
     this.mapCharlasToEvents();
   }
 }

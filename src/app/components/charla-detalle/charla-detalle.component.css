@@ -1,4 +1,14 @@
-.detalles{
-    margin: 0 auto;
-    padding: 5%;
+.detalles {
+  margin: 0 auto;
+  padding: 5%;
+}
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  color: #000; 
+  z-index: 2;
+  border: none;
+  outline: none;
 }
