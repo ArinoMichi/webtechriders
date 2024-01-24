@@ -1,0 +1,20 @@
+body{
+    display: flex; justify-content: center;
+}
+
+.containe-tabla{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.containerAllTR{
+    justify-content: center !important;
+    --bs-gutter-x: 3 rem !important;
+    --bs-gutter-y: 2 rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.containerAllTR > div{
+    margin: 0.5% !important;
+}

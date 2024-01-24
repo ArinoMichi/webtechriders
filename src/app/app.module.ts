@@ -10,8 +10,11 @@ import { routing,appRoutingProvider } from './app.routing';
 import { FooterComponent } from './components/footer/footer.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
-import { CharlasComponent } from './components/charlas/charlas.component';
 import { HomePublicoComponent } from './components/home-publico/home-publico.component';
+import { TrPublicoComponent } from './components/tr-publico/tr-publico.component';
+import { EmpresasPublicoComponent } from './components/empresas-publico/empresas-publico.component';
+import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
+import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +25,11 @@ import { HomePublicoComponent } from './components/home-publico/home-publico.com
     FooterComponent,
     QuienesSomosComponent,
     LoginComponent,
-    CharlasComponent,
-    HomePublicoComponent
+    HomePublicoComponent,
+    TrPublicoComponent,
+    EmpresasPublicoComponent,
+    CentrosPublicoComponent,
+    CharlasPublicoComponent
   ],
   imports: [
     BrowserModule, HttpClientModule , routing

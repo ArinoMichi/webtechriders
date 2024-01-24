@@ -1,0 +1,38 @@
+<div class="tech-riders-container">
+    <div class="text-banner">
+    <h1>CHARLAS</h1>
+    <br>
+    <p class="p-banner">
+      Pilotas tu propia carrera profesional tecnológica. Te formas y colaboras con otras personas. Trabajas en equipo. La tecnología no para; está siempre en marcha. Siempre te estás actualizando, actualizando. Eres un/a Tech Rider.
+    </p>
+  </div>
+  </div>
+<br>
+<div class="containe-tabla">
+<table class="table table-hover" style="width: 100%;">
+    <thead>
+        <tr class="table-dark">
+            <th>Tipo de Charla</th>
+            <th>Estado</th>
+            <th>TechRider</th>
+            <th>Curso</th>
+            <th>Fecha</th>
+            <th>Valoración</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let charla of charlas">
+            <td>{{ charla.descripcionCharla }}</td>
+            <td>{{ charla.estadoCharla }}</td>
+            <td>{{ charla.techRider }}</td>
+            <td>{{ charla.nombreCurso }}</td>
+            <td>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</td>
+            <td>
+                <div *ngFor="let valoracion of valoraciones">
+                    <p *ngIf="charla.idCharla == valoracion.idCharla">{{ valoracion.valoracion }}/10 </p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

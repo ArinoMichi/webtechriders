@@ -22,16 +22,6 @@ export class EmpresasCentrosService {
     return this._http.get(url)
   }
 
-  // getEmpresas(): Observable<any> {
-  //   var request = "api/empresascentros"
-  //   const url = environment.urlApi + request;
-  //   console.log(url)
-
-  //   return this._http.get(url).pipe(
-  //     filter((empresa: any) => empresa.idTipoEmpresa === 1)
-  //   );
-  // }
-
   getEmpresas(): Observable<any[]> {
     const request = "api/empresascentros";
     const url = environment.urlApi + request;

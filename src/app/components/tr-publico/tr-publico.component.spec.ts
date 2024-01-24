@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CharlasComponent } from './charlas.component';
+import { TrPublicoComponent } from './tr-publico.component';
 
-describe('CharlasComponent', () => {
-  let component: CharlasComponent;
-  let fixture: ComponentFixture<CharlasComponent>;
+describe('TrPublicoComponent', () => {
+  let component: TrPublicoComponent;
+  let fixture: ComponentFixture<TrPublicoComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CharlasComponent]
+      declarations: [TrPublicoComponent]
     });
-    fixture = TestBed.createComponent(CharlasComponent);
+    fixture = TestBed.createComponent(TrPublicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

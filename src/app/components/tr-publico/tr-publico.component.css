@@ -1,0 +1,53 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .tech-riders-container {
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .text-banner {
+    text-align: left;
+    color: white; /* Cambia el color del texto según tu diseño */
+    padding: 70px;
+    width: 70%;
+  }
+  
+  .text-banner h1 {
+    font-size: 2.5em; /* Tamaño de fuente grande para el título */
+    margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+    font-weight: 700;
+    
+  }
+  
+  .p-banner {
+    font-size: large; /* Tamaño de fuente más pequeño para el subtitulo */
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+    font-weight: 600;
+  }
+  
+  .text-banner p {
+    font-size: 1em; /* Tamaño de fuente más pequeño para el contenido */
+    margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+  }
+.containerAllTR{
+    justify-content: center !important;
+    --bs-gutter-x: 3 rem !important;
+    --bs-gutter-y: 2 rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+.containerAllTR > div{
+    margin: 0.5% !important;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

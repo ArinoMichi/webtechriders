@@ -1,0 +1,46 @@
+body{
+    display: flex; justify-content: center;
+}
+
+.containe-tabla{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+.tech-riders-container {
+    background-color: #000000;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    --opacidad-negro: 0.7;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, var(--opacidad-negro)),
+        rgba(0, 0, 0, var(--opacidad-negro))
+      ),
+      url("https://empleatech.es/wp-content/uploads/2022/10/I-Foro-de-Empleo.Tajamar-Formacio%CC%81n-Profesional.-FP-1-de-57.jpg"); /* Ruta de la imagen de fondo */
+  }
+
+  .text-banner {
+    text-align: left;
+    color: white; /* Cambia el color del texto según tu diseño */
+    padding: 70px;
+    width: 85%;
+  }
+  
+  .text-banner h1 {
+    font-size: 2.5em; /* Tamaño de fuente grande para el título */
+    margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+    font-weight: 700;
+  }
+  
+  .p-banner {
+    font-size: large; /* Tamaño de fuente más pequeño para el subtitulo */
+    margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+    font-weight: 600;
+  }
+  
+  .text-banner p {
+    font-size: 1em; /* Tamaño de fuente más pequeño para el contenido */
+    margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+  }
