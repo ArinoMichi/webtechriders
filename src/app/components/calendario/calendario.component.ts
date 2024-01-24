@@ -101,7 +101,7 @@ export class CalendarioComponent implements OnInit {
 
   openDialog(charla: CharlaDetalles): void {
     const dialogRef = this.dialog.open(CharlaDetalleComponent, {
-      width: '45%',
+      width: '50%',
       data: charla,
     });
 

@@ -6,7 +6,12 @@
     <hr>
     <h2>{{ data.modalidad }} - {{ data.fechaCharla | date: 'dd/MM/yyyy' }}</h2>
     <h3>Estado: {{ data.estadoCharla }}</h3>
-
+    <div *ngIf="tecnologiaCharlaNombres.length > 0">
+        <u>Tecnologias:</u>
+        <ul>
+            <li *ngFor="let tec of tecnologiaCharlaNombres">{{ tec }}</li>
+        </ul>
+    </div>
     <u>Datos:</u>
     <ul>
         <li *ngIf="data.techRider">
