@@ -3,6 +3,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 import { CharlasService } from 'src/app/services/charlas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-paneltr',
@@ -14,44 +15,46 @@ export class PaneltrComponent implements OnInit {
   user!: Usuario; // Ajusta la definición del tipo de Usuario según la respuesta del servicio
   charlasAsociadas: any[] = [];
   charlasDisponibles: any[] = [];
-  constructor(private serviceCharlas: CharlasService, private _UserService: UsuariosService) {}
+  constructor(private serviceCharlas: CharlasService) {}
 
   ngOnInit(): void {
     // Llama al método para obtener los datos al cargar el componente
     this.getTechRider();
   }
 
-  editarItem(index: number): void {
+  detallesCharla(index: number): void {
     // Lógica para editar el ítem en el índice dado
     console.log('Editar ítem en el índice', index);
   }
 
-  eliminarItem(index: number): void {
+  cancelarCharla(index: number): void {
+    Swal.fire({
+      title: '¿Estas seguro de cancelar la charla?',
+       //text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Aceptado',
+          text: 'La charla ha sido cancelada.',
+          icon: 'success',
+        });
+      }
+    });
+  }
+  aceptarCharla(index: number): void {
     // Lógica para eliminar el ítem en el índice dado
-    
   }
 
   getTechRider(): void {
     var token = localStorage.getItem('token');
-    if (token != null) {
-      this._UserService.getPerfilUsuario(token).subscribe((result) => {
-        // Ajusta la propiedad 'user' con la respuesta del servicio
-        this.user = {
-          idUsuario: result.idUsuario,
-          nombre: result.nombre,
-          apellidos: result.apellidos,
-          email: result.email,
-          telefono: result.telefono,
-          linkedIn: result.linkedIn,
-          password: result.password,
-          idRole: result.idRole,
-          idProvincia: result.idProvincia,
-          idEmpresaCentro: result.idEmpresaCentro,
-          estado: result.estado,
-        };
-        this.cargarDatos();
-      });
-    }
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+    this.cargarDatos();
   }
 
   cargarDatos(): void {
@@ -66,8 +69,9 @@ export class PaneltrComponent implements OnInit {
         console.error('Error al obtener los datos', error);
       }
     );
-    this.serviceCharlas.getCharlas().subscribe((result)=>{
+    this.serviceCharlas.getCharlas().subscribe((result) => {
+      var charlasAux = result;
       this.charlasDisponibles = result;
-    })
+    });
   }
 }
