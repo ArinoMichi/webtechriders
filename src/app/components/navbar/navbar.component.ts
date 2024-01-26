@@ -1,30 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, DoCheck {
 
-  public isAuthenticated: boolean = false;
+  public token: any
+  public identity: any
 
   constructor(
     private _router: Router,
-    private _authService: AuthService
-  ) { }
+  ) {
+    this.loadUser()
+   }
 
   ngOnInit(): void {
-    this._authService.isAuthenticated().subscribe((authenticated) => {
-      this.isAuthenticated = authenticated;
-    });
+
+  }
+
+  ngDoCheck(): void {
+    this.loadUser()
+  }
+
+  loadUser(){
+    this.identity = JSON.parse(localStorage.getItem('identity') || '{}')
+    this.token = localStorage.getItem('token')
   }
 
   logout(): void {
     // Llamar al método de logout del servicio
-    this._authService.logout();
+    localStorage.removeItem('token')
+    localStorage.removeItem('identity')
     this._router.navigate(['/login']);
   }
 }

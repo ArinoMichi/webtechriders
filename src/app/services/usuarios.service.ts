@@ -57,7 +57,13 @@ export class UsuariosService {
     return this._http.delete(url, {headers: headers})
   }
 
-  //getPerfilUsuario
+  getPerfilUsuario(token: string): Observable<any>{
+    var request = "api/usuarios/perfilusuario"
+    var url = environment.urlApi + request
+    var headers = new HttpHeaders()
+    .set('Authorization', "bearer " + token)
+    return this._http.get(url, {headers: headers})
+  }
 
   updateEstado(idUsuario: number, estado: number, token: string) {
     var request = "api/usuarios/updateestadousuario/" + idUsuario + "/" + estado

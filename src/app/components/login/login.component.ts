@@ -6,6 +6,7 @@ import { Usuario } from 'src/app/models/usuario.model';
 
 
 import { Router } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public token: any
+  public identity: any
 
   @ViewChild('cajaemail') cajaEmailRef!: ElementRef;
   @ViewChild('cajapasswd') cajaPasswdRef!: ElementRef;
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _AuthService: AuthService,
+    private _UsuariosService: UsuariosService,
     private _router: Router,
   ) { }
 
@@ -39,16 +42,19 @@ export class LoginComponent implements OnInit {
       email: email,
       password: passwd,
     };
-  
+
+    
     this._AuthService.auth(usuarioLogin).subscribe((response) => {
       console.log("Respuesta del Servicio:", response);
       this.token = response.response;
       localStorage.setItem('token', this.token);
-      
-      // Notificar el cambio en el estado de autenticación
-      this._AuthService.notifyAuthenticationChange(true);
-      
       this._router.navigate(['/']);
+      this._UsuariosService.getPerfilUsuario(this.token).subscribe((response)=>{
+        this.identity = response
+        console.log(this.identity)
+        console.log(response)
+        localStorage.setItem('identity', JSON.stringify(this.identity))
+      })
     });
     
   }
