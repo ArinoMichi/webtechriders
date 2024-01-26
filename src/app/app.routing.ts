@@ -8,6 +8,7 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { LoginComponent } from './components/login/login.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
 import { PaneltrComponent } from './components/paneltr/paneltr.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
 const appRoutes: Routes = [
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro-usuarios', component: RegistroUsuariosComponent },
   { path: 'panel-tr', component: PaneltrComponent },
+  { path: 'calendar', component: CalendarioComponent },
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
 //DENTRO DEL MODULE
