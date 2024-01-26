@@ -109,10 +109,9 @@ export class CharlasService {
   }
 
   getCharlasTechRider(idTechRider: number): Observable<any> {
-    var request = 'api/querytools/charlastechrider';
+    var request = 'api/querytools/charlastechrider/' + idTechRider;
     var url = environment.urlApi + request;
-    var params = new HttpParams().append('idtechrider', idTechRider);
-    return this._http.get(url, { params: params });
+    return this._http.get(url);
   }
 
   getCharlasPendientesTecnologiasTechrider(token: string): Observable<any> {
