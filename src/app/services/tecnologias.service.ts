@@ -19,15 +19,14 @@ export class TecnologiasService {
     return this._http.get(url)
   }
 
-  postTecnologiaTechrider(idTechRider: number, idTecnologia: number, token: string): Observable<any> {
-    const request = 'api/TecnologiasTechRiders';
-    const url = `${environment.urlApi}${request}?idtechrider=${idTechRider}&idtecnologia=${idTecnologia}`;
-  
-    const headers = new HttpHeaders()
-      .set('Content-type', 'application/json')
-      .set('Authorization', 'Bearer ' + token);
-  
-    return this._http.post(url, null, { headers: headers });
+  insertTecnologia(tecnologia: Tecnologia, token: string): Observable<any>{
+    var json = JSON.stringify(tecnologia)
+    var request = "api/tecnologias"
+    var url = environment.urlApi + request
+    var headers = new HttpHeaders()
+    .set('Content-type', 'application/json')
+    .set('Authorization', "bearer " + token)
+    return this._http.post(url, json, {headers: headers})
   }
 
   updateTecnologia(tecnologia: Tecnologia, token: string): Observable<any>{
