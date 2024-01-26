@@ -42,8 +42,6 @@ export class PaneltrComponent implements OnInit {
       if (result.isConfirmed) {
         const charlaSeleccionada = this.charlasAsociadas[index];
         const idCharla = charlaSeleccionada.idCharla;
-        alert(idCharla);
-        alert(this.token);
         this.serviceCharlas.associateTechRider(0, idCharla, this.token).subscribe(
           (result) => {
             Swal.fire({
@@ -78,8 +76,6 @@ export class PaneltrComponent implements OnInit {
       if (result.isConfirmed) {
         const charlaAceptar = this.charlasDisponibles[index];
         const idCharla = charlaAceptar.idCharla;
-        alert(idCharla);
-        alert(this.token);
         this.serviceCharlas.associateTechRider(this.user.idUsuario, idCharla, this.token).subscribe(
           (result) => {
             Swal.fire({
