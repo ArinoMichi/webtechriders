@@ -1,0 +1,23 @@
+<div class="banner-container">
+  <div class="text-banner">
+    <h1>EMPRESAS COLABORADORAS</h1>
+    <br />
+    <p class="p-banner">
+      Únete a la revolución educativa y forma parte del cambio. Como empresa
+      colaboradora, tienes la oportunidad de ser un faro de inspiración para
+      estudiantes de tecnología. Imparte charlas técnicas, comparte experiencias
+      motivacionales y cultiva habilidades softskills esenciales.
+    </p>
+  </div>
+</div>
+<br />
+<div class="containe-tabla">
+  <div class="card" *ngFor="let empresa of empresas">
+    <p class="card-title">{{ empresa.nombre }}</p>
+    <hr />
+    <p class="card-des">Razón Social: {{ empresa.razonSocial }}</p>
+    <p class="card-des">Dirección: {{ empresa.direccion }}</p>
+    <br>
+    <button (click)="navegarATechRiders(empresa.idEmpresaCentro)">TechRiders</button>
+  </div>
+</div>

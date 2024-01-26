@@ -73,4 +73,16 @@ export class UsuariosService {
   }
 
   //updatePassword
+
+  getTechRiders(): Observable<any>{
+    var request = "api/QueryTools/TodosTechRidersActivos"
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
+
+  getFindTechRidersEnEmpresa​(id: number): Observable<any>{
+    var request = "api/QueryTools/FindTechRidersEnEmpresa/" + id
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
 }

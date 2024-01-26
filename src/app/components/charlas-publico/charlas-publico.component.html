@@ -1,0 +1,73 @@
+<div class="banner-container">
+    <div class="text-banner">
+    <h1>CHARLAS</h1>
+    <br>
+    <p class="p-banner">
+      Pilotas tu propia carrera profesional tecnológica. Te formas y colaboras con otras personas. Trabajas en equipo. La tecnología no para; está siempre en marcha. Siempre te estás actualizando, actualizando. Eres un/a Tech Rider.
+    </p>
+  </div>
+  </div>
+<br>
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Filtrar por {{ selectedOption }}
+    </button>
+    <ul class="dropdown-menu">
+      <li class="dropdown-item" (click)="filterAll()">Todas</li>
+      <li class="dropdown-item" (click)="filterCompleted()">Completas</li>
+      <li class="dropdown-item" (click)="filterPending()">Cerrada</li>
+      <li class="dropdown-item" (click)="filterInProcess()">En proceso</li>
+    </ul>
+</div>
+
+  <br>
+<!-- ------------------------------------------ -->
+<div class="containe-tabla">
+    <div class="card-container" *ngFor="let charla of charlas">
+        <div class="card">
+            <div class="front-content">
+            <p>{{ charla.descripcionCharla }}</p>
+            </div>
+            <div class="content">
+                    <p class="heading">{{ charla.descripcionCharla }}</p>
+                    <p>Estado: {{ charla.estadoCharla }}</p>
+                    <p>TechRider: {{ charla.techRider }}</p>
+                    <p>Curso: {{ charla.nombreCurso }}</p>
+                    <p>Fecha: {{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</p>
+                    <div *ngFor="let valoracion of valoraciones">
+                        <p *ngIf="charla.idCharla == valoracion.idCharla">Valoración: {{ valoracion.valoracion }}/10 </p>
+                    </div>
+            </div>
+        </div>
+  </div>
+</div>
+<!-- ------------------------------------------ -->
+<div class="containe-tabla">
+<table class="table table-hover" style="width: 100%;">
+    <thead>
+        <tr class="table-dark">
+            <th>Tipo de Charla</th>
+            <th>Estado</th>
+            <th>TechRider</th>
+            <th>Curso</th>
+            <th>Fecha</th>
+            <th>Valoración</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let charla of charlas">
+            <td>{{ charla.descripcionCharla }}</td>
+            <td>{{ charla.idEstadoCharla }}</td>
+            <td>{{ charla.estadoCharla }}</td>
+            <td>{{ charla.nombreCurso }}</td>
+            <td>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</td>
+            <td>
+                <div *ngFor="let valoracion of valoraciones">
+                    <p *ngIf="charla.idCharla == valoracion.idCharla">{{ valoracion.valoracion }}/10 </p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>

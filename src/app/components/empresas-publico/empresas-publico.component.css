@@ -1,0 +1,301 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.banner-container {
+  background-color: #000000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  --opacidad-negro: 0.7;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, var(--opacidad-negro)),
+      rgba(0, 0, 0, var(--opacidad-negro))
+    ),
+    url("https://image.freepik.com/foto-gratis/grupo-personas-trabajando-plan-negocios-oficina_1303-15779.jpg"); /* Ruta de la imagen de fondo */
+}
+.text-banner {
+  text-align: left;
+  color: white; /* Cambia el color del texto según tu diseño */
+  padding: 70px;
+  width: 85%;
+}
+
+.text-banner h1 {
+  font-size: 2.5em; /* Tamaño de fuente grande para el título */
+  margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+  font-weight: 700;
+}
+
+.p-banner {
+  font-size: large; /* Tamaño de fuente más pequeño para el subtitulo */
+  margin-bottom: 20px; /* Ajusta el margen inferior según sea necesario */
+  font-weight: 600;
+}
+
+.containerAllTR {
+  justify-content: center !important;
+  --bs-gutter-x: 3 rem !important;
+  --bs-gutter-y: 2 rem !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.containerAllTR > div {
+  margin: 0.5% !important;
+}
+
+.tabla-empresas {
+  padding: 2%;
+}
+
+/* ------------------------------------------ */
+
+body {
+  font-family: "Assistant", sans-serif;
+}
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+
+  text-transform: uppercase;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3 {
+  font-family: "Assistant", sans-serif;
+
+  font-weight: 300;
+
+  text-transform: none;
+}
+
+p {
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* Utilities */
+
+.no-padding {
+  padding: 0 !important;
+}
+
+/* width */
+
+.container {
+  width: 1080px;
+}
+
+/* Table Heading */
+
+.pricing-top-heading th {
+  text-align: center;
+
+  font-weight: 700;
+
+  font-size: 2rem;
+
+  width: 33%;
+}
+
+.pricing-bottom-heading th {
+  padding: 0 2%;
+
+  font-weight: 300;
+}
+
+.pricing-top-heading .free {
+  background-color: #f26b42;
+
+  border: 1px solid #f26b42;
+}
+
+.pricing-bottom-heading .free {
+  background-color: #f28d6e;
+
+  border: 1px solid #f28d6e;
+}
+
+.pricing-top-heading .basic {
+  background-color: #58c5c7;
+
+  border: 1px solid #58c5c7;
+}
+
+.pricing-bottom-heading .basic {
+  background-color: #7fd1d2;
+
+  border: 1px solid #7fd1d2;
+}
+
+.pricing-top-heading .pro {
+  background-color: #a5c653;
+
+  border: 1px solid #a5c653;
+}
+
+.pricing-bottom-heading .pro {
+  background-color: #b9d17b;
+
+  border: 1px solid #b9d17b;
+}
+
+.pricing-top-heading,
+.pricing-bottom-heading {
+  color: white;
+
+  height: 90px;
+}
+
+table thead th {
+  border: 0;
+}
+
+/* table */
+
+table {
+  width: 100%;
+}
+
+.collapsible-section-header {
+  background-color: #e1e1e1;
+}
+
+.collapsible-section-header a {
+  color: #363636;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.collapsible-section-header a:after {
+  content: "\25bc";
+
+  padding-left: 0.5em;
+}
+
+.collapsible-section-header a.collapsed:after {
+  content: "\25ba";
+
+  padding-left: 0.5em;
+}
+
+tbody td {
+  background-color: #ededed;
+
+  border: 1px solid #d1d1d1;
+
+  padding: 1.25rem;
+  width: 33%;
+  text-align: center;
+}
+
+
+/* --------------------------------- */
+.card {
+  position: relative;
+  width: 350px;
+  height: 190px;
+  box-sizing: border-box;
+  background-color: #363636;
+  border: 5px solid #222;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: all ease-in-out 0.3s;
+  overflow: hidden;
+  margin: 0.5%;
+}
+
+.card:hover {
+  box-shadow: rgba(193, 44, 223, 0.19) 0px 10px 20px,
+          rgba(223, 44, 74, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border: 5px solid #f73e3ed5;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  cursor: default;
+}
+
+.card-des {
+  margin: 0;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  cursor: default;
+}
+
+hr{
+  color: #fff;
+  padding: 0 auto;
+}
+
+/* --------------------------------- */
+.containe-tabla{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  padding: 5px 30px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #ffffff;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 0 #ffffff;
+}
+
+button:hover {
+  color: rgb(12, 12, 12);
+  box-shadow: inset 0 -100px 0 0 #f9f9f9b7;
+}
+
+button:active {
+  transform: scale(0.9);
+}

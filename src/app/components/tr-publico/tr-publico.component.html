@@ -1,0 +1,22 @@
+<div class="banner-container">
+  <div class="text-banner">
+  <h1>SOMOS TECH RIDERS</h1>
+  <br>
+  <p class="p-banner">
+    Pilotas tu propia carrera profesional tecnológica. Te formas y colaboras con otras personas. Trabajas en equipo. La tecnología no para; está siempre en marcha. Siempre te estás actualizando, actualizando. Eres un/a Tech Rider.
+  </p>
+</div>
+</div>
+<br>
+<div class="containerAllTR">
+    <div class="card" style="width: 18rem;" *ngFor="let tr of trs">
+      <div class="container">
+        <img src="https://th.bing.com/th/id/OIP.t75oQHR4WMinflcpcBlXSQHaFT?rs=1&pid=ImgDetMain" class="card-img-top" alt="..." style="width: 200px;">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ tr.techRider }}</h5>
+        <p class="card-text">{{ tr.email }}</p>
+        <p><a href="{{tr.linkedIn}}" class="btn btn-primary">LinkedIn</a></p>
+      </div>
+    </div>
+  </div>
