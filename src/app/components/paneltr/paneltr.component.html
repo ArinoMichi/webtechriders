@@ -4,7 +4,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Estado</th>
+          <th>Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -29,7 +29,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Estado</th>
+          <th>Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -37,8 +37,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of charlasDisponibles; let i = index">
-          <td>{{item.descripcion}}</td>
-          <td>{{ item. idEstadoCharla}}</td>
+          <td>{{item.descripcionCharla}}</td>
+          <td>{{ item. estadoCharla}}</td>
           <td>{{ item.fechaCharla }}</td>
           <td>
             <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>

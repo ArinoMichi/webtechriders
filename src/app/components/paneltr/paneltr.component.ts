@@ -12,9 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class PaneltrComponent implements OnInit {
   nombreUsuario!: string;
-  user!: Usuario; // Ajusta la definición del tipo de Usuario según la respuesta del servicio
+  user!: Usuario;
   charlasAsociadas: any[] = [];
   charlasDisponibles: any[] = [];
+  token: string = '';
+
   constructor(private serviceCharlas: CharlasService) {}
 
   ngOnInit(): void {
@@ -30,7 +32,6 @@ export class PaneltrComponent implements OnInit {
   cancelarCharla(index: number): void {
     Swal.fire({
       title: '¿Estas seguro de cancelar la charla?',
-       //text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -39,20 +40,70 @@ export class PaneltrComponent implements OnInit {
       cancelButtonText: 'No',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Aceptado',
-          text: 'La charla ha sido cancelada.',
-          icon: 'success',
-        });
+        const charlaSeleccionada = this.charlasAsociadas[index];
+        const idCharla = charlaSeleccionada.idCharla;
+        alert(idCharla);
+        alert(this.token);
+        this.serviceCharlas.associateTechRider(0, idCharla, this.token).subscribe(
+          (result) => {
+            Swal.fire({
+              title: 'Aceptado',
+              text: 'La charla ha sido cancelada.',
+              icon: 'success',
+            });
+            this.cargarDatos();
+          },
+          (error) => {
+            Swal.fire({
+              title: 'Ha habido un problema',
+              text: 'Intentalo de nuevo mas tarde.',
+              icon: 'error',
+            });
+          }
+        );
+        
       }
     });
   }
   aceptarCharla(index: number): void {
-    // Lógica para eliminar el ítem en el índice dado
+    Swal.fire({
+      title: '¿Estas seguro de aceptar la charla?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const charlaAceptar = this.charlasDisponibles[index];
+        const idCharla = charlaAceptar.idCharla;
+        alert(idCharla);
+        alert(this.token);
+        this.serviceCharlas.associateTechRider(this.user.idUsuario, idCharla, this.token).subscribe(
+          (result) => {
+            Swal.fire({
+              title: 'Aceptado',
+              text: 'La charla ha sido aceptada.',
+              icon: 'success',
+            });
+            this.cargarDatos();
+          },
+          (error) => {
+            Swal.fire({
+              title: 'Ha habido un problema',
+              text: 'Intentalo de nuevo mas tarde.',
+              icon: 'error',
+            });
+          }
+        );
+        
+      }
+    });
   }
 
   getTechRider(): void {
-    var token = localStorage.getItem('token');
+    this.token = localStorage.getItem('token') ?? '';
     this.user = JSON.parse(localStorage.getItem('identity') || '{}');
     this.cargarDatos();
   }
@@ -69,9 +120,9 @@ export class PaneltrComponent implements OnInit {
         console.error('Error al obtener los datos', error);
       }
     );
-    this.serviceCharlas.getCharlas().subscribe((result) => {
-      var charlasAux = result;
+    this.serviceCharlas.getCharlasPendientesTecnologiasTechrider(this.token).subscribe((result) => {
       this.charlasDisponibles = result;
+      console.log(this.charlasDisponibles);
     });
   }
 }
