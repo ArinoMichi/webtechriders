@@ -11,10 +11,11 @@ export class PeticionesAltaUsersService {
   constructor(private _http: HttpClient) {}
 
   postPeticionAlta(id: number): Observable<any> {
-    const request = 'api/PeticionesAltaUsers';
-    const url = environment.urlApi + request;
-    
-    const params = new HttpParams().set('iduser', id.toString());
-    return this._http.post(url, null, { params: params });
+    var request = 'api/PeticionesAltaUsers'
+    var url = environment.urlApi + request;
+    var params = new HttpParams()
+    .append('iduser', id)
+
+    return this._http.post(url, {params: params});
   }
 }

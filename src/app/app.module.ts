@@ -14,6 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CharlasComponent } from './components/charlas/charlas.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
 import { RegistroCentroEmpresasComponent } from './components/registro-centro-empresas/registro-centro-empresas.component';
+import { PaneltrComponent } from './components/paneltr/paneltr.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RegistroCentroEmpresasComponent } from './components/registro-centro-em
     CharlasComponent,
     RegistroUsuariosComponent,
     RegistroCentroEmpresasComponent,
+    PaneltrComponent,
   ],
   imports: [
     BrowserModule, routing, HttpClientModule, FormsModule

@@ -7,7 +7,11 @@
     <a routerLink="/quienes-somos">Quienes Somos</a>
     <a routerLink="/registro-centro">Registra Tu Centro</a>
     <!-- Mas cosas de relleno (?) -->
-    <a (click)="logout()" routerLink="/" *ngIf="isAuthenticated">Cerrar sesión</a>
-    <a routerLink="/login" *ngIf="!isAuthenticated">Identificate</a>
+    <a  routerLink="/panel-tr" *ngIf=token>Panel User</a>
+    <a *ngIf="identity && identity.nombre">{{identity.nombre}} {{identity.apellidos}} </a>
+    <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar sesión</a>
+
+    <a routerLink="/login" *ngIf=!token>Identificate</a>
+    
   </div>
 </nav>
