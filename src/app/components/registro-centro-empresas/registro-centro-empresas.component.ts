@@ -24,6 +24,8 @@ export class RegistroCentroEmpresasComponent implements OnInit {
   @ViewChild('cajatipoempresa') cajaTipoEmpresaRef!: ElementRef;
 
   public provincias!: Array<Provincia>;
+  public token!: string;
+  
 
   constructor(
     private _ProvinciasService: ProvinciasService,
@@ -33,6 +35,7 @@ export class RegistroCentroEmpresasComponent implements OnInit {
   ngOnInit(): void {
     this._ProvinciasService.getProvincias().subscribe((response) => {
       this.provincias = response;
+      this.token = localStorage.getItem('token') ?? '';
     });
   }
 
@@ -60,7 +63,7 @@ export class RegistroCentroEmpresasComponent implements OnInit {
       estadoEmpresa: 2,
     };
 
-    this._EmpresaCentroService.postEmpresaCentro(nuevaEmpresa).subscribe((response) => {
+    this._EmpresaCentroService.postEmpresaCentro(nuevaEmpresa, this.token).subscribe((response) => {
       console.log('Respuesta del Servicio:', response); 
     });
   }
