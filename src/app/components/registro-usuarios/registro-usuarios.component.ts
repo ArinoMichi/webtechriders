@@ -29,6 +29,8 @@ export class RegistroUsuariosComponent implements OnInit {
   @ViewChild('cajaempresa') cajaEmpresaRef!: ElementRef;
   @ViewChild('cajarol') cajaRolRef!: ElementRef;
 
+  //Prueba
+
   public provincias!: Array<Provincia>;
   public empresas!: Array<EmpresaCentro>;
   public filteredEmpresas: Array<EmpresaCentro> = [];
