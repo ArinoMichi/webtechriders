@@ -10,7 +10,7 @@
     <a routerLink="/empresas-publico">EmpresasPublico</a>
     <a routerLink="/centros-publico">CentrosPublico</a>
     <!-- Mas cosas de relleno (?) -->
-    <a routerLink="/panel-tr"  *ngIf="identity && identity.nombre">{{identity.nombre}} {{identity.apellidos}} </a>
+    <a routerLink="/user-tr"  *ngIf="identity && identity.nombre">{{identity.nombre}} {{identity.apellidos}} </a>
     <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar sesión</a>
 
     <a routerLink="/login" *ngIf=!token>Identificate</a>

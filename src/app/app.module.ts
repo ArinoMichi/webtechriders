@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
@@ -33,6 +33,7 @@ import { TrPublicoComponent } from './components/tr-publico/tr-publico.component
 import { EmpresasPublicoComponent } from './components/empresas-publico/empresas-publico.component';
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
+import { UserTrComponent } from './components/user-tr/user-tr.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
     TrPublicoComponent,
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
-    CharlasPublicoComponent
+    CharlasPublicoComponent,
+    UserTrComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
     }),
     NoopAnimationsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [
     appRoutingProvider,

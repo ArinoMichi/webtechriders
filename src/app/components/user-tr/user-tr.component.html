@@ -1,0 +1,72 @@
+<div class="container my-4">
+    <div class="container my-4 d-flex justify-content-center align-items-center">
+      <h1 class="text-center mb-0 me-2 ms-2">Información Perfil</h1>
+      <a *ngIf="editMode" (click)="editarPerfil()" class="btn btn-success ms-2" role="button">
+        Guardar
+      </a>
+      <a (click)="toggleEditMode()" class="btn btn-dark ms-2" role="button">
+        {{ editMode ? 'Cancelar' : 'Editar' }}
+      </a>
+    </div>
+  
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  
+    <form [formGroup]="editForm" *ngIf="editMode">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control" formControlName="nombre" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Apellido</label>
+          <input type="text" class="form-control" formControlName="apellidos" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Teléfono</label>
+          <input type="text" class="form-control" formControlName="telefono" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">LinkedIn</label>
+          <input type="text" class="form-control" formControlName="linkedIn" />
+        </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Provincia</label>
+          <input type="text" class="form-control" formControlName="nombreProvincia" />
+        </div>
+      </div>
+    </form>
+  
+    <div *ngIf="!editMode" class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="{{ informacion.nombre }}" readonly />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Apellido</label>
+        <input type="text" class="form-control" placeholder="{{ informacion.apellidos }}" readonly />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" placeholder="{{ informacion.email }}" readonly />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="text" class="form-control" placeholder="{{ informacion.telefono }}" readonly />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">LinkedIn</label>
+        <input type="text" class="form-control" placeholder="{{ informacion.linkedIn }}" readonly />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Provincia</label>
+        <input type="text" class="form-control" placeholder="{{ provincia.nombreProvincia }}" readonly />
+      </div>
+    </div>
+
+    <app-paneltr></app-paneltr>
+  </div>
+  
