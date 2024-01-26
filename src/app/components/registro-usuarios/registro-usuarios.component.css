@@ -1,0 +1,9 @@
+.technology-checkbox {
+    display: flex;
+  }
+  
+  .column {
+    flex-basis: 33%; /* Set the width of each column to one-third */
+    box-sizing: border-box;
+    padding: 5px; /* Adjust as needed for spacing between checkboxes */
+  }
