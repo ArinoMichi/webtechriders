@@ -1,10 +1,10 @@
 <!-- En tu archivo HTML del componente -->
 <div class="container mt-4">
-    <h1>Charlas Asignadas a : {{this.user.nombre}}</h1>
+    <h1>Charlas Asignadas a {{this.user.nombre}} {{this.user.idUsuario}}</h1>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Estado</th>
+          <th>Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -16,8 +16,8 @@
           <td>{{ item. idEstadoCharla}}</td>
           <td>{{ item.fechaCharla }}</td>
           <td>
-            <button class="btn btn-danger" (click)="editarItem(i)">Cancelar</button>
-            <button class="btn btn-warning" (click)="eliminarItem(i)">Detalles</button>
+            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
+            <button class="btn btn-danger" (click)="cancelarCharla(i)">Cancelar</button>
           </td>
         </tr>
       </tbody>
@@ -29,7 +29,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Estado</th>
+          <th>Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -37,15 +37,19 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of charlasDisponibles; let i = index">
-          <td>{{item.descripcion}}</td>
-          <td>{{ item. idEstadoCharla}}</td>
+          <td>{{item.descripcionCharla}}</td>
+          <td>{{ item. estadoCharla}}</td>
           <td>{{ item.fechaCharla }}</td>
           <td>
-            <button class="btn btn-primary" (click)="editarItem(i)">Aceptar</button>
-            <button class="btn btn-danger" (click)="eliminarItem(i)">Detalles</button>
+            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
+            <button class="btn btn-primary" (click)="aceptarCharla(i)">Aceptar</button>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  
+  <div class="container mt-4">
+    <h1>Calendario de user:</h1>
   </div>
   

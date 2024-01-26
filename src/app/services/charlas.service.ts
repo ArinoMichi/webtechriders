@@ -122,4 +122,11 @@ export class CharlasService {
     var url = environment.urlApi + request
     return this._http.get(url)
   }
+
+  getCharlasPendientesTecnologiasTechrider(token: string): Observable<any> {
+    var request = 'api/querytools/FindCharlasPendientesTecnologiasTechrider';
+    var url = environment.urlApi + request;
+    var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this._http.get(url, { headers: headers });
+  }
 }

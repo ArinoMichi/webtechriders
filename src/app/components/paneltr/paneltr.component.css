@@ -38,9 +38,15 @@
   }
   
   .btn {
-    width: 100%;
+    width: 48%; /* Ajusta el ancho de los botones según tus preferencias */
     margin-bottom: 5px;
-  }
+    margin-right: 2%; /* Ajusta el margen derecho para separar los botones */
+}
+ .btn-warning{
+  background-color: rgb(209, 198, 39);
+  border-color: rgb(209, 198, 39);
+  color: white;
+ }
   
   /* Añade espacio adicional entre las tablas */
   .container + .container {
