@@ -47,6 +47,11 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
     PaneltrComponent,
     CalendarioComponent,
     CharlaDetalleComponent,
+    HomePublicoComponent,
+    TrPublicoComponent,
+    EmpresasPublicoComponent,
+    CentrosPublicoComponent,
+    CharlasPublicoComponent
   ],
   imports: [
     BrowserModule,
@@ -59,12 +64,7 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
     }),
     NoopAnimationsModule,
     MatDialogModule,
-    MatIconModule,
-    HomePublicoComponent,
-    TrPublicoComponent,
-    EmpresasPublicoComponent,
-    CentrosPublicoComponent,
-    CharlasPublicoComponent
+    MatIconModule
   ],
   providers: [
     appRoutingProvider,
