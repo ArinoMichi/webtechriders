@@ -49,17 +49,13 @@ export class CharlasService {
     return this._http.delete(url, { headers: headers });
   }
 
-  associateTechRider(
-    idTechRider: number,
-    idCharla: number,
-    token: string
-  ): Observable<any> {
-    var request =
-      'api/charlas/asociartechridercharla/' + idTechRider + '/' + idCharla;
-    var url = environment.urlApi + request;
-    var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this._http.put(url, { headers: headers });
+  associateTechRider(idTechRider: number, idCharla: number, token: string): Observable<any> {
+    const request = `api/charlas/asociartechridercharla/${idTechRider}/${idCharla}`;
+    const url = `${environment.urlApi}/${request}`;
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this._http.put(url, {}, { headers });
   }
+  
 
   updateObservaciones(
     idCharla: number,
