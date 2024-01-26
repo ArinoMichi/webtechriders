@@ -1,11 +1,12 @@
 Calendario:
 - Todas las charlas organizadas por Estado:
-	- Cancelada: 1, gris
-	- Pendiente: 2, amarillo (no tiene techrider)
-	- Proceso: 3, azul (tiene techrider pero no se ha completado)
-	- Cerrada: 4, rojo (????)
+	- Cancelada: 1, gris (admin la cancela)
+	- Pendiente: 2, amarillo (admin tiene que aprobarla)
+	- Proceso: 3, azul (no tiene techrider)
+	- Cerrada: 4, rojo (tiene techrider pero no se ha completado)
 	- Completada: 5, verde (ya se ha hecho)
 	- Acreditada: 6, morado (...)
+
 
 - Datos de la Charla:
 	- Modalidad y Fecha <h1>
