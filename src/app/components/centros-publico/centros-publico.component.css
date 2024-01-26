@@ -3,7 +3,14 @@ body, html {
     padding: 0;
     height: 100%;
   }
-  .tech-riders-container {
+
+  .containe-tabla{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+}
+
+  .banner-container {
     background-color: #000000;
     background-position: center;
     background-repeat: no-repeat;
@@ -52,4 +59,65 @@ body, html {
 
 .tabla-empresas{
   padding: 2%;
+}
+
+/* -------------- */
+.card {
+  position: relative;
+  width: 350px;
+  height: 180px;
+  box-sizing: border-box;
+  background-color: #363636;
+  border: 5px solid #222;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          rgba(0, 0, 0, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: all ease-in-out 0.3s;
+  overflow: hidden;
+  margin: 0.5%;
+}
+
+.card:hover {
+  box-shadow: rgba(193, 44, 223, 0.19) 0px 10px 20px,
+          rgba(223, 44, 74, 0.23) 0px 6px 6px,
+          inset rgba(0, 0, 0, 0.19) 0px 10px 20px,
+          inset rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border: 5px solid #f73e3ed5;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 20px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  color: #fff;
+  cursor: default;
+}
+
+.card-des {
+  margin: 0;
+  font-size: 15px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  cursor: default;
+}
+
+hr{
+  color: #fff;
+  padding: 0 auto;
 }

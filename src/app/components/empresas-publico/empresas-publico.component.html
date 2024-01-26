@@ -1,4 +1,4 @@
-<div class="tech-riders-container">
+<div class="banner-container">
   <div class="text-banner">
     <h1>EMPRESAS COLABORADORAS</h1>
     <br />
@@ -10,129 +10,14 @@
     </p>
   </div>
 </div>
-<br>
-<!-- <h1 class="fw-bolder">EMPRESAS COLABORADORAS</h1>
-<div class="tabla-empresas">
-  <table class="table table-hover">
-    <thead>
-      <tr class="table-dark">
-        <th>Nombre</th>
-        <th>Direccion</th>
-        <th>Razon social</th>
-        <th>Telefono</th>
-        <th>TechRiders</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let empresa of empresas">
-        <td>{{ empresa.nombre }}</td>
-        <td>{{ empresa.direccion }}</td>
-        <td>{{ empresa.razonSocial }}</td>
-        <td>{{ empresa.telefono }}</td>
-        <td>
-          <div class="dropdown">
-            <button
-              class="btn btn-secondary dropdown-toggle"
-              (click)="selectCompany(empresa.idEmpresaCentro)"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              TechRiders
-            </button>
-            <ul class="dropdown-menu">
-              <li *ngFor="let tr of trs">
-                <a class="dropdown-item">{{ tr.techRider }}</a>
-              </li>
-            </ul>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-
-<!-- ---------------------------------------------------------- -->
-<div class="container">
-  <div class="row" style="width: 100%">
-    <table  style="width: 100%">
-      <thead>
-        <tr class="pricing-top-heading">
-          <th class="free">RAZÓN SOCIAL</th>
-
-          <th class="basic">DIRECCIÓN</th>
-
-          <th class="pro">TECHRIDERS</th>
-        </tr>
-
-        <tr class="pricing-bottom-heading small">
-          <th class="free">
-            <strong>Ideal for:</strong> Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Cras porttitor pulvinar diam id interdum.
-          </th>
-
-          <th class="basic">
-            <strong>Ideal for:</strong> Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Cras porttitor pulvinar diam id interdum.
-          </th>
-
-          <th class="pro">
-            <strong>Ideal for:</strong> Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Cras porttitor pulvinar diam id interdum.
-          </th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let empresa of empresas">
-          <td class="collapsible-section-header" colspan="3">
-            <p style="font-weight: 700; font-size: x-large; text-align: left;">{{ empresa.nombre }}</p>
-            <table style="width: 100%">
-                <tr>
-                    <td>{{ empresa.razonSocial }}</td>
-                    <td>{{ empresa.direccion }}</td>
-                  <td>
-                    <div class="dropdown">
-                        <button
-                          class="btn btn-secondary dropdown-toggle"
-                          (click)="selectCompany(empresa.idEmpresaCentro)"
-                          type="button"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="false"
-                        >
-                          TechRiders
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li *ngFor="let tr of trs">
-                            <p class="dropdown-item">{{ tr.techRider }}</p>
-                          </li>
-                        </ul>
-                      </div>
-                  </td>
-                </tr>
-              </table>
-          </td>
-        </tr>
-        <!-- <tr>
-          <td class="no-padding" colspan="3">
-            <div id="collapse_section_one" class="collapse in">
-              <table style="width: 100%">
-                <tr *ngFor="let empresa of empresas">
-                    <td>{{ empresa.nombre }}</td>
-                    <td>{{ empresa.direccion }}</td>
-                    <td>{{ empresa.razonSocial }}</td>
-                    <td>{{ empresa.telefono }}</td>
-                  <td>
-                    <ul *ngFor="let tr of trs">
-                        <a class="dropdown-item">{{ tr.techRider }}</a>
-                    </ul>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
+<br />
+<div class="containe-tabla">
+  <div class="card" *ngFor="let empresa of empresas">
+    <p class="card-title">{{ empresa.nombre }}</p>
+    <hr />
+    <p class="card-des">Razón Social: {{ empresa.razonSocial }}</p>
+    <p class="card-des">Dirección: {{ empresa.direccion }}</p>
+    <br>
+    <button (click)="navegarATechRiders(empresa.idEmpresaCentro)">TechRiders</button>
   </div>
 </div>

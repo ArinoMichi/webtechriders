@@ -7,29 +7,64 @@ import { ValoracionesCharlasService } from 'src/app/services/valoraciones-charla
 @Component({
   selector: 'app-charlas-publico',
   templateUrl: './charlas-publico.component.html',
-  styleUrls: ['./charlas-publico.component.css']
+  styleUrls: ['./charlas-publico.component.css'],
 })
 export class CharlasPublicoComponent {
-
-  public charlas!: Array<CharlaQT>
-  public valoraciones!: Array<ValoracionCharla>
+  public charlas!: Array<CharlaQT>;
+  public allCharlas!: Array<CharlaQT>;
+  public valoraciones!: Array<ValoracionCharla>;
+  public selectedOption: string = '';
 
   constructor(
     private _charlasService: CharlasService,
     private _valoracionesService: ValoracionesCharlasService
-    ) {}
+  ) {}
 
-    ngOnInit(): void {
-    
-      this._charlasService.getCharlasDetalles().subscribe((response: Array<CharlaQT>)=>{
-        this.charlas = response
-        // console.log(response)
+  ngOnInit(): void {
+    this.getCharlas();
+
+    this._valoracionesService
+      .getValoracionesCharlas()
+      .subscribe((response: Array<ValoracionCharla>) => {
+        this.valoraciones = response;
+        console.log(this.valoraciones);
       });
-  
-      this._valoracionesService.getValoracionesCharlas().subscribe((response: Array<ValoracionCharla>)=>{
-          this.valoraciones = response
-          console.log(this.valoraciones)
-      });
-    }
   }
-  
+
+  getCharlas() {
+    this._charlasService
+      .getCharlasDetalles()
+      .subscribe((response: Array<CharlaQT>) => {
+        if (!this.allCharlas) {
+          this.allCharlas = response;
+        }
+        this.charlas = this.allCharlas;
+      });
+  }
+
+  filterByState(state: number) {
+    return (this.charlas = this.allCharlas.filter(
+      (charla) => charla.idEstadoCharla === state
+    ));
+  }
+
+  filterAll() {
+    this.charlas = this.allCharlas;
+    this.selectedOption = 'Todas';
+  }
+
+  filterCompleted() {
+    this.charlas = this.filterByState(5);
+    this.selectedOption = 'Completas';
+  }
+
+  filterPending() {
+    this.charlas = this.filterByState(4);
+    this.selectedOption = 'Cerrada';
+  }
+
+  filterInProcess() {
+    this.charlas = this.filterByState(3);
+    this.selectedOption = 'En proceso';
+  }
+}

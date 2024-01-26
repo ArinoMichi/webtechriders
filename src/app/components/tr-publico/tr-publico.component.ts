@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { TechRiderQT } from 'src/app/models/techridersQT.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tr-publico',
@@ -13,13 +14,31 @@ export class TrPublicoComponent {
   public trs!: Array<TechRiderQT>
 
   constructor(
-    private _usuariosService: UsuariosService
+    private _usuariosService: UsuariosService,
+    private route: ActivatedRoute,
     ) {}
 
     ngOnInit(): void {
-      this._usuariosService.getTechRiders().subscribe((response: Array<TechRiderQT>)=>{
-        this.trs = response
-        console.log(response)
+      const idEmpresa = this.route.snapshot.paramMap.get('idEmpresa');
+      if (idEmpresa) {
+        this.getTrEmpresa(+idEmpresa);
+      } else {
+        this.getAllTr();
+      }
+     }
+
+  getTrEmpresa(idEmpresa: number): void {
+    this._usuariosService.getFindTechRidersEnEmpresa(idEmpresa).subscribe(
+      (techRiders: any) => {
+        this.trs = techRiders;
+        console.log(techRiders);
       });
+  }
+
+  getAllTr(): void{
+    this._usuariosService.getTechRiders().subscribe((response: Array<TechRiderQT>)=>{
+      this.trs = response
+      console.log(response)
+    });
   }
 }

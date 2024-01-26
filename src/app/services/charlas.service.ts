@@ -106,4 +106,10 @@ export class CharlasService {
     .append('idtechrider', idTechRider)
     return this._http.get(url, {params: params})
   }
+
+  getCharlasEstado(idEstadoCharla: number): Observable<any>{
+    var request = "http://api/Charlas/FindCharlasState/" + idEstadoCharla
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
 }

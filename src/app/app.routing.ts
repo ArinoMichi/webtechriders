@@ -20,6 +20,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'publico', component: HomePublicoComponent },
   { path: 'tr-publico', component: TrPublicoComponent },
+  { path: 'tr-publico/:idEmpresa', component: TrPublicoComponent },
   { path: 'empresas-publico', component: EmpresasPublicoComponent },
   { path: 'centros-publico', component: CentrosPublicoComponent  },
   { path: 'charlas-publico', component: CharlasPublicoComponent  }

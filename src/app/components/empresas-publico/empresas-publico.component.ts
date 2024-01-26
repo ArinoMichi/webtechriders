@@ -3,6 +3,7 @@ import { EmpresaCentro } from 'src/app/models/empresa-centro.model';
 import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { TechRiderQT } from 'src/app/models/techridersQT.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empresas-publico',
@@ -16,6 +17,7 @@ export class EmpresasPublicoComponent {
   public trs!: Array<TechRiderQT>
 
   constructor(
+    private router: Router,
     private _empresasCentrosService: EmpresasCentrosService,
     private _usuariosService: UsuariosService
     ) {}
@@ -27,6 +29,7 @@ export class EmpresasPublicoComponent {
           console.log(empresasFiltradas);
         });
 
+
     }
 
     selectCompany(idEmpresa: number): void {
@@ -36,5 +39,9 @@ export class EmpresasPublicoComponent {
           console.log(techRiders);
         });
     }
+
+    navegarATechRiders(idEmpresa: number): void {
+      this.router.navigate(['/tr-publico', idEmpresa]);
+     }
   }
   

@@ -1,4 +1,4 @@
-<div class="tech-riders-container" [style.backgroundImage]="'url(' + imageUrlQuienesSomos + ')'">
+<div class="banner-container">
   <div class="text-banner">
   <h1>SOMOS TECH RIDERS</h1>
   <br>
@@ -9,16 +9,6 @@
 </div>
 <br>
 <div class="containerAllTR">
-    <!-- <div *ngFor="let tr of trs" class="grid text-center">
-      <div class="card separated-div" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item badge bg-dark text-wrap fs-5" style="color: white;">{{ tr.techRider }}</li>
-          <li class="list-group-item">{{ tr.email }}</li>
-          <li class="list-group-item"><a [href]="tr.linkedIn">{{tr.linkedIn}}</a></li>
-          <li class="list-group-item">{{ tr.telefonoTechRider }}</li>
-        </ul>
-      </div>
-    </div> -->
     <div class="card" style="width: 18rem;" *ngFor="let tr of trs">
       <div class="container">
         <img src="https://th.bing.com/th/id/OIP.t75oQHR4WMinflcpcBlXSQHaFT?rs=1&pid=ImgDetMain" class="card-img-top" alt="..." style="width: 200px;">

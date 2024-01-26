@@ -3,12 +3,18 @@ body, html {
     padding: 0;
     height: 100%;
   }
-  .tech-riders-container {
+  .banner-container {
     background-color: #000000;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    --opacidad-negro: 0.7;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, var(--opacidad-negro)),
+      rgba(0, 0, 0, var(--opacidad-negro))
+    ),
+    url("https://techriders.tajamar.es/wp-content/uploads/2023/04/motv-charla-768x1152.jpeg"); /* Ruta de la imagen de fondo */
   }
   .text-banner {
     text-align: left;
