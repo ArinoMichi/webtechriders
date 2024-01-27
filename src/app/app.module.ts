@@ -15,6 +15,7 @@ import { TrPublicoComponent } from './components/tr-publico/tr-publico.component
 import { EmpresasPublicoComponent } from './components/empresas-publico/empresas-publico.component';
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
+import { NavbarPublicoComponent } from './components/navbar-publico/navbar-publico.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
     TrPublicoComponent,
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
-    CharlasPublicoComponent
+    CharlasPublicoComponent,
+    NavbarPublicoComponent
   ],
   imports: [
     BrowserModule, HttpClientModule , routing

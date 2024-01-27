@@ -59,8 +59,8 @@ export class CharlasPublicoComponent {
   }
 
   filterPending() {
-    this.charlas = this.filterByState(4);
-    this.selectedOption = 'Cerrada';
+    this.charlas = this.filterByState(2);
+    this.selectedOption = 'Pendientes';
   }
 
   filterInProcess() {
