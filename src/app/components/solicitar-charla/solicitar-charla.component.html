@@ -37,7 +37,9 @@
             <div class="mb-4">
                 <label>Curso</label>
                 <select class="form-control" #cajacurso name="cajacurso">
-                    <option value=""></option>
+                    <option value="{{curso.idCurso}}" *ngFor="let curso of cursos">
+                        {{curso.nombreCurso}}
+                    </option>
                 </select>
             </div>
 
