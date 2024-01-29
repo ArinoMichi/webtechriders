@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Usuario } from 'src/app/models/usuario.model';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-user-tr',
@@ -8,42 +10,51 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UserTrComponent implements OnInit {
   error: string | null = null;
-  informacion: any = {};
   provincia: any = {};
   editMode = false;
+  token: string = '';
+  user!: Usuario;
+  editEmpresaCentro: boolean = false; // Variable para habilitar la edición de empresa o centro
+  profesor: boolean = false;
+  techrider: boolean = false;
+  admin: boolean = false;
+  responsable: boolean = false;
+  empresas: any[] = [];
+  centros: any[] = [];
 
   editForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private _serviceUser: UsuariosService) {} // Inyecta el servicio
 
   ngOnInit(): void {
-    this.cargarDatos();
+    this.token = localStorage.getItem('token') ?? '';
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+    switch (this.user.idRole) {
+      case 1:
+        this.admin = true;
+        break;
+      case 2:
+        this.profesor = true;
+        break;
+      case 3:
+        this.techrider = true;
+        break;
+      case 4:
+        this.responsable = true;
+        break;
+      default:
+        break;
+    }
     this.inicializarFormulario();
-  }
-
-  cargarDatos(): void {
-    // Simula la carga de datos (reemplaza con tus llamadas reales al servicio)
-    this.informacion = {
-      nombre: 'Nombre',
-      apellidos: 'Apellidos',
-      email: 'correo@example.com',
-      telefono: '123456789',
-      linkedIn: 'linkedin.com/in/ejemplo',
-    };
-
-    this.provincia = {
-      nombreProvincia: 'Provincia Ejemplo',
-    };
   }
 
   inicializarFormulario(): void {
     this.editForm = this.fb.group({
-      nombre: [this.informacion.nombre, Validators.required],
-      apellidos: [this.informacion.apellidos, Validators.required],
-      email: [this.informacion.email, [Validators.required, Validators.email]],
-      telefono: [this.informacion.telefono, Validators.required],
-      linkedIn: [this.informacion.linkedIn],
-      nombreProvincia: [this.provincia.nombreProvincia, Validators.required],
+      nombre: [this.user.nombre, Validators.required],
+      apellidos: [this.user.apellidos, Validators.required],
+      email: [this.user.email, [Validators.required, Validators.email]],
+      telefono: [this.user.telefono, Validators.required],
+      linkedIn: [this.user.linkedIn],
     });
   }
 
@@ -60,7 +71,7 @@ export class UserTrComponent implements OnInit {
     // Implementa la lógica para guardar los cambios aquí
     console.log('Guardando cambios:', this.editForm.value);
     // Si es necesario, puedes recargar los datos después de guardar
-    this.cargarDatos();
+
     this.editMode = false; // Vuelve al modo de visualización después de guardar
   }
 }

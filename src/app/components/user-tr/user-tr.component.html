@@ -43,30 +43,38 @@
     <div *ngIf="!editMode" class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" placeholder="{{ informacion.nombre }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.nombre }}" readonly />
       </div>
       <div class="col-md-6 mb-3">
         <label class="form-label">Apellido</label>
-        <input type="text" class="form-control" placeholder="{{ informacion.apellidos }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.apellidos }}" readonly />
       </div>
       <div class="col-md-6 mb-3">
         <label class="form-label">Email</label>
-        <input type="text" class="form-control" placeholder="{{ informacion.email }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.email }}" readonly />
       </div>
       <div class="col-md-6 mb-3">
         <label class="form-label">Teléfono</label>
-        <input type="text" class="form-control" placeholder="{{ informacion.telefono }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.telefono }}" readonly />
       </div>
       <div class="col-md-6 mb-3">
         <label class="form-label">LinkedIn</label>
-        <input type="text" class="form-control" placeholder="{{ informacion.linkedIn }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.linkedIn }}" readonly />
       </div>
       <div class="col-md-6 mb-3">
         <label class="form-label">Provincia</label>
-        <input type="text" class="form-control" placeholder="{{ provincia.nombreProvincia }}" readonly />
+        <input type="text" class="form-control" placeholder="{{ user.idProvincia }}" readonly />
       </div>
     </div>
-
-    <app-paneltr></app-paneltr>
+    <hr>
+    <div class="col-md-12 mb-3" *ngIf="techrider">
+      <h2 class="text-center mb-0 me-2 ms-2">Cambiar Empresa:</h2>
+      <label class="form-label">Empresa:</label>
+      <select class="form-control" formControlName="idEmpresaCentro">
+        <option *ngFor="let empresa of empresas" [value]="empresa.id">
+          {{ empresa.nombre }}
+        </option>
+      </select>
+    </div>
   </div>
   
