@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/models/usuario.model';
-import { UsuariosService } from 'src/app/services/usuarios.service';
+import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
+import { ProvinciasService } from 'src/app/services/provincias.service';
 
 @Component({
   selector: 'app-user-tr',
@@ -10,11 +11,12 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class UserTrComponent implements OnInit {
   error: string | null = null;
-  provincia: any = {};
+  editEmpresa: boolean = false;
+  provincia: string = '';
   editMode = false;
   token: string = '';
   user!: Usuario;
-  editEmpresaCentro: boolean = false; // Variable para habilitar la edición de empresa o centro
+  editEmpresaCentro: boolean = false;
   profesor: boolean = false;
   techrider: boolean = false;
   admin: boolean = false;
@@ -22,9 +24,10 @@ export class UserTrComponent implements OnInit {
   empresas: any[] = [];
   centros: any[] = [];
 
-  editForm!: FormGroup;
-
-  constructor(private fb: FormBuilder, private _serviceUser: UsuariosService) {} // Inyecta el servicio
+  constructor(
+    private _serviceEmpresasCentros: EmpresasCentrosService,
+    private _serviceProvincias: ProvinciasService,
+  ) {}
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') ?? '';
@@ -49,29 +52,49 @@ export class UserTrComponent implements OnInit {
   }
 
   inicializarFormulario(): void {
-    this.editForm = this.fb.group({
-      nombre: [this.user.nombre, Validators.required],
-      apellidos: [this.user.apellidos, Validators.required],
-      email: [this.user.email, [Validators.required, Validators.email]],
-      telefono: [this.user.telefono, Validators.required],
-      linkedIn: [this.user.linkedIn],
+    this._serviceEmpresasCentros.getEmpresas().subscribe((result) => {
+      this.empresas = result;
+    });
+    this._serviceEmpresasCentros.getCentros().subscribe((result)=>{
+      this.centros = result;
+    })
+
+    this._serviceProvincias.getProvincia(this.user.idProvincia).subscribe((result) => {
+      this.provincia = result.nombreProvincia;
     });
   }
 
   toggleEditMode(): void {
     this.editMode = !this.editMode;
+  }
 
-    // Reset the form when exiting edit mode
-    if (!this.editMode) {
-      this.inicializarFormulario();
-    }
+  getNombreCentro(idEmpresaCentro: number): string {
+    const centro = this.centros.find((c) => c.idEmpresaCentro === idEmpresaCentro);
+    return centro ? centro.nombre : '';
+  }
+  getNombreEmpresa(idEmpresaCentro: number): string {
+    const empresa = this.empresas.find((e) => e.idEmpresaCentro === idEmpresaCentro);
+    console.log(empresa)
+    return empresa ? empresa.nombre : '';
+  }
+  
+
+  toggleEditEmpresa(): void {
+    this.editEmpresa = !this.editEmpresa;
+  }
+
+  guardarEmpresa(): void {
+    console.log('Guardando cambios en la empresa:', this.user);
+    this.editMode = false;
+    this.editEmpresa = false;
+  }
+
+  cancelarEditEmpresa(): void {
+    this.editEmpresa = false;
   }
 
   editarPerfil(): void {
-    // Implementa la lógica para guardar los cambios aquí
-    console.log('Guardando cambios:', this.editForm.value);
-    // Si es necesario, puedes recargar los datos después de guardar
-
-    this.editMode = false; // Vuelve al modo de visualización después de guardar
+    console.log('Guardando cambios:', this.user);
+    this.editMode = false;
   }
 }
