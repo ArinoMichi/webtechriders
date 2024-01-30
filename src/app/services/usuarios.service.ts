@@ -57,12 +57,14 @@ export class UsuariosService {
     return this._http.get(url, { headers: headers });
   }
 
-  updateEstado(idUsuario: number, estado: number, token: string) {
-    var request =
-      'api/usuarios/updateestadousuario/' + idUsuario + '/' + estado;
+  updateEstado(idUsuario: number, estado: number, token: string): Observable<any> {
+    var request = 'api/usuarios/UpdateEstadoUsuario/' + idUsuario + '/' + estado;
     var url = environment.urlApi + request;
     var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    return this._http.put(url, { headers: headers });
+  
+    var options = { headers: headers };
+  
+    return this._http.put(url, null, options);
   }
 
   findEmpresaTechRider(id: number): Observable<any> {

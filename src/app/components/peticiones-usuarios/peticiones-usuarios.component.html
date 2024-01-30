@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h1>Charlas Asignadas a </h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Tipo Usuario</th>
+                <th>Estado Peticion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let peticion of peticionesAltaUsers">
+                <td>{{ getNombreUsuario(peticion.idUser) }}</td>
+                <td>{{ getTipoUsuario(getUsuarioInfo(peticion.idUser)) }}</td>
+                <td>{{ peticion.idTipoPeticionCategoria }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="aceptarPeticion(peticion.idPeticionAltaUsers, peticion.idUser)">Aceptar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -18,4 +18,21 @@ export class PeticionesAltaUsersService {
 
     return this._http.post(url, {params: params});
   }
+
+  getPeticionesUsers(token: string): Observable<any> {
+    var request = 'api/PeticionesAltaUsers';
+    var url = environment.urlApi + request;
+    var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this._http.get(url, { headers: headers });
+  }
+
+  deletePeticion(token: string, id: number): Observable<any> {
+    var request = 'api/PeticionesAltaUsers'; 
+    var url = environment.urlApi + request;
+    var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    var params = new HttpParams().set('idpeticion', id.toString()); 
+  
+    return this._http.delete(url, { headers: headers, params: params });
+  }
+  
 }

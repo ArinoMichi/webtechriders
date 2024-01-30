@@ -33,7 +33,7 @@ import { TrPublicoComponent } from './components/tr-publico/tr-publico.component
 import { EmpresasPublicoComponent } from './components/empresas-publico/empresas-publico.component';
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
-import { PanelAdminComponent } from './components/panel-admin/panel-admin.component';
+import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,7 @@ import { PanelAdminComponent } from './components/panel-admin/panel-admin.compon
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
     CharlasPublicoComponent,
-    PanelAdminComponent
+    PeticionesUsuariosComponent
   ],
   imports: [
     BrowserModule,
