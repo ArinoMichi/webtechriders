@@ -8,7 +8,8 @@ export class EmpresaCentro {
         public cif: string,
         public idProvincia: number,
         public razonSocial: string,
-        public idTipoEmpresa: number
+        public idTipoEmpresa: number,
+        public estadoEmpresa: number,
     ) {}
 }
 

@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
+import { RegistroCentroEmpresasComponent } from './components/registro-centro-empresas/registro-centro-empresas.component';
 import { PaneltrComponent } from './components/paneltr/paneltr.component';
 import {
   CalendarModule,
@@ -34,6 +35,7 @@ import { EmpresasPublicoComponent } from './components/empresas-publico/empresas
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
+import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/pe
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
     CharlasPublicoComponent,
-    PeticionesUsuariosComponent
+    PeticionesUsuariosComponent,
+    PeticionesEmpresasComponent,
+    RegistroCentroEmpresasComponent,
   ],
   imports: [
     BrowserModule,

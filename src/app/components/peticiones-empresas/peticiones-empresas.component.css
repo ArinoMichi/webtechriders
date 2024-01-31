@@ -53,3 +53,15 @@
     margin-top: 40px;
   }
   
+  /* Puedes ajustar los estilos según tu preferencia */
+.swal-confirm-button {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+}
+
+.swal-cancel-button {
+  background-color: darkred;
+  color: white;
+  border: 1px solid darkred;
+}

@@ -7,6 +7,7 @@ import { ContactanosComponent } from './components/contactanos/contactanos.compo
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
+import { RegistroCentroEmpresasComponent } from './components/registro-centro-empresas/registro-centro-empresas.component';
 import { PaneltrComponent } from './components/paneltr/paneltr.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { HomePublicoComponent } from './components/home-publico/home-publico.component';
@@ -15,6 +16,8 @@ import { EmpresasPublicoComponent } from './components/empresas-publico/empresas
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
+import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
+
 
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
 const appRoutes: Routes = [
@@ -29,8 +32,10 @@ const appRoutes: Routes = [
   { path: 'tr-publico', component: TrPublicoComponent },
   { path: 'tr-publico/:idEmpresa', component: TrPublicoComponent },
   { path: 'empresas-publico', component: EmpresasPublicoComponent },
-  { path: 'centros-publico', component: CentrosPublicoComponent  },
-  { path: 'peticiones-usuarios', component: PeticionesUsuariosComponent  },
+  { path: 'centros-publico', component: CentrosPublicoComponent },
+  { path: 'peticiones-usuarios', component: PeticionesUsuariosComponent },
+  { path: 'peticiones-empresascentros', component: PeticionesEmpresasComponent },
+  { path: 'registo-empresascentros', component: RegistroCentroEmpresasComponent },
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
 //DENTRO DEL MODULE
