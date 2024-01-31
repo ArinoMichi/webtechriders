@@ -17,6 +17,7 @@ import { CentrosPublicoComponent } from './components/centros-publico/centros-pu
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
 import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
+import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
 
 
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
   { path: 'centros-publico', component: CentrosPublicoComponent },
   { path: 'peticiones-usuarios', component: PeticionesUsuariosComponent },
   { path: 'peticiones-empresascentros', component: PeticionesEmpresasComponent },
+  { path: 'peticiones-tecnologias', component: PeticionesTecnologiasComponent },
   { path: 'registo-empresascentros', component: RegistroCentroEmpresasComponent },
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS

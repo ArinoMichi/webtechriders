@@ -1,0 +1,23 @@
+<div class="container mt-4">
+    <h1>Peticiones Alta Usuarios</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let peticion of peticionesTecnologias">
+                <td>{{ peticion.nombreTecnologia }}</td>
+                <td>{{ peticion.idTipoPeticionCategoria }}</td>
+                
+                <td>
+                    <button class="btn btn-success" (click)="aceptarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia, peticion.idTipoPeticionCategoria)">Aceptar</button>
+                    <button class="btn btn-danger" (click)="denegarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Denegar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -36,6 +36,7 @@ import { CentrosPublicoComponent } from './components/centros-publico/centros-pu
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
 import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
+import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PeticionesEmpresasComponent } from './components/peticiones-empresas/pe
     PeticionesUsuariosComponent,
     PeticionesEmpresasComponent,
     RegistroCentroEmpresasComponent,
+    PeticionesTecnologiasComponent,
   ],
   imports: [
     BrowserModule,

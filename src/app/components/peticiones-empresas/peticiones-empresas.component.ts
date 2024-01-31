@@ -73,7 +73,7 @@ export class PeticionesEmpresasComponent {
         `;
 
         Swal.fire({
-          title: 'Detalles del Usuario',
+          title: 'Detalles de '+`${empresaCentro.nombre}`,
           html: detallesUsuario,
           confirmButtonText: 'Cerrar'
         });

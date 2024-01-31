@@ -15,9 +15,9 @@ export class PeticionesAltaCentroEmpresa {
     var url = environment.urlApi + request;
 
     var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
-    var params = new HttpParams().append('idcentroempresa', id.toString());
+    var params = new HttpParams().append('idcentroempresa', id);
 
-    return this._http.post(url, null, { params: params });
+    return this._http.post(url, null, { headers: headers, params: params });
   }
 
   getPeticionesCentroEmpresa(token: string): Observable<any> {
@@ -35,7 +35,6 @@ export class PeticionesAltaCentroEmpresa {
 
     return this._http.delete(url, { headers: headers, params: params });
   }
-
 
   deletePeticionCentroEmpresaAll(token: string, id: number): Observable<any> {
     var request = `api/PeticionesCentroEmpresa/DeletePeticionEmpresaAll/${id}`;
