@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/models/usuario.model';
 import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
 import { ProvinciasService } from 'src/app/services/provincias.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-user-tr',
@@ -10,23 +11,24 @@ import { ProvinciasService } from 'src/app/services/provincias.service';
   styleUrls: ['./user-tr.component.css'],
 })
 export class UserTrComponent implements OnInit {
-  error: string | null = null;
-  editEmpresa: boolean = false;
   provincia: string = '';
   editMode = false;
   token: string = '';
   user!: Usuario;
-  editEmpresaCentro: boolean = false;
   profesor: boolean = false;
   techrider: boolean = false;
   admin: boolean = false;
   responsable: boolean = false;
+  provincias: any[] = [];
   empresas: any[] = [];
   centros: any[] = [];
+  idEmpresaCentroSeleccionado!: number;
+  provinciaNueva!: number;
 
   constructor(
     private _serviceEmpresasCentros: EmpresasCentrosService,
     private _serviceProvincias: ProvinciasService,
+    private _serviceUsuario: UsuariosService
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +57,7 @@ export class UserTrComponent implements OnInit {
     this._serviceEmpresasCentros.getEmpresas().subscribe((result) => {
       this.empresas = result;
     });
+    console.log(this.empresas);
     this._serviceEmpresasCentros.getCentros().subscribe((result)=>{
       this.centros = result;
     })
@@ -62,10 +65,19 @@ export class UserTrComponent implements OnInit {
     this._serviceProvincias.getProvincia(this.user.idProvincia).subscribe((result) => {
       this.provincia = result.nombreProvincia;
     });
+    this._serviceProvincias.getProvincias().subscribe((result)=>{
+      this.provincias = result;
+    })
   }
 
   toggleEditMode(): void {
     this.editMode = !this.editMode;
+  }
+  onEmpresaCentroChange(event: any) {
+    this.idEmpresaCentroSeleccionado = parseInt(event.target.value);
+  }
+  onProvinciaChange(event: any) {
+    this.provinciaNueva = parseInt(event.target.value);
   }
 
   getNombreCentro(idEmpresaCentro: number): string {
@@ -74,27 +86,44 @@ export class UserTrComponent implements OnInit {
   }
   getNombreEmpresa(idEmpresaCentro: number): string {
     const empresa = this.empresas.find((e) => e.idEmpresaCentro === idEmpresaCentro);
-    console.log(empresa)
     return empresa ? empresa.nombre : '';
   }
-  
 
-  toggleEditEmpresa(): void {
-    this.editEmpresa = !this.editEmpresa;
-  }
+  guardarCambios() {
+    console.log(this.provinciaNueva )
+    // Obtener los valores de los campos del formulario
+    const idUsuario = this.user.idUsuario; // Ajusta según tus necesidades
+    const nombre = this.user.nombre;
+    const apellidos = this.user.apellidos;
+    const email = this.user.email;
+    const telefono = this.user.telefono;
+    const linkedIn = this.user.linkedIn;
+    const password = this.user.password; // Ajusta según tus necesidades
+    const idRole = this.user.idRole; // Ajusta según tus necesidades
+    const idProvincia = this.provinciaNueva // Ajusta según tus necesidades
+    const idEmpresaCentro = this.idEmpresaCentroSeleccionado; // Ajusta según tus necesidades
+    const estado = this.user.estado; // Ajusta según tus necesidades
 
-  guardarEmpresa(): void {
-    console.log('Guardando cambios en la empresa:', this.user);
-    this.editMode = false;
-    this.editEmpresa = false;
-  }
+    // Construir el objeto Usuario
+    const usuario = new Usuario(
+      idUsuario,
+      nombre,
+      apellidos,
+      email,
+      telefono,
+      linkedIn,
+      password,
+      idRole,
+      idProvincia,
+      idEmpresaCentro,
+      estado
+    );
+      console.log(usuario)
 
-  cancelarEditEmpresa(): void {
-    this.editEmpresa = false;
-  }
-
-  editarPerfil(): void {
-    console.log('Guardando cambios:', this.user);
-    this.editMode = false;
+      this._serviceUsuario.updateUsuario(usuario, this.token).subscribe((result)=>{
+        console.log(result)
+      })
+      
   }
 }
+

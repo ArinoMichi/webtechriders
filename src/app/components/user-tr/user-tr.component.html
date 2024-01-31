@@ -1,134 +1,79 @@
 <div class="container my-4">
   <div class="container my-4 d-flex justify-content-center align-items-center">
     <h1 class="text-center mb-0 me-2 ms-2">Información Perfil</h1>
-    <a *ngIf="editMode" (click)="editarPerfil()" class="btn btn-success ms-2" role="button">
-      Guardar
-    </a>
+    <button  class="btn btn-dark ms-2" *ngIf="editMode" (click)="guardarCambios()">Guardar</button>
     <a (click)="toggleEditMode()" class="btn btn-dark ms-2" role="button">
       {{ editMode ? 'Cancelar' : 'Editar' }}
     </a>
+
   </div>
 
-  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
 
-  <div *ngIf="editMode" class="row">
+  <div class="row">
     <div class="col-md-6 mb-3">
-      <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" [(ngModel)]="user.nombre" />
+      <label class="form-label">Nombre {{user.idUsuario}}</label>
+      <input type="text" class="form-control" [attr.readonly]="!editMode ? true : null" [(ngModel)]="user.nombre" />
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Apellido</label>
-      <input type="text" class="form-control" [(ngModel)]="user.apellidos" />
+      <input type="text" class="form-control" [attr.readonly]="!editMode ? true : null" [(ngModel)]="user.apellidos" />
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Email</label>
-      <input type="text" class="form-control" [(ngModel)]="user.email" />
+      <input type="text" class="form-control" [attr.readonly]="!editMode ? true : null" [(ngModel)]="user.email" />
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Teléfono</label>
-      <input type="text" class="form-control" [(ngModel)]="user.telefono" />
+      <input type="text" class="form-control" [attr.readonly]="!editMode ? true : null" [(ngModel)]="user.telefono" />
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">LinkedIn</label>
-      <input type="text" class="form-control" [(ngModel)]="user.linkedIn" />
+      <input type="text" class="form-control" [attr.readonly]="!editMode ? true : null" [(ngModel)]="user.linkedIn" />
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Provincia</label>
-      <input type="text" class="form-control" value="{{ provincia }}" />
+      <input *ngIf="!editMode" type="text" class="form-control" value="{{ provincia }}" [attr.readonly]="!editMode ? true : null" />
+      <div *ngIf="editMode">
+        <select class="form-control"  *ngIf="editMode" (change)="onProvinciaChange($event)" [(ngModel)]="provinciaNueva">
+          <option *ngFor="let pro of provincias" [value]="pro.idProvincia">
+            {{ pro.nombreProvincia }}
+          </option>
+        </select>
+      </div>
     </div>
   </div>
-  
-    <div *ngIf="!editMode" class="row">
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" placeholder="{{ user.nombre }}" readonly />
+
+  <hr>
+
+  <div class="col-md-12 mb-3" *ngIf="techrider || responsable">
+    <div class="text-center">
+      <h2 class="mb-2">Cambiar Empresa: </h2>
+      <div *ngIf="!editMode">
+        <input type="text" class="form-control" [value]="getNombreEmpresa(user.idEmpresaCentro)" readonly />
       </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Apellido</label>
-        <input type="text" class="form-control" placeholder="{{ user.apellidos }}" readonly />
-      </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Email</label>
-        <input type="text" class="form-control" placeholder="{{ user.email }}" readonly />
-      </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Teléfono</label>
-        <input type="text" class="form-control" placeholder="{{ user.telefono }}" readonly />
-      </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">LinkedIn</label>
-        <input type="text" class="form-control" placeholder="{{ user.linkedIn }}" readonly />
-      </div>
-      <div class="col-md-6 mb-3">
-        <label class="form-label">Provincia</label>
-        <input type="text" class="form-control" value="{{ provincia }}" readonly />
+      <div *ngIf="editMode">
+        <select class="form-control" *ngIf="editMode" (change)="onEmpresaCentroChange($event)" [(ngModel)]="idEmpresaCentroSeleccionado">
+          <option *ngFor="let empresa of empresas" [value]="empresa.idEmpresaCentro">
+            {{ empresa.nombre }}
+          </option>
+        </select>
+        
       </div>
     </div>
-    <hr>
-
-
-    <div class="col-md-12 mb-3" *ngIf="techrider || responsable">
-      <div class="text-center">
-        <h2 class="mb-2">Cambiar Empresa:</h2>
-    
-        <!-- Mostrar el campo del nombre de la empresa si no está en modo de edición -->
-        <div *ngIf="!editEmpresa">
-          <label class="form-label">Empresa:</label>
-          <button (click)="toggleEditEmpresa()" class="btn btn-dark ms-2" role="button">
-            Editar
-          </button>
-          <input type="text" class="form-control" value="{{ getNombreEmpresa(user.idEmpresaCentro) }}" readonly />
-        </div>
-    
-        <!-- Mostrar el select si está en modo de edición -->
-        <div *ngIf="editEmpresa">
-          <select class="form-control" formControlName="idEmpresaCentro">
-            <option *ngFor="let empresa of empresas" [value]="empresa.id">
-              {{ empresa.nombre }}
-            </option>
-          </select>
-    
-          <!-- Botón de "Guardar" específico para la empresa -->
-          <button (click)="guardarEmpresa()" class="btn btn-success mt-2" role="button">
-            Guardar
-          </button>
-    
-          <!-- Botón de "Cancelar" específico para la empresa -->
-          <button (click)="cancelarEditEmpresa()" class="btn btn-dark mt-2" role="button">
-            Cancelar
-          </button>
-        </div>
+  </div>
+  <div class="col-md-12 mb-3" *ngIf="profesor">
+    <div class="text-center">
+      <h2 class="mb-2">Cambiar Centro: </h2>
+      <div *ngIf="!editMode">
+        <input type="text" class="form-control" [value]="getNombreCentro(user.idEmpresaCentro)" readonly />
+      </div>
+      <div *ngIf="editMode">
+        <select class="form-control"  *ngIf="editMode" (change)="onEmpresaCentroChange($event)" [(ngModel)]="idEmpresaCentroSeleccionado">
+          <option *ngFor="let centro of centros" [value]="centro.idEmpresaCentro">
+            {{ centro.nombre }}
+          </option>
+        </select>
       </div>
     </div>
-    
-    <div class="col-md-12 mb-3" *ngIf="profesor">
-      <div class="text-center">
-        <h2 class="mb-2">Cambiar Centro:</h2>
-    
-        <div *ngIf="!editEmpresa">
-          <button (click)="toggleEditEmpresa()" class="btn btn-dark ms-2" role="button">
-            Editar
-          </button>
-          <input type="text" class="form-control" value="{{ getNombreCentro(user.idEmpresaCentro) }}" readonly />
-        </div>
-        <label class="form-label">Centro:</label>
-        <div *ngIf="editEmpresa">
-          <select class="form-control" formControlName="idEmpresaCentro">
-            <option *ngFor="let centro of centros" [value]="centro.idEmpresaCentro">
-              {{ centro.nombre }}
-            </option>
-          </select>
-    
-          <button (click)="guardarEmpresa()" class="btn btn-success mt-2" role="button">
-            Guardar
-          </button>
-          
-          <button (click)="cancelarEditEmpresa()" class="btn btn-dark mt-2" role="button">
-            Cancelar
-          </button>
-        </div>
-      </div>
-    </div>
-    
-
-  
+  </div>
+</div>
