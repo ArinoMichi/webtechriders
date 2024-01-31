@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CharlaQT } from 'src/app/models/charlaQT.model';
+import { Usuario } from 'src/app/models/usuario.model';
 import { ValoracionCharla } from 'src/app/models/valoracion-charla.model';
 import { CharlasService } from 'src/app/services/charlas.service';
 import { ValoracionesCharlasService } from 'src/app/services/valoraciones-charlas.service';
@@ -14,6 +15,7 @@ export class CharlasPublicoComponent {
   public allCharlas!: Array<CharlaQT>;
   public valoraciones!: Array<ValoracionCharla>;
   public selectedOption: string = '';
+  user!: Usuario;
 
   constructor(
     private _charlasService: CharlasService,
@@ -40,6 +42,20 @@ export class CharlasPublicoComponent {
         }
         this.charlas = this.allCharlas;
       });
+  }
+
+  // getCharlasTR(){
+  //   this._charlasService.getCharlasTechRider().subscribe
+  // }
+
+  getCharlasEmpresa(idEmpresa: number){
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+    this._charlasService.getCharlasEmpresa(this.user.idEmpresaCentro).subscribe(
+      (charlasEmp: any) => {
+        this.charlas = charlasEmp;
+        console.log(charlasEmp)
+      }
+    )
   }
 
   filterByState(state: number) {

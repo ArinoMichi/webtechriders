@@ -24,7 +24,6 @@ const appRoutes: Routes = [
   { path: 'empresas-publico', component: EmpresasPublicoComponent },
   { path: 'centros-publico', component: CentrosPublicoComponent  },
   { path: 'charlas-publico', component: CharlasPublicoComponent  }
-
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
 //DENTRO DEL MODULE

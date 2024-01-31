@@ -17,6 +17,9 @@
         <h5 class="card-title">{{ tr.techRider }}</h5>
         <p class="card-text">{{ tr.email }}</p>
         <p><a href="{{tr.linkedIn}}" class="btn btn-primary">LinkedIn</a></p>
+        <p *ngIf="!localStorageContent">
+          <a routerLink="/charlas-publico" class="btn btn-primary">Charlas</a>
+        </p>
       </div>
     </div>
   </div>

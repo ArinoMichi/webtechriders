@@ -12,6 +12,6 @@ export class AppComponent {
 
   ngOnInit() {
     // Verifica si hay contenido en el localStorage
-    this.localStorageContent = localStorage.getItem('hola'); // Reemplaza 'tuClave' con la clave específica que estás usando
+    this.localStorageContent = localStorage.getItem('identity');
   }
 }
