@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'webtechriders';
+
+  localStorageContent: string | null = null;
+
+  ngOnInit() {
+    // Verifica si hay contenido en el localStorage
+    this.localStorageContent = localStorage.getItem('identity');
+  }
 }

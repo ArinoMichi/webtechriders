@@ -32,6 +32,7 @@ import { TrPublicoComponent } from './components/tr-publico/tr-publico.component
 import { EmpresasPublicoComponent } from './components/empresas-publico/empresas-publico.component';
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
+import { NavbarPublicoComponent } from './components/navbar-publico/navbar-publico.component';
 import { SolicitarCharlaComponent } from './components/solicitar-charla/solicitar-charla.component';
 import { CursosProfesorComponent } from './components/cursos-profesor/cursos-profesor.component';
 
@@ -53,6 +54,7 @@ import { CursosProfesorComponent } from './components/cursos-profesor/cursos-pro
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
     CharlasPublicoComponent,
+    NavbarPublicoComponent
     SolicitarCharlaComponent,
     CursosProfesorComponent,
   ],

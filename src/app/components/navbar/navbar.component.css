@@ -1,19 +1,22 @@
 .navbar {
     background-color: #000;
-    padding: 20px;
+    padding: 8px;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    position: relative;
+    font-size: 20px;
   }
   
   .navbar-logo img {
-    width: 80px;
+    width: 110px;
     height: auto;
     margin-right: 10px;
+    padding: 8€;
   }
   
-  .navbar-brand a {
+  /* .navbar-brand a {
     color: white;
     text-decoration: none;
     font-size: 1.5em;
@@ -29,4 +32,4 @@
   .navbar a:hover {
     text-decoration: underline;
   }
-  
+   */

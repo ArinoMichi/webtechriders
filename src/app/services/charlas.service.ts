@@ -113,7 +113,13 @@ export class CharlasService {
   }
 
   getCharlasEstado(idEstadoCharla: number): Observable<any>{
-    var request = "http://api/Charlas/FindCharlasState/" + idEstadoCharla
+    var request = "/api/Charlas/FindCharlasState/" + idEstadoCharla
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
+
+  getCharlasEmpresa(idEmpresa: number): Observable<any>{
+    var request = "/api/QueryTools/FindCharlasTechriderEmpresa/" + idEmpresa
     var url = environment.urlApi + request
     return this._http.get(url)
   }

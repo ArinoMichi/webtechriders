@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Riders</title>
 </head>
-<body>
+<!-- Cuando hay contenido en el localStorage -->
+<body *ngIf="localStorageContent">
   <app-navbar></app-navbar>
-  <router-outlet/>
+  <router-outlet></router-outlet>
   <app-footer></app-footer>
 </body>
+
+<!-- Cuando no hay contenido en el localStorage -->
+<body *ngIf="!localStorageContent">
+  <app-navbar-publico></app-navbar-publico>
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</body>
+
 </html>
