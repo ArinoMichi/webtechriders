@@ -1,0 +1,35 @@
+<div class="detalles">
+    <button mat-icon-button (click)="closeDialog()" class="close-button">
+        <mat-icon aria-label="Cerrar">close</mat-icon>
+    </button>
+    <h1>{{ data.descripcionCharla }}</h1>
+    <hr>
+    <h2>{{ data.modalidad }} - {{ data.fechaCharla | date: 'dd/MM/yyyy' }}</h2>
+    <h3>Estado: {{ data.estadoCharla }}</h3>
+    <div *ngIf="tecnologiaCharlaNombres.length > 0">
+        <u>Tecnologias:</u>
+        <ul>
+            <li *ngFor="let tec of tecnologiaCharlaNombres">{{ tec }}</li>
+        </ul>
+    </div>
+    <u>Datos:</u>
+    <ul>
+        <li *ngIf="data.techRider">
+            Techrider: {{ data.techRider }}
+        </li>
+        <li>
+            Provincia: {{ data.provincia }}
+        </li>
+        <li>
+            Curso: {{ data.nombreCurso }}
+        </li>
+        <li>
+            Correo: {{ data.email }}
+        </li>
+        <li>
+            Teléfono: {{ data.telefono }}
+        </li>
+    </ul>
+    <u *ngIf="data.observacionesCharla">Observaciones:</u>
+    <p>{{ data.observacionesCharla }}</p>
+</div>

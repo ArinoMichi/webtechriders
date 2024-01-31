@@ -1,0 +1,21 @@
+<!-- calendario.component.html -->
+<div style="width: 80%; margin: 0 auto; padding-top: 5%; padding-bottom: 5%; text-align: center;">
+  <h1>
+    <button (click)="prevMonth()" type="button" class="btn btn-outline-dark">←</button>
+    {{ viewDate | date: 'MMMM y' | titlecase }}
+    <button (click)="nextMonth()" type="button" class="btn btn-outline-dark">→</button>
+  </h1>
+
+  <hr>
+  <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="eventClicked($event)"></mwl-calendar-month-view>
+  <hr>
+  <div class="legend">
+    <div class="legend-item" style="background-color: #888888;"></div> Cancelada <br>
+    <div class="legend-item" style="background-color: #ffc400;"></div> Pendiente <br>
+    <div class="legend-item" style="background-color: #88cfff;"></div> Proceso <br>
+    <div class="legend-item" style="background-color: #E74C3C;"></div> Cerrada <br>
+    <div class="legend-item" style="background-color: #2ECC71;"></div> Completada <br>
+    <div class="legend-item" style="background-color: #9B59B6;"></div> Acreditada <br>
+  </div>
+</div>

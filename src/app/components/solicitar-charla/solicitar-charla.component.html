@@ -1,0 +1,62 @@
+<div class="container d-flex justify-content-center align-items-center"
+    style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
+    <div class="col-md-8 p-4 rounded shadow-lg">
+        <h1 class="text-center mb-4">Registrate!</h1>
+        <form #insertForm="ngForm">
+            <div class="mb-4">
+                <label>Descripción</label>
+                <input type="text" class="form-control" #cajadescripcion name="cajadescripcion">
+            </div>
+
+            <div class="mb-4">
+                <label>Fecha</label>
+                <input type="date" class="form-control" #cajafecha name="cajafecha">
+            </div>
+
+            <div class="mb-4">
+                <label>Observaciones</label>
+                <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones">
+            </div>
+
+            <div class="mb-4">
+                <label>Turno</label>
+                <select class="form-control" #cajaturno name="cajaturno">
+                    <option>Mañana</option>
+                    <option>Tarde</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Modalidad</label>
+                <select class="form-control" #cajamodalidad name="cajamodalidad">
+                    <option>Presencial</option>
+                    <option>Online</option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Curso</label>
+                <select class="form-control" #cajacurso name="cajacurso">
+                    <option value="{{curso.idCurso}}" *ngFor="let curso of cursos">
+                        {{curso.nombreCurso}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Provincia</label>
+                <select class="form-control" #cajaprovincia name="cajaprovincia">
+                    <option value="{{provincia.idProvincia}}" *ngFor="let provincia of provincias">
+                        {{provincia.nombreProvincia}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-dark" (click)="enviarCharla()" style="width: 100%;">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

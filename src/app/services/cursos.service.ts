@@ -52,4 +52,11 @@ export class CursosService {
     .set('Authorization', "bearer " + token)
     return this._http.delete(url, {headers: headers})
   }
+
+  getAllCursosFromProfesor(id: number): Observable<any>
+  {
+    var request = "api/querytools/findcursosprofesor/" + id
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
 }

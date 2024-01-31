@@ -52,4 +52,15 @@ export class TecnologiasService {
     .set('Authorization', "bearer " + token)
     return this._http.delete(url, {headers: headers})
   }
+
+  postTecnologiaTechrider(idTechRider: number, idTecnologia: number, token: string): Observable<any> {
+    const request = 'api/TecnologiasTechRiders';
+    const url = `${environment.urlApi}${request}?idtechrider=${idTechRider}&idtecnologia=${idTecnologia}`;
+  
+    const headers = new HttpHeaders()
+      .set('Content-type', 'application/json')
+      .set('Authorization', 'Bearer ' + token);
+  
+    return this._http.post(url, null, { headers: headers });
+  }
 }
