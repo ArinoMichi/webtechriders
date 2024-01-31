@@ -1,0 +1,23 @@
+<div class="banner-container">
+    <div class="text-banner">
+      <h1>TUS CURSOS</h1>
+      <br />
+      <p class="p-banner">
+        Tienes la oportunidad de ser un faro de inspiración para los estudiantes
+        de tecnología. Ofrece charlas técnicas de vanguardia, comparte
+        experiencias motivacionales y fomenta el desarrollo de habilidades
+        softskills esenciales. ¡Únete a nosotros en la misión de impulsar la
+        formación tecnológica y cultivar el talento del futuro!
+      </p>
+    </div>
+  </div>
+  
+  <br />
+  <div class="containe-tabla">
+    <div class="card" *ngFor="let curso of cursos">
+      <p class="card-title">{{ curso.nombreCurso }}</p>
+      <hr>
+      <p class="card-des">Descripción: {{ curso.descripcionCurso }}</p>
+      <p class="card-des">Centro: {{ curso.centro }}</p>
+    </div>
+  </div>

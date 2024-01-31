@@ -29,7 +29,7 @@ export class SolicitarCharlaComponent implements OnInit{
   constructor(
     private _ProvinciasService: ProvinciasService,
     private _CursosService: CursosService,
-    private _CharlasService: CharlasService,
+    private _CharlasService: CharlasService
   )
   {
     this.identity = JSON.parse(localStorage.getItem('identity') || '{}')
@@ -40,12 +40,13 @@ export class SolicitarCharlaComponent implements OnInit{
     this._ProvinciasService.getProvincias().subscribe((response) => {
       this.provincias = response;
     });
-    this._CursosService.getAllCursosFromProfesor(this.identity.idusuario).subscribe((response) => {
+    this._CursosService.getAllCursosFromProfesor(this.identity.idUsuario).subscribe((response) => {
       this.cursos = response;
     })
   }
 
   enviarCharla(): void {
+
     var descripcion = this.cajaDescripcionRef.nativeElement.value
     var fecha: Date = this.cajaFechaRef.nativeElement.value
     var observaciones = this.cajaObservacionesRef.nativeElement.value
@@ -58,7 +59,10 @@ export class SolicitarCharlaComponent implements OnInit{
     this.charla = new Charla (0, descripcion, 2, fecha, observaciones, 0, 
       fechaSolicitud, turno, modalidad, "", curso, provincia)
 
+      console.log(this.charla)
+
     this._CharlasService.insertCharla(this.charla, this.token).subscribe((response) => {
+      console.log(response)
       
     })  
   }

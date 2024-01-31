@@ -19,7 +19,6 @@ import {
   CalendarModule,
   DateAdapter,
   CalendarNativeDateFormatter,
-  DateFormatterParams,
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CustomDateFormatter } from './custom-date-formatter';
@@ -34,6 +33,7 @@ import { EmpresasPublicoComponent } from './components/empresas-publico/empresas
 import { CentrosPublicoComponent } from './components/centros-publico/centros-publico.component';
 import { CharlasPublicoComponent } from './components/charlas-publico/charlas-publico.component';
 import { SolicitarCharlaComponent } from './components/solicitar-charla/solicitar-charla.component';
+import { CursosProfesorComponent } from './components/cursos-profesor/cursos-profesor.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,8 @@ import { SolicitarCharlaComponent } from './components/solicitar-charla/solicita
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
     CharlasPublicoComponent,
-    SolicitarCharlaComponent
+    SolicitarCharlaComponent,
+    CursosProfesorComponent,
   ],
   imports: [
     BrowserModule,
