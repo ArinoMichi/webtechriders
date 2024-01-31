@@ -27,7 +27,7 @@ export class TrPublicoComponent {
       const idEmpresa = this.route.snapshot.paramMap.get('idEmpresa');
       let identity = JSON.parse(localStorage.getItem('identity') || '{}');
 
-      if (identity) {
+      if (this.localStorageContent) {
         this.getTrEmpresaResponsable(identity.idEmpresaCentro);
       } else if (idEmpresa) {
         this.getTrEmpresa(+idEmpresa);

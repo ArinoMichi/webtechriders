@@ -54,7 +54,7 @@ import { CursosProfesorComponent } from './components/cursos-profesor/cursos-pro
     EmpresasPublicoComponent,
     CentrosPublicoComponent,
     CharlasPublicoComponent,
-    NavbarPublicoComponent
+    NavbarPublicoComponent,
     SolicitarCharlaComponent,
     CursosProfesorComponent,
   ],
