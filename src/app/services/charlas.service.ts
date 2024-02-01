@@ -130,4 +130,10 @@ export class CharlasService {
     var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
     return this._http.get(url, { headers: headers });
   }
+
+  getCharlasProfesor(id: number): Observable<any> {
+    var request = "api/querytools/charlascursosprofesor/" + id
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
 }

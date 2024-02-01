@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <h1>Tus charlas</h1>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Estado</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let charla of charlas; let i = index">
+          <td>{{charla.descripcionCharla}}</td>
+          <td>{{charla.estadoCharla}}</td>
+          <td>{{charla.fechaCharla }}</td>
+          <td>
+            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
+            <button class="btn btn-danger" (click)="cancelarCharla(i)">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

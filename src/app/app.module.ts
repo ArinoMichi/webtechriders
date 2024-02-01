@@ -41,6 +41,7 @@ import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/pe
 import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
 import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
 import { UserTrComponent } from './components/user-tr/user-tr.component';
+import { ProfesorCharlasComponent } from './components/profesor-charlas/profesor-charlas.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { UserTrComponent } from './components/user-tr/user-tr.component';
     PeticionesEmpresasComponent,
     RegistroCentroEmpresasComponent,
     PeticionesTecnologiasComponent,
-    UserTrComponent
+    UserTrComponent,
+    ProfesorCharlasComponent
   ],
   imports: [
     BrowserModule,
