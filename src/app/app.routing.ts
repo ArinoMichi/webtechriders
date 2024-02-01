@@ -22,6 +22,7 @@ import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/pe
 import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
 import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
 
+import { UserTrComponent } from './components/user-tr/user-tr.component';
 
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
 const appRoutes: Routes = [
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
   { path: 'peticiones-empresascentros', component: PeticionesEmpresasComponent },
   { path: 'peticiones-tecnologias', component: PeticionesTecnologiasComponent },
   { path: 'registo-empresascentros', component: RegistroCentroEmpresasComponent },
+  { path: 'user-tr', component: UserTrComponent },
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
 //DENTRO DEL MODULE

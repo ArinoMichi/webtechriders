@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
@@ -40,6 +40,7 @@ import { FormularioCursoComponent } from './components/formulario-curso/formular
 import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
 import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
 import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
+import { UserTrComponent } from './components/user-tr/user-tr.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PeticionesTecnologiasComponent } from './components/peticiones-tecnolog
     PeticionesEmpresasComponent,
     RegistroCentroEmpresasComponent,
     PeticionesTecnologiasComponent,
+    UserTrComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,8 @@ import { PeticionesTecnologiasComponent } from './components/peticiones-tecnolog
     }),
     NoopAnimationsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ],
   providers: [
     appRoutingProvider,

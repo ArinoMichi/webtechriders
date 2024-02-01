@@ -2,34 +2,19 @@
     background-color: #000;
     padding: 8px;
     color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative;
-    font-size: 20px;
+    
   }
-  
   .navbar-logo img {
     width: 110px;
     height: auto;
     margin-right: 10px;
     padding: 8€;
   }
-  
-  /* .navbar-brand a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.5em;
+  .container{
+    display: flex;
+    justify-content: end;
   }
   
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 1.2em;
+  .no-caret::after {
+    display: none !important;
   }
-  
-  .navbar a:hover {
-    text-decoration: underline;
-  }
-   */

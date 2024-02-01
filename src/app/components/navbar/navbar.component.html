@@ -2,18 +2,20 @@
   <div class="navbar-logo">
     <a routerLink="/"><img src="../../assets/images/techriderslogo.png" alt="Logo" /></a>
   </div>
-  <div class="navbar-links">
-    <a routerLink="/contactanos">Contactanos</a>
-    <a routerLink="/quienes-somos">Quienes Somos</a>
-    <a routerLink="/charlas-publico">CharlasPublico</a>
-    <a routerLink="/tr-publico">TechRidersPublico</a>
-    <a routerLink="/empresas-publico">EmpresasPublico</a>
-    <a routerLink="/centros-publico">CentrosPublico</a>
-    <!-- Mas cosas de relleno (?) -->
-    <a routerLink="/panel-tr"  *ngIf="identity && identity.nombre">{{identity.nombre}} {{identity.apellidos}} </a>
-    <a (click)="logout()" routerLink="/" *ngIf=token>Cerrar sesión</a>
-
-    <a routerLink="/login" *ngIf=!token>Identificate</a>
-    
+  <div class="container">
+    <div class="nav-item dropdown">
+      <a class="nav-link no-caret" style="padding: 0; display: flex; align-items: center;" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <h3 routerLink="/login" *ngIf="!token" style="margin-right: 10px; color: white;">Identificate</h3>
+        <h3 routerLink="/login" *ngIf="token" style="margin-right: 10px; color: white;">{{identity.Nombre}}</h3>
+        <img src="../../../assets/images/user.png" alt="" width="60" height="60">     
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 200px; margin-left: auto;">
+        <li *ngIf="identity && identity.nombre"><a class="dropdown-item" routerLink="/user-tr">Perfil</a></li>
+        <li *ngIf="identity && identity.nombre"><a class="dropdown-item" routerLink="/panel-tr">Charlas</a></li>
+        <li *ngIf="identity && identity.nombre"><a class="dropdown-item" routerLink="/panel-tr">Calendario</a></li>
+        <li *ngIf="token"><hr class="dropdown-divider"></li>
+        <li *ngIf="token"><a class="dropdown-item" (click)="logout()" routerLink="/">Cerrar sesión</a></li>
+      </ul>
+    </div>
   </div>
 </nav>
