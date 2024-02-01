@@ -29,7 +29,7 @@ export class CursosProfesoresService {
     .append('idprofesor', cursoProfesor.idProfesor)
     var headers = new HttpHeaders()
     .set('Authorization', "bearer " + token)
-    return this._http.post(url, {headers: headers, params: params})
+    return this._http.post(url, {}, {headers: headers, params: params})
   }
 
   deleteCursoProfesor(cursoProfesor: CursoProfesor, token: string): Observable<any>

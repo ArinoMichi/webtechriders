@@ -56,13 +56,10 @@ export class FormularioCursoComponent implements OnInit{
     var nombre = this.cajaNombreRef.nativeElement.value
     var descripcion = this.cajaDescripcionRef.nativeElement.value
 
-    console.log(centro)
-
     this._route.params.subscribe(params => {
       let id = +params['id'];
       if(id){
         this.curso = new Curso (id, parseInt(centro), nombre, descripcion)
-        console.log(this.curso)
         this._cursosService.updateCurso(this.curso, this.token).subscribe((response) => {
           console.log(response)
         })  
@@ -71,6 +68,10 @@ export class FormularioCursoComponent implements OnInit{
         console.log(this.curso)
         this._cursosService.insertCurso(this.curso, this.token).subscribe((response) => {
           console.log(response)
+          this.cursoProfesor = new CursoProfesor(response.idCurso, this.identity.idUsuario)
+          this._cursosProfesoresService.insertCursoProfesor(this.cursoProfesor, this.token).subscribe((response) =>{
+            console.log(response)
+          })
         })  
       }
     }) 

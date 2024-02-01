@@ -5,7 +5,7 @@
             <div class="mb-4">
                 <label>Centro</label>
                 <select class="form-control" #cajacentro name="cajacentro">
-                    <option value="{{centro.idEmpresa}}" *ngFor="let centro of centros" [value]="curso.idCentro">
+                    <option value="{{centro.idEmpresa}}" *ngFor="let centro of centros" [value]="centro.idEmpresa">
                         {{centro.empresa}}
                     </option>
                 </select>
