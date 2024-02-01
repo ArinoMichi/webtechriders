@@ -17,7 +17,7 @@ body, html {
     background-size: cover;
     background-attachment: fixed;
     --opacidad-negro: 0.7;
-    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url('https://th.bing.com/th/id/OIP.p1k52Qi4bJDh99iAEvcNlgHaE8?rs=1&pid=ImgDetMain'); /* Ruta de la imagen de fondo */
+    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url(../../../assets/images/pexels-rdne-stock-project-5756655.jpg); /* Ruta de la imagen de fondo */
     
   }
   .text-banner {
