@@ -81,7 +81,7 @@ export class PeticionesEmpresasComponent {
       if (result.isConfirmed) {
         this._EmpresaCentroService.deleteEmpresaCentro(idEmpresaCentro, this.token)
           .subscribe(() => {
-            console.log('Tecnologia eliminada.');
+            console.log('Empresa/Centro borrado.');
             this._EmpresaCentroService.getEmpresasCentros().subscribe((response) => {
               this.empresasCentros = response;
               console.log(response);
@@ -142,6 +142,10 @@ export class PeticionesEmpresasComponent {
               this.peticionesCentroEmpresa = response;
               console.log(response);
             });
+
+            this._EmpresaCentroService.getEmpresasCentros().subscribe((response) => {
+              this.empresasCentros = response;
+            })
 
             Swal.fire('¡Petición aceptada!', '', 'success');
           });

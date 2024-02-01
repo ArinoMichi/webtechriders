@@ -53,6 +53,10 @@ export class PeticionesTecnologiasComponent implements OnInit {
             console.log(response);
           });
 
+        this._TecnologiasService.getTecnologias().subscribe((response) => {
+          this.tecnologias = response;
+        });
+
         Swal.fire('¡Petición aceptada!', '', 'success');
       });
   }

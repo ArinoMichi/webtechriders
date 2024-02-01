@@ -72,6 +72,30 @@ export class PeticionesUsuariosComponent implements OnInit {
     }
   }
 
+  borrarUsuario(idUsuario: number, nombreUsuario: string) {
+    console.log(idUsuario, nombreUsuario)
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'estas seguro que quieres borrar ' + nombreUsuario,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._UsuariosService.deleteUsuario(idUsuario, this.token)
+          .subscribe(() => {
+            console.log('Usuario eliminado.');
+            this._UsuariosService.getUsuarios(this.token).subscribe((response) => {
+              this.usuarios = response;
+              console.log(response);
+            });
+            Swal.fire('Usuario borrado!', '', 'success');
+          });
+      }
+    });
+  }
+
   aceptarPeticion(idPeticion: number, idUsuario: number): void {
     const usuario = this.getUsuarioInfo(idUsuario);
     const mensaje = `¿Quieres dar de alta a ${usuario?.nombre} ${usuario?.apellidos}?`;
@@ -95,6 +119,10 @@ export class PeticionesUsuariosComponent implements OnInit {
               this.peticionesAltaUsers = response;
               console.log(response);
             });
+
+            this._UsuariosService.getUsuarios(this.token).subscribe((response) => {
+              this.usuarios = response;
+            })
 
             Swal.fire('¡Petición aceptada!', '', 'success');
           });
