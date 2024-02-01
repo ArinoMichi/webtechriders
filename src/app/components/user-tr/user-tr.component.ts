@@ -152,7 +152,7 @@ export class UserTrComponent implements OnInit {
       })
     
       // aqui haz el put asdhajsd
-      
+      this.user = JSON.parse(localStorage.getItem('identity') || '{}');
       this.toggleEditMode();
   }
 }
