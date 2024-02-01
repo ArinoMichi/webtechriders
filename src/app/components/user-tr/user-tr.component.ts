@@ -60,6 +60,11 @@ export class UserTrComponent implements OnInit {
     this.inicializarFormulario();
   }
 
+  loadUser(){
+    this.identity = JSON.parse(localStorage.getItem('identity') || '{}')
+    this.token = localStorage.getItem('token') ?? '';
+  }
+
   inicializarFormulario(): void {
     this._serviceEmpresasCentros.getEmpresas().subscribe((result) => {
       this.empresas = result;
@@ -152,7 +157,7 @@ export class UserTrComponent implements OnInit {
       })
     
       // aqui haz el put asdhajsd
-      this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+      this.ngOnInit();
       this.toggleEditMode();
   }
 }
