@@ -34,8 +34,8 @@ export class UserTrComponent implements OnInit {
     private _serviceEmpresasCentros: EmpresasCentrosService,
     private _serviceProvincias: ProvinciasService,
     private _serviceUsuario: UsuariosService,
-    private _serviceTecnologias : TecnologiasService,
-    private _servideTecnologiaTechRider : TecnologiasTechRidersService
+    private _serviceTecnologias: TecnologiasService,
+    private _servideTecnologiaTechRider: TecnologiasTechRidersService
   ) {
     this.loadUser();
   }
@@ -60,7 +60,7 @@ export class UserTrComponent implements OnInit {
     this.inicializarFormulario();
   }
 
-  loadUser(){
+  loadUser() {
     this.user = JSON.parse(localStorage.getItem('identity') || '{}')
     this.token = localStorage.getItem('token') ?? '';
   }
@@ -70,20 +70,20 @@ export class UserTrComponent implements OnInit {
       this.empresas = result;
     });
     console.log(this.empresas);
-    this._serviceEmpresasCentros.getCentros().subscribe((result)=>{
+    this._serviceEmpresasCentros.getCentros().subscribe((result) => {
       this.centros = result;
     })
 
     this._serviceProvincias.getProvincia(this.user.idProvincia).subscribe((result) => {
       this.provincia = result.nombreProvincia;
     });
-    this._serviceProvincias.getProvincias().subscribe((result)=>{
+    this._serviceProvincias.getProvincias().subscribe((result) => {
       this.provincias = result;
     })
-    this._serviceTecnologias.getTecnologias().subscribe((result)=>{
+    this._serviceTecnologias.getTecnologias().subscribe((result) => {
       this.tecnologias = result;
     })
-    this._servideTecnologiaTechRider.getTecnologiasTechRidersDetalles(this.user.idUsuario).subscribe((result)=>{
+    this._servideTecnologiaTechRider.getTecnologiasTechRidersDetalles(this.user.idUsuario).subscribe((result) => {
       this.tecnologiasTechRiders = result;
       console.log(this.tecnologiasTechRiders);
     })
@@ -107,30 +107,30 @@ export class UserTrComponent implements OnInit {
     const empresa = this.empresas.find((e) => e.idEmpresaCentro === idEmpresaCentro);
     return empresa ? empresa.nombre : '';
   }
-  actualizarTecnologiasTechrider(){
+  actualizarTecnologiasTechrider() {
 
   }
 
   guardarCambios() {
-    console.log(this.provinciaNueva )
+    console.log(this.provinciaNueva)
     // Obtener los valores de los campos del formulario
-    const idUsuario = this.user.idUsuario; 
+    const idUsuario = this.user.idUsuario;
     const nombre = this.user.nombre;
     const apellidos = this.user.apellidos;
     const email = this.user.email;
     const telefono = this.user.telefono;
     const linkedIn = this.user.linkedIn;
-    const password = this.user.password; 
-    const idRole = this.user.idRole; 
+    const password = this.user.password;
+    const idRole = this.user.idRole;
     var idProvincia = this.user.idProvincia;
     var idEmpresaCentro = this.user.idEmpresaCentro;
     if (this.provinciaNueva != null && this.provinciaNueva != 0) {
-      idProvincia = this.provinciaNueva 
+      idProvincia = this.provinciaNueva
     }
     if (this.idEmpresaCentroSeleccionado != null && this.idEmpresaCentroSeleccionado != 0) {
-      idEmpresaCentro = this.idEmpresaCentroSeleccionado; 
+      idEmpresaCentro = this.idEmpresaCentroSeleccionado;
     }
-    const estado = this.user.estado; 
+    const estado = this.user.estado;
 
     // Construir el objeto Usuario
     const usuario = new Usuario(
@@ -146,18 +146,40 @@ export class UserTrComponent implements OnInit {
       idEmpresaCentro,
       estado
     );
-      console.log(usuario)
+    console.log(usuario)
 
-      this._serviceUsuario.updateUsuario(usuario, this.token).subscribe((result)=>{
-        console.log(result)
-        this._serviceUsuario.getPerfilUsuario(this.token).subscribe((response)=>{
-          this.identity = response
-          localStorage.setItem('identity', JSON.stringify(this.identity))
-        })
+    this._serviceUsuario.updateUsuario(usuario, this.token).subscribe((result) => {
+      console.log(result)
+      this._serviceUsuario.getPerfilUsuario(this.token).subscribe((response) => {
+        this.identity = response
+        localStorage.setItem('identity', JSON.stringify(this.identity))
       })
-    
-      // aqui haz el put asdhajsd
-      this.ngOnInit();
-      this.toggleEditMode();
+    })
+
+    // aqui haz el put asdhajsd
+    this.addTecnologiasTechrider();
+    this.ngOnInit();
+    this.toggleEditMode();
+  }
+
+  addTecnologiasTechrider(): void {
+    var token = this.token;
+    var idUser = this.user.idUsuario;
+
+    const checkboxes = document.querySelectorAll('input[name="tecnologias"]:checked');
+
+    checkboxes.forEach((checkbox: any) => {
+      const tecnologiaId = parseInt(checkbox.value);
+
+      // Utilizar el servicio TecnologiasService para agregar tecnología al usuario
+      this._serviceTecnologias
+        .postTecnologiaTechrider(idUser, tecnologiaId, token)
+        .subscribe((response) => {
+          console.log(
+            `Añadiendo tecnología ${tecnologiaId} al usuario ${idUser}`,
+            response
+          );
+        });
+    });
   }
 }
