@@ -75,4 +75,10 @@ export class EmpresasCentrosService {
     .set ('Authorization' , "bearer " + token)
     return this._http.delete(url, {headers: headers})
   }
+
+  findEmpresaTechRider(id: number): Observable<any>{
+    var request = "api/querytools/findempresatechrider/" + id
+    var url = environment.urlApi + request
+    return this._http.get(url)
+  }
 }

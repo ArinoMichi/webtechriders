@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center align-items-center"
+    style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
+    <div class="col-md-8 p-4 rounded shadow-lg">
+        <form #insertForm="ngForm">
+            <div class="mb-4">
+                <label>Centro</label>
+                <select class="form-control" #cajacentro name="cajacentro">
+                    <option value="{{centro.idEmpresa}}" *ngFor="let centro of centros" [value]="curso.idCentro">
+                        {{centro.empresa}}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label>Nombre</label>
+                <input type="text" class="form-control" #cajanombre name="cajanombre" [value]="curso.nombreCurso">
+            </div>
+
+            <div class="mb-4">
+                <label>Descripción</label>
+                <input type="text" class="form-control" #cajadescripcion name="cajadescripcion" [value]="curso.descripcion">
+            </div>
+
+            <div class="text-center mt-4">
+                <button class="btn btn-dark" (click)="enviarCurso()" style="width: 100%;">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -71,33 +71,45 @@ export class SolicitarCharlaComponent implements OnInit{
     var curso = this.cajaCursoRef.nativeElement.value
     var provincia = this.cajaProvinciaRef.nativeElement.value
 
-    this.charla = new Charla (0, descripcion, 2, fecha, observaciones, null, 
-      fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
+    
 
       console.log(this.charla)
 
-    this._CharlasService.insertCharla(this.charla, this.token).subscribe((response) => {
-      console.log(response)
-      
-    })  
+    this._route.params.subscribe(params => {
+      let id = +params['id'];
+      if(id){
+        this.charla = new Charla (id, descripcion, 2, fecha, observaciones, null, 
+          fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
+        this._CharlasService.updateCharla(this.charla, this.token).subscribe((response) => {
+          console.log(response)
+        })  
+      } else {
+        this.charla = new Charla (0, descripcion, 2, fecha, observaciones, null, 
+          fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
+        this._CharlasService.insertCharla(this.charla, this.token).subscribe((response) => {
+          console.log(response)
+          
+        })  
+      }
+    }) 
   }
 
-  modificarCharla(): void {
-    var descripcion = this.cajaDescripcionRef.nativeElement.value
-    var fecha = this.datePipe.transform(this.cajaFechaRef.nativeElement.value, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-    var observaciones = this.cajaObservacionesRef.nativeElement.value
-    var fechaSolicitud = new Date().toISOString();
-    var turno = this.cajaTurnoRef.nativeElement.value
-    var modalidad = this.cajaModalidadRef.nativeElement.value
-    var curso = this.cajaCursoRef.nativeElement.value
-    var provincia = this.cajaProvinciaRef.nativeElement.value
+  // modificarCharla(): void {
+  //   var descripcion = this.cajaDescripcionRef.nativeElement.value
+  //   var fecha = this.datePipe.transform(this.cajaFechaRef.nativeElement.value, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+  //   var observaciones = this.cajaObservacionesRef.nativeElement.value
+  //   var fechaSolicitud = new Date().toISOString();
+  //   var turno = this.cajaTurnoRef.nativeElement.value
+  //   var modalidad = this.cajaModalidadRef.nativeElement.value
+  //   var curso = this.cajaCursoRef.nativeElement.value
+  //   var provincia = this.cajaProvinciaRef.nativeElement.value
 
-    this.charla = new Charla (0, descripcion, 2, fecha, observaciones, null, 
-      fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
+  //   this.charla = new Charla (0, descripcion, 2, fecha, observaciones, null, 
+  //     fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
 
-      this._CharlasService.updateCharla(this.charla, this.token).subscribe((response) => {
-        console.log(response)
-        this._router.navigate(['/'])
-      })
-  }
+  //     this._CharlasService.updateCharla(this.charla, this.token).subscribe((response) => {
+  //       console.log(response)
+  //       this._router.navigate(['/'])
+  //     })
+  // }
 }

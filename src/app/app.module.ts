@@ -35,6 +35,7 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
 import { NavbarPublicoComponent } from './components/navbar-publico/navbar-publico.component';
 import { SolicitarCharlaComponent } from './components/solicitar-charla/solicitar-charla.component';
 import { CursosProfesorComponent } from './components/cursos-profesor/cursos-profesor.component';
+import { FormularioCursoComponent } from './components/formulario-curso/formulario-curso.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CursosProfesorComponent } from './components/cursos-profesor/cursos-pro
     NavbarPublicoComponent,
     SolicitarCharlaComponent,
     CursosProfesorComponent,
+    FormularioCursoComponent,
   ],
   imports: [
     BrowserModule,
