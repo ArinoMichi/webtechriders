@@ -36,10 +36,11 @@ export class UserTrComponent implements OnInit {
     private _serviceUsuario: UsuariosService,
     private _serviceTecnologias : TecnologiasService,
     private _servideTecnologiaTechRider : TecnologiasTechRidersService
-  ) {}
+  ) {
+    this.loadUser();
+  }
 
   ngOnInit(): void {
-    this.loadUser();
     switch (this.user.idRole) {
       case 1:
         this.admin = true;
@@ -159,7 +160,6 @@ export class UserTrComponent implements OnInit {
       })
     
       // aqui haz el put asdhajsd
-      this.loadUser();
       this.toggleEditMode();
   }
 }
