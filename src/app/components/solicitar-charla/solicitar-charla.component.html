@@ -5,22 +5,22 @@
         <form #insertForm="ngForm">
             <div class="mb-4">
                 <label>Descripción</label>
-                <input type="text" class="form-control" #cajadescripcion name="cajadescripcion">
+                <input type="text" class="form-control" #cajadescripcion name="cajadescripcion" [value]="charla.descripcion">
             </div>
 
             <div class="mb-4">
                 <label>Fecha</label>
-                <input type="datetime-local" class="form-control" #cajafecha name="cajafecha">
+                <input type="datetime-local" class="form-control" #cajafecha name="cajafecha" [value]="charla.fechaCharla">
             </div>
 
             <div class="mb-4">
                 <label>Observaciones</label>
-                <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones">
+                <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones" [value]="charla.observaciones">
             </div>
 
             <div class="mb-4">
                 <label>Turno</label>
-                <select class="form-control" #cajaturno name="cajaturno">
+                <select class="form-control" #cajaturno name="cajaturno" [value]="charla.turno">
                     <option>Mañana</option>
                     <option>Tarde</option>
                 </select>
@@ -28,7 +28,7 @@
 
             <div class="mb-4">
                 <label>Modalidad</label>
-                <select class="form-control" #cajamodalidad name="cajamodalidad">
+                <select class="form-control" #cajamodalidad name="cajamodalidad" [value]="charla.modalidad">
                     <option>Presencial</option>
                     <option>Online</option>
                 </select>

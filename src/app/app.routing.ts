@@ -33,6 +33,7 @@ const appRoutes: Routes = [
   { path: 'centros-publico', component: CentrosPublicoComponent  },
   { path: 'charlas-publico', component: CharlasPublicoComponent  },
   { path: 'solicitar-charla', component: SolicitarCharlaComponent },
+  { path: 'editar-charla/:id', component: SolicitarCharlaComponent},
   { path: 'cursos-profesor', component: CursosProfesorComponent}
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
