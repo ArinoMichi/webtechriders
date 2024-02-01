@@ -1,5 +1,6 @@
 <div class="container mt-4">
     <h1>Tus charlas</h1>
+    <button class="btn btn-warning" [routerLink]="['/solicitar-charla']">Solicitar charla</button>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -15,10 +16,11 @@
           <td>{{charla.estadoCharla}}</td>
           <td>{{charla.fechaCharla }}</td>
           <td>
-            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
-            <button class="btn btn-danger" (click)="cancelarCharla(i)">Cancelar</button>
+            <button class="btn btn-warning" [routerLink]="['/editar-charla', charla.idCharla]">Editar</button>
+            <button class="btn btn-danger" (click)="eliminarCharla(i)">Eliminar</button>
           </td>
         </tr>
       </tbody>
     </table>
+    
   </div>

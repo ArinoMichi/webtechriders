@@ -71,10 +71,6 @@ export class SolicitarCharlaComponent implements OnInit{
     var curso = this.cajaCursoRef.nativeElement.value
     var provincia = this.cajaProvinciaRef.nativeElement.value
 
-    
-
-      console.log(this.charla)
-
     this._route.params.subscribe(params => {
       let id = +params['id'];
       if(id){
@@ -88,9 +84,9 @@ export class SolicitarCharlaComponent implements OnInit{
           fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
         this._CharlasService.insertCharla(this.charla, this.token).subscribe((response) => {
           console.log(response)
-          
         })  
       }
+      this._router.navigate(['/profesor-charlas'])
     }) 
   }
 
