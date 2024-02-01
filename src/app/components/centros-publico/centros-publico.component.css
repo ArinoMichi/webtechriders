@@ -45,23 +45,7 @@ body, html {
     margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
   }
 
-.containerAllTR{
-    justify-content: center !important;
-    --bs-gutter-x: 3 rem !important;
-    --bs-gutter-y: 2 rem !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-}
 
-.containerAllTR > div{
-    margin: 0.5% !important;
-}
-
-.tabla-empresas{
-  padding: 2%;
-}
-
-/* -------------- */
 .card {
   position: relative;
   width: 350px;
@@ -125,31 +109,55 @@ hr{
 /* ---------------------------------------- */
 .info {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  width: 320px;
-  padding: 12px;
+  width: 70%;
+  padding: 18px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: start;
-  background-color: #363636;
+  background-color: #454444bb;
   border-radius: 8px;
-  border: 1px solid #509AF8;
-  box-shadow: 0px 0px 5px -3px #111;
+  position: relative;
+  margin: auto;
 }
 
 .info__title {
-  font-weight: 500;
-  font-size: 14px;
-  color: #0C2A75;
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+  width: 85%;
 }
 
-.info__close {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+.info__icons{
   margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  width: 15%;
 }
 
-.info__close path {
-  fill: #0C2A75;
+.info__details {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color: #FFD43B;
+}
+
+.info__accept {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color:  #50f23a
+}
+
+.info__cancel {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color:  #d12929
+}
+
+.info__details :hover, .info__accept :hover, .info__cancel :hover {
+  color: white;
 }
