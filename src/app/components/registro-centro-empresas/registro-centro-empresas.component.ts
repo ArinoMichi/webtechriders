@@ -74,7 +74,7 @@ export class RegistroCentroEmpresasComponent implements OnInit {
       console.log(id)
       
       this._PeticionesAltaCentroEmpresa.postPeticionAltaCentroEmpresa(id, this.token).subscribe((responsePeticion) => {
-        this._router.navigate(['/']);
+        this._router.navigate(['/login']);
       });
     });
   }

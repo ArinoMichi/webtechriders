@@ -1,45 +1,23 @@
-<div class="container mt-4">
+<div>
     <h1>Peticiones Alta Usuarios</h1>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Usuario</th>
-                <th>Tipo Usuario</th>
-                <th>Detalles</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let peticion of peticionesAltaUsers">
-                <td>{{ getNombreUsuario(peticion.idUser) }}</td>
-                <td>{{ getTipoUsuario(getUsuarioInfo(peticion.idUser)) }}</td>
-                <td><button class="btn btn-secondary" (click)="mostrarDetallesUsuario(peticion.idUser)">Detalles</button></td>
-                <td>
-                    <button class="btn btn-success" (click)="aceptarPeticion(peticion.idPeticionAltaUsers, peticion.idUser)">Aceptar</button>
-                    <button class="btn btn-danger" (click)="denegarPeticion(peticion.idPeticionAltaUsers, peticion.idUser)">Denegar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div *ngFor="let peticion of peticionesAltaUsers" class="info">
+        <div class="info__title">{{ getNombreUsuario(peticion.idUser) }}</div>
+        <div class="info__title">{{ getTipoUsuario(getUsuarioInfo(peticion.idUser)) }}</div>
+        <div class="info__icons">
+          <div class="info__details"><i class="fa-solid fa-circle-info fa-2xl" (click)="mostrarDetallesUsuario(peticion.idUser)"></i></div>
+          <div class="info__accept"><i class="fa-solid fa-circle-check fa-2xl" (click)="aceptarPeticion(peticion.idPeticionAltaUsers, peticion.idUser)"></i></div>
+          <div class="info__cancel"><i class="fa-solid fa-circle-xmark fa-2xl" (click)="denegarPeticion(peticion.idPeticionAltaUsers, peticion.idUser)"></i></div>
+        </div>
+    </div>
+    <hr>
     <h1>Usuarios Activos</h1>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Detalles</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let usu of usuarios">
-                <tr *ngIf="usu.estado === 1">
-                    <td>{{ usu.nombre }} {{ usu.apellidos }}</td>
-                    <td><button class="btn btn-secondary" (click)="mostrarDetallesUsuario(usu.idUsuario)">Detalles</button></td>
-                    <td>
-                        <button class="btn btn-danger" (click)="borrarUsuario(usu.idUsuario, usu.nombre)">Eliminar</button>
-                    </td>
-                </tr>
-            </ng-container>
-        </tbody>
-    </table>
+    <div class="border-bottom border-3" *ngFor="let usu of usuarios" id="usuActivos" >
+        <div>
+            <p>{{ usu.nombre }} {{ usu.apellidos }}</p>
+        </div>
+        <div class="iconsActivos">
+            <div class="info__details"><i class="fa-solid fa-circle-info fa-2xl" (click)="mostrarDetallesUsuario(usu.idUsuario)"></i></div>
+            <div class="icon_eliminar"><i class="fa-solid fa-trash fa-2xl" (click)="borrarUsuario(usu.idUsuario, usu.nombre)"></i></div>
+        </div>
+    </div>
 </div>

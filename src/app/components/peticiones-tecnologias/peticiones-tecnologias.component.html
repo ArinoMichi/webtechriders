@@ -1,46 +1,24 @@
-<div class="container mt-4">
+<div>
     <h1>Peticiones Tecnologias</h1>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let peticion of peticionesTecnologias">
-                <td>{{ peticion.nombreTecnologia }}</td>
-
-                <td>
-                    <button class="btn btn-success"
-                        (click)="aceptarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Aceptar</button>
-                    <button class="btn btn-danger"
-                        (click)="denegarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Denegar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div *ngFor="let peticion of peticionesTecnologias" class="info">
+        <div class="info__title">{{ peticion.nombreTecnologia }}</div>
+        <div class="info__icons">
+          <div class="info__accept"><i class="fa-solid fa-circle-check fa-2xl" (click)="aceptarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)"></i></div>
+          <div class="info__cancel"><i class="fa-solid fa-circle-xmark fa-2xl"  (click)="denegarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)"></i></div>
+        </div>
+    </div>
+    <hr>
     <h1>Todas las Tecnologias</h1>
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Tipo de Tecnologia</th>
-                <th>Modificar</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let tec of tecnologias">
-                <td>{{ tec.nombreTecnologia }}</td>
-                <td>{{ getNombreTipoTecnologia(tec.idTipoTecnologia) }}</td>
-                <td>
-                    <button class="btn btn-outline-secondary" (click)="modificarTecnologia(tec.idTecnologia, tec.nombreTecnologia, tec.idTipoTecnologia)">Modificar</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger" (click)="borrarTecnologia(tec.idTecnologia, tec.nombreTecnologia)">Borrar</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="border-bottom border-3" *ngFor="let tec of tecnologias" id="activos" >
+        <div>
+            <h5>{{ tec.nombreTecnologia }}</h5>
+        </div>
+        <div>
+            <p>{{ getNombreTipoTecnologia(tec.idTipoTecnologia) }}</p>
+        </div>
+        <div class="iconsActivos">
+            <div class="info__modify"><i class="fa-solid fa-pen fa-2xl" (click)="modificarTecnologia(tec.idTecnologia, tec.nombreTecnologia, tec.idTipoTecnologia)"></i></div>
+            <div class="icon_eliminar"><i class="fa-solid fa-trash fa-2xl" (click)="borrarTecnologia(tec.idTecnologia, tec.nombreTecnologia)"></i></div>
+        </div>
+    </div>
 </div>

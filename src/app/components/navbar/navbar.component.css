@@ -2,7 +2,7 @@
     background-color: #000;
     padding: 8px;
     color: white;
-    
+    flex-wrap: nowrap !important;
   }
   .navbar-logo img {
     width: 110px;

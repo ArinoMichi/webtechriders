@@ -113,7 +113,7 @@ export class RegistroUsuariosComponent implements OnInit {
       console.log(id, email)
       
       this._PeticionAltaUsersService.postPeticionAlta(id).subscribe((responsePeticion) => {
-        this._router.navigate(['/']);
+        this._router.navigate(['/login']);
       });
       this.addTecnologiasTechrider(id, email, passwd);
     });
