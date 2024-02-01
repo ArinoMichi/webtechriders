@@ -21,7 +21,7 @@ export class PeticionesTecnologiasComponent implements OnInit {
   constructor(
     private _PeticionesTecnologiasService: PeticionesTecnologiasService,
     private _TecnologiasService: TecnologiasService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') ?? '';
@@ -34,31 +34,6 @@ export class PeticionesTecnologiasComponent implements OnInit {
     this._TecnologiasService.getTecnologias().subscribe((response) => {
       this.tecnologias = response;
     });
-  }
-
-  handlePeticionAceptada(idPeticion: number, nombreTecnologia: string): void {
-    this._PeticionesTecnologiasService
-      .deletePeticionTecnologia(this.token, idPeticion)
-      .subscribe(() => {
-        console.log('Petición eliminada después de aceptarla.');
-
-        this._TecnologiasService.getTecnologias().subscribe((response) => {
-          this.tecnologias = response;
-        });
-
-        this._PeticionesTecnologiasService
-          .getPeticionesTecnologias(this.token)
-          .subscribe((response) => {
-            this.peticionesTecnologias = response;
-            console.log(response);
-          });
-
-        this._TecnologiasService.getTecnologias().subscribe((response) => {
-          this.tecnologias = response;
-        });
-
-        Swal.fire('¡Petición aceptada!', '', 'success');
-      });
   }
 
   borrarTecnologia(idTecnologia: number, nombreTecnologia: string) {
@@ -147,7 +122,28 @@ export class PeticionesTecnologiasComponent implements OnInit {
           .insertTecnologia(nuevaTecnologia, this.token)
           .subscribe(() => {
             console.log('Nueva Tecnologia añadida.');
-            this.handlePeticionAceptada(idPeticion, nombreTecnologia);
+            this._PeticionesTecnologiasService
+              .deletePeticionTecnologia(this.token, idPeticion)
+              .subscribe(() => {
+                console.log('Petición eliminada después de aceptarla.');
+
+                this._TecnologiasService.getTecnologias().subscribe((response) => {
+                  this.tecnologias = response;
+                });
+
+                this._PeticionesTecnologiasService
+                  .getPeticionesTecnologias(this.token)
+                  .subscribe((response) => {
+                    this.peticionesTecnologias = response;
+                    console.log(response);
+                  });
+
+                this._TecnologiasService.getTecnologias().subscribe((response) => {
+                  this.tecnologias = response;
+                });
+
+                Swal.fire('¡Petición aceptada!', '', 'success');
+              });
           });
       }
     });
@@ -182,6 +178,46 @@ export class PeticionesTecnologiasComponent implements OnInit {
               });
 
             Swal.fire('¡Petición denegada!', '', 'success');
+          });
+      }
+    });
+  }
+
+  modificarTecnologia(idTecnologia: number, nombreTecnologia: string, idTipoTecnologia:number): void {
+    const mensaje = '¿Quieres modificar la tecnología: ' + nombreTecnologia + ' ?';
+  
+    Swal.fire({
+      title: `${mensaje}`,
+      html: `
+      <label for="nuevoNombreTecnologia">Nuevo nombre de la tecnología:</label>
+      <input id="nuevoNombreTecnologia" class="swal2-input" value="${nombreTecnologia}">
+      `,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, modificar',
+      cancelButtonText: 'Cancelar',
+      preConfirm: () => {
+        const nuevoNombreTecnologia = (<HTMLInputElement>document.getElementById('nuevoNombreTecnologia')).value;
+        return nuevoNombreTecnologia;
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const nuevoNombreTecnologia = result.value;
+        const tecnologiaModificada = {
+          idTecnologia: idTecnologia,
+          nombreTecnologia: nuevoNombreTecnologia,
+          idTipoTecnologia: idTipoTecnologia,
+        };
+
+        console.log(tecnologiaModificada)
+  
+        this._TecnologiasService.putTecnologia(tecnologiaModificada, this.token)
+          .subscribe(() => {
+            console.log('Tecnología modificada.');
+            this._TecnologiasService.getTecnologias().subscribe((response) => {
+              this.tecnologias = response;
+            });
+            Swal.fire('¡Tecnología modificada!', '', 'success');
           });
       }
     });

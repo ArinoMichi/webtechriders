@@ -26,6 +26,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Tipo de Tecnologia</th>
+                <th>Modificar</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -33,6 +34,9 @@
             <tr *ngFor="let tec of tecnologias">
                 <td>{{ tec.nombreTecnologia }}</td>
                 <td>{{ getNombreTipoTecnologia(tec.idTipoTecnologia) }}</td>
+                <td>
+                    <button class="btn btn-outline-secondary" (click)="modificarTecnologia(tec.idTecnologia, tec.nombreTecnologia, tec.idTipoTecnologia)">Modificar</button>
+                </td>
                 <td>
                     <button class="btn btn-danger" (click)="borrarTecnologia(tec.idTecnologia, tec.nombreTecnologia)">Borrar</button>
                 </td>
