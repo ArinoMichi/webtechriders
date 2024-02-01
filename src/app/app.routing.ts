@@ -7,6 +7,7 @@ import { ContactanosComponent } from './components/contactanos/contactanos.compo
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroUsuariosComponent } from './components/registro-usuarios/registro-usuarios.component';
+import { RegistroCentroEmpresasComponent } from './components/registro-centro-empresas/registro-centro-empresas.component';
 import { PaneltrComponent } from './components/paneltr/paneltr.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { HomePublicoComponent } from './components/home-publico/home-publico.component';
@@ -17,6 +18,10 @@ import { CharlasPublicoComponent } from './components/charlas-publico/charlas-pu
 import { SolicitarCharlaComponent } from './components/solicitar-charla/solicitar-charla.component';
 import { CursosProfesorComponent } from './components/cursos-profesor/cursos-profesor.component';
 import { FormularioCursoComponent } from './components/formulario-curso/formulario-curso.component';
+import { PeticionesUsuariosComponent } from './components/peticiones-usuarios/peticiones-usuarios.component';
+import { PeticionesEmpresasComponent } from './components/peticiones-empresas/peticiones-empresas.component';
+import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
+
 
 //DEFINIMOS UN ARRAY CON NUESTRAS RUTAS PARA LOS COMPONENTS
 const appRoutes: Routes = [
@@ -37,7 +42,12 @@ const appRoutes: Routes = [
   { path: 'editar-charla/:id', component: SolicitarCharlaComponent},
   { path: 'cursos-profesor', component: CursosProfesorComponent},
   { path: 'crear-curso', component: FormularioCursoComponent},
-  { path: 'modificar-curso/:id', component: FormularioCursoComponent}
+  { path: 'modificar-curso/:id', component: FormularioCursoComponent},
+  { path: 'centros-publico', component: CentrosPublicoComponent },
+  { path: 'peticiones-usuarios', component: PeticionesUsuariosComponent },
+  { path: 'peticiones-empresascentros', component: PeticionesEmpresasComponent },
+  { path: 'peticiones-tecnologias', component: PeticionesTecnologiasComponent },
+  { path: 'registo-empresascentros', component: RegistroCentroEmpresasComponent },
 ];
 //DESDE ROUTING DEBEMOS EXPORTAR DOS CARACTERISTICAS PARA IMPLEMENTARLAS
 //DENTRO DEL MODULE

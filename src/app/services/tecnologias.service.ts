@@ -63,4 +63,14 @@ export class TecnologiasService {
   
     return this._http.post(url, null, { headers: headers });
   }
+
+  putTecnologia(tecnologia: Tecnologia, token: string): Observable<any>{
+    var json = JSON.stringify(tecnologia)
+    var request = "api/tecnologias"
+    var url = environment.urlApi + request
+    var headers = new HttpHeaders()
+    .set('Content-type', 'application/json')
+    .set('Authorization', "bearer " + token)
+    return this._http.put(url, json, {headers: headers})
+  }
 }

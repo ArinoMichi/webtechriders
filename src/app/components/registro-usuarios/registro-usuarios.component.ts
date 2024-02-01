@@ -103,17 +103,19 @@ export class RegistroUsuariosComponent implements OnInit {
     };
 
     this._UsuariosService.insertUsuario(nuevoUsuario).subscribe((response) => {
-      console.log('Respuesta del Servicio:', response);
-      var id = response.idUsuario;
-      var email = response.email;
-      var passwd = response.password;
+      console.log('Respuesta del ServicioRegistro:', response);
+    
+      // Asegúrate de que las propiedades correctas se están accediendo
+      var id = response['idUsuario'];
+      var email = response['email'];
+      var passwd = response['password'];
 
-      this._PeticionAltaUsersService
-        .postPeticionAlta(id)
-        .subscribe((response) => {
-          this._router.navigate(['/']);
-        });
-        this.addTecnologiasTechrider(id, email, passwd);
+      console.log(id, email)
+      
+      this._PeticionAltaUsersService.postPeticionAlta(id).subscribe((responsePeticion) => {
+        this._router.navigate(['/']);
+      });
+      this.addTecnologiasTechrider(id, email, passwd);
     });
   }
 
@@ -124,7 +126,7 @@ export class RegistroUsuariosComponent implements OnInit {
     };
 
     this._AuthService.auth(usuarioLogin).subscribe((authResponse) => {
-      console.log('Respuesta del Servicio:', authResponse);
+      console.log('Respuesta del ServicioLogin:', authResponse);
       var token = authResponse.response;
 
       const checkboxes = document.querySelectorAll('input[name="tecnologias"]:checked');

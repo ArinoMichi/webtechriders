@@ -3,6 +3,8 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ProvinciasService } from 'src/app/services/provincias.service';
 import { EmpresaCentroService } from 'src/app/services/empresa-centro.service';
 
+import { PeticionesAltaCentroEmpresa } from 'src/app/services/peticiones-alta-centroempresa.service';
+
 import { Provincia } from 'src/app/models/provincia.model';
 import { EmpresaCentro } from 'src/app/models/empresa-centro.model';
 
@@ -30,6 +32,8 @@ export class RegistroCentroEmpresasComponent implements OnInit {
   constructor(
     private _ProvinciasService: ProvinciasService,
     private _EmpresaCentroService: EmpresaCentroService,
+    private _PeticionesAltaCentroEmpresa: PeticionesAltaCentroEmpresa,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +69,13 @@ export class RegistroCentroEmpresasComponent implements OnInit {
 
     this._EmpresaCentroService.postEmpresaCentro(nuevaEmpresa, this.token).subscribe((response) => {
       console.log('Respuesta del Servicio:', response); 
+      var id = response['idEmpresaCentro'];
+
+      console.log(id)
+      
+      this._PeticionesAltaCentroEmpresa.postPeticionAltaCentroEmpresa(id, this.token).subscribe((responsePeticion) => {
+        this._router.navigate(['/']);
+      });
     });
   }
 }

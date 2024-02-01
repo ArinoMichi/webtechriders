@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <h1>Peticiones Alta Empresas/Centros</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Centro/Empresa</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let peticion of peticionesCentroEmpresa">
+                <td>{{ getNombreEmpresaCentro(peticion.idCentroEmpresa) }}</td>
+                <td>{{ getTipoEmpresaCentro(getEmpresaCentroInfo(peticion.idCentroEmpresa)) }}</td>
+                <td><button class="btn btn-secondary"
+                        (click)="mostrarDetallesEmpresaCentro(peticion.idCentroEmpresa)">Detalles</button></td>
+                <td>
+                    <button class="btn btn-success"
+                        (click)="aceptarPeticion(peticion.idPeticionCentroEmpresa, peticion.idCentroEmpresa)">Aceptar</button>
+                    <button class="btn btn-danger"
+                        (click)="denegarPeticion(peticion.idPeticionCentroEmpresa, peticion.idCentroEmpresa)">Denegar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Todas las Empresas Activas</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let emp of empresasCentros">
+                <tr *ngIf="emp.idTipoEmpresa === 1 && emp.estadoEmpresa === 1">
+                    <td>{{ emp.nombre }}</td>
+                    <td><button class="btn btn-secondary" (click)="mostrarDetallesEmpresaCentro(emp.idEmpresaCentro)">Detalles</button></td>
+                    <td>
+                        <button class="btn btn-danger" (click)="borrarEmpresaCentro(emp.idEmpresaCentro, emp.nombre)">Eliminar</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <h1>Todos los Centros Activos</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let emp of empresasCentros">
+                <tr *ngIf="emp.idTipoEmpresa === 2 && emp.estadoEmpresa === 1">
+                    <td>{{ emp.nombre }}</td>
+                    <td><button class="btn btn-secondary" (click)="mostrarDetallesEmpresaCentro(emp.idEmpresaCentro)">Detalles</button></td>
+                    <td>
+                        <button class="btn btn-danger" (click)="borrarEmpresaCentro(emp.idEmpresaCentro, emp.nombre)">Eliminar</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
