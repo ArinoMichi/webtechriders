@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Tecnologia } from 'src/app/models/tecnologia.model';
 import { Usuario } from 'src/app/models/usuario.model';
 import { EmpresasCentrosService } from 'src/app/services/empresas-centros.service';
 import { ProvinciasService } from 'src/app/services/provincias.service';
+import { TecnologiasTechRidersService } from 'src/app/services/tecnologias-tech-riders.service';
+import { TecnologiasService } from 'src/app/services/tecnologias.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -22,6 +24,8 @@ export class UserTrComponent implements OnInit {
   provincias: any[] = [];
   empresas: any[] = [];
   centros: any[] = [];
+  tecnologias!: Tecnologia[];
+  tecnologiasTechRiders!: any[];
   idEmpresaCentroSeleccionado!: number;
   provinciaNueva!: number;
   identity: any
@@ -29,7 +33,9 @@ export class UserTrComponent implements OnInit {
   constructor(
     private _serviceEmpresasCentros: EmpresasCentrosService,
     private _serviceProvincias: ProvinciasService,
-    private _serviceUsuario: UsuariosService
+    private _serviceUsuario: UsuariosService,
+    private _serviceTecnologias : TecnologiasService,
+    private _servideTecnologiaTechRider : TecnologiasTechRidersService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +75,13 @@ export class UserTrComponent implements OnInit {
     this._serviceProvincias.getProvincias().subscribe((result)=>{
       this.provincias = result;
     })
+    this._serviceTecnologias.getTecnologias().subscribe((result)=>{
+      this.tecnologias = result;
+    })
+    this._servideTecnologiaTechRider.getTecnologiasTechRidersDetalles(this.user.idUsuario).subscribe((result)=>{
+      this.tecnologiasTechRiders = result;
+      console.log(this.tecnologiasTechRiders);
+    })
   }
 
   toggleEditMode(): void {
@@ -88,6 +101,9 @@ export class UserTrComponent implements OnInit {
   getNombreEmpresa(idEmpresaCentro: number): string {
     const empresa = this.empresas.find((e) => e.idEmpresaCentro === idEmpresaCentro);
     return empresa ? empresa.nombre : '';
+  }
+  actualizarTecnologiasTechrider(){
+
   }
 
   guardarCambios() {
@@ -134,6 +150,9 @@ export class UserTrComponent implements OnInit {
           localStorage.setItem('identity', JSON.stringify(this.identity))
         })
       })
+    
+      // aqui haz el put asdhajsd
       
+      this.toggleEditMode();
   }
 }

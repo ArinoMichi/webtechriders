@@ -47,7 +47,7 @@
 
   <div class="col-md-12 mb-3" *ngIf="techrider || responsable">
     <div class="text-center">
-      <h2 class="mb-2">Cambiar Empresa: </h2>
+      <h2 class="mb-2">Empresa: </h2>
       <div *ngIf="!editMode">
         <input type="text" class="form-control" [value]="getNombreEmpresa(user.idEmpresaCentro)" readonly />
       </div>
@@ -63,7 +63,7 @@
   </div>
   <div class="col-md-12 mb-3" *ngIf="profesor">
     <div class="text-center">
-      <h2 class="mb-2">Cambiar Centro: </h2>
+      <h2 class="mb-2">Centro: </h2>
       <div *ngIf="!editMode">
         <input type="text" class="form-control" [value]="getNombreCentro(user.idEmpresaCentro)" readonly />
       </div>
@@ -76,4 +76,39 @@
       </div>
     </div>
   </div>
-</div>
+
+  <div *ngIf="techrider">
+    <hr>
+    <div class="col-md-12 mb-6">
+      <h2 class="mb-2 text-center">Tecnologias:</h2>
+      <br>
+      <div *ngIf="!editMode">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let tecnologia of tecnologiasTechRiders; let i = index">
+            <div class="card mb-3">
+              <div class="card-body text-center" >
+                {{ tecnologia.tecnologia }}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div *ngIf="editMode">
+        <div class="row justify-content-center">
+          <div class="col-md-6"> <!-- Ajusta el ancho de la columna externa según tus necesidades -->
+            <div class="form-group row">
+              <div class="form-check col-md-3" *ngFor="let tecnologia of tecnologias; let i = index">
+                <input class="form-check-input" type="checkbox" [value]="tecnologia.idTecnologia" name="tecnologias">
+                <label class="form-check-label">{{tecnologia.nombreTecnologia}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
