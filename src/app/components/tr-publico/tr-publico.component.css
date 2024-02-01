@@ -57,3 +57,23 @@ body, html {
   justify-content: center;
   align-items: center;
 }
+
+h5{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.card-body-data{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 8%;
+}
+
+p{
+  display: flex;
+  justify-content: center;
+}

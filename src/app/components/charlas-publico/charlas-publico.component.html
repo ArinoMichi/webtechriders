@@ -31,8 +31,10 @@
             </div>
             <div class="content">
                     <p class="heading">{{ charla.descripcionCharla }}</p>
-                    <p>Estado: {{ charla.estadoCharla }}</p>
-                    <p>TechRider: {{ charla.techRider }}</p>
+                    <!-- <p>Estado: {{ charla.estadoCharla }}</p> -->
+                    <p *ngIf="charla.techRider">
+                        TechRider: {{ charla.techRider }}
+                    </p>
                     <p>Curso: {{ charla.nombreCurso }}</p>
                     <p>Fecha: {{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</p>
                     <div *ngFor="let valoracion of valoraciones">

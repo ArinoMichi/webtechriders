@@ -27,13 +27,15 @@ export class TrPublicoComponent {
       const idEmpresa = this.route.snapshot.paramMap.get('idEmpresa');
       let identity = JSON.parse(localStorage.getItem('identity') || '{}');
 
-      if (identity) {
-        this.getTrEmpresaResponsable(identity.idEmpresaCentro);
-      } else if (idEmpresa) {
-        this.getTrEmpresa(+idEmpresa);
-      } else {
-        this.getAllTr();
-      }
+      // if (identity) {
+      //   this.getTrEmpresaResponsable(identity.idEmpresaCentro);
+      // } else if (idEmpresa) {
+      //   this.getTrEmpresa(+idEmpresa);
+      // } else {
+      //   this.getAllTr();
+      // }
+
+      this.getAllTr();
     }
 
   getTrEmpresa(idEmpresa: number): void {

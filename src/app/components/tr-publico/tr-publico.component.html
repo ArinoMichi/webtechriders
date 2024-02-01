@@ -14,9 +14,11 @@
         <img src="https://th.bing.com/th/id/OIP.t75oQHR4WMinflcpcBlXSQHaFT?rs=1&pid=ImgDetMain" class="card-img-top" alt="..." style="width: 200px;">
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{ tr.techRider }}</h5>
-        <p class="card-text">{{ tr.email }}</p>
-        <p><a href="{{tr.linkedIn}}" class="btn btn-primary">LinkedIn</a></p>
+        <div class="card-body-data">
+          <h5>{{ tr.techRider }}</h5>
+          <!-- <p class="card-text">{{ tr.email }}</p> -->
+          <a href="{{tr.linkedIn}}"><i class="fa-brands fa-linkedin fa-2xl" style="color: #3f7de9;"></i></a>
+        </div>
         <p *ngIf="!localStorageContent">
           <a routerLink="/charlas-publico" class="btn btn-primary">Charlas</a>
         </p>
