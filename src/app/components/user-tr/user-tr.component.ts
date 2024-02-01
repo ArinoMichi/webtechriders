@@ -39,8 +39,7 @@ export class UserTrComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.token = localStorage.getItem('token') ?? '';
-    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+    this.loadUser();
     switch (this.user.idRole) {
       case 1:
         this.admin = true;
@@ -59,9 +58,12 @@ export class UserTrComponent implements OnInit {
     }
     this.inicializarFormulario();
   }
+  ngDoCheck(): void {
+    this.loadUser()
+  }
 
   loadUser(){
-    this.identity = JSON.parse(localStorage.getItem('identity') || '{}')
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}')
     this.token = localStorage.getItem('token') ?? '';
   }
 
@@ -157,7 +159,7 @@ export class UserTrComponent implements OnInit {
       })
     
       // aqui haz el put asdhajsd
-      this.ngOnInit();
+      this.loadUser();
       this.toggleEditMode();
   }
 }
