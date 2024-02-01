@@ -42,6 +42,7 @@ import { PeticionesEmpresasComponent } from './components/peticiones-empresas/pe
 import { PeticionesTecnologiasComponent } from './components/peticiones-tecnologias/peticiones-tecnologias.component';
 import { UserTrComponent } from './components/user-tr/user-tr.component';
 import { ProfesorCharlasComponent } from './components/profesor-charlas/profesor-charlas.component';
+import { RepresentanteCharlasComponent } from './components/representante-charlas/representante-charlas.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ProfesorCharlasComponent } from './components/profesor-charlas/profesor
     RegistroCentroEmpresasComponent,
     PeticionesTecnologiasComponent,
     UserTrComponent,
-    ProfesorCharlasComponent
+    ProfesorCharlasComponent,
+    RepresentanteCharlasComponent
   ],
   imports: [
     BrowserModule,
