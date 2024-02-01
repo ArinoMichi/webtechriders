@@ -24,6 +24,7 @@ export class UserTrComponent implements OnInit {
   centros: any[] = [];
   idEmpresaCentroSeleccionado!: number;
   provinciaNueva!: number;
+  identity: any
 
   constructor(
     private _serviceEmpresasCentros: EmpresasCentrosService,
@@ -128,8 +129,11 @@ export class UserTrComponent implements OnInit {
 
       this._serviceUsuario.updateUsuario(usuario, this.token).subscribe((result)=>{
         console.log(result)
+        this._serviceUsuario.getPerfilUsuario(this.token).subscribe((response)=>{
+          this.identity = response
+          localStorage.setItem('identity', JSON.stringify(this.identity))
+        })
       })
       
   }
 }
-
