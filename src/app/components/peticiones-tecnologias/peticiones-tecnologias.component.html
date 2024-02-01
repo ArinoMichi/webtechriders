@@ -1,21 +1,40 @@
 <div class="container mt-4">
-    <h1>Peticiones Alta Usuarios</h1>
+    <h1>Peticiones Tecnologias</h1>
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Tipo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let peticion of peticionesTecnologias">
                 <td>{{ peticion.nombreTecnologia }}</td>
-                <td>{{ peticion.idTipoPeticionCategoria }}</td>
-                
+
                 <td>
-                    <button class="btn btn-success" (click)="aceptarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia, peticion.idTipoPeticionCategoria)">Aceptar</button>
-                    <button class="btn btn-danger" (click)="denegarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Denegar</button>
+                    <button class="btn btn-success"
+                        (click)="aceptarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Aceptar</button>
+                    <button class="btn btn-danger"
+                        (click)="denegarPeticion(peticion.idPeticionTecnologia, peticion.nombreTecnologia)">Denegar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Todas las Tecnologias</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo de Tecnologia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tec of tecnologias">
+                <td>{{ tec.nombreTecnologia }}</td>
+                <td>{{ getNombreTipoTecnologia(tec.idTipoTecnologia) }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="borrarTecnologia(tec.idTecnologia, tec.nombreTecnologia)">Borrar</button>
                 </td>
             </tr>
         </tbody>

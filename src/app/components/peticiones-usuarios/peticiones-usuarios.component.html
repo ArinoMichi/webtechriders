@@ -21,4 +21,25 @@
             </tr>
         </tbody>
     </table>
+    <h1>Usuarios Activos</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Detalles</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let usu of usuarios">
+                <tr *ngIf="usu.estado === 1">
+                    <td>{{ usu.nombre }} {{ usu.apellidos }}</td>
+                    <td><button class="btn btn-secondary" (click)="mostrarDetallesUsuario(usu.idUsuario)">Detalles</button></td>
+                    <!-- <td>
+                        <button class="btn btn-danger" (click)="borrarEmpresaCentro(emp.idEmpresaCentro, emp.nombre)">Eliminar</button>
+                    </td> -->
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
 </div>

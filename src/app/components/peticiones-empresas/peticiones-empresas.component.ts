@@ -14,7 +14,8 @@ import { EmpresaCentro } from 'src/app/models/empresa-centro.model';
 })
 export class PeticionesEmpresasComponent {
   public peticionesCentroEmpresa!: Array<PeticionCentroEmpresa>;
-  public empresasCentros: EmpresaCentro[] = [];
+  public empresasCentros!: Array<EmpresaCentro>;
+  public empresasCentrosFilter: EmpresaCentro[] = [];
   public empresaCentro!: EmpresaCentro;
   token: string = '';
 
@@ -26,26 +27,30 @@ export class PeticionesEmpresasComponent {
   ngOnInit(): void {
     this.token = localStorage.getItem('token') ?? '';
 
-    // Obtener peticiones de usuarios
+    // Obtener peticiones de empresa
     this._PeticionesAltaCentroEmpresa.getPeticionesCentroEmpresa(this.token).subscribe((response) => {
       this.peticionesCentroEmpresa = response;
 
-      // Obtener información de cada usuario asociado a una petición
+      // Obtener información de cada empresa asociado a una petición
       this.peticionesCentroEmpresa.forEach((peticion) => {
         this._EmpresaCentroService.getEmpresaCentro(peticion.idCentroEmpresa).subscribe((empresaCentro: EmpresaCentro) => {
-          this.empresasCentros.push(empresaCentro);
+          this.empresasCentrosFilter.push(empresaCentro);
         });
       });
     });
+
+    this._EmpresaCentroService.getEmpresasCentros().subscribe((response) => {
+      this.empresasCentros = response;
+    })
   }
 
   getNombreEmpresaCentro(idCentroEmpresa: number): string {
-    const empresaCentro = this.empresasCentros.find(u => u.idEmpresaCentro === idCentroEmpresa);
+    const empresaCentro = this.empresasCentrosFilter.find(u => u.idEmpresaCentro === idCentroEmpresa);
     return empresaCentro ? `${empresaCentro.nombre}` : '';
   }
 
   getEmpresaCentroInfo(idEmpresaCentro: number): EmpresaCentro | undefined {
-    return this.empresasCentros.find(u => u.idEmpresaCentro === idEmpresaCentro);
+    return this.empresasCentrosFilter.find(u => u.idEmpresaCentro === idEmpresaCentro);
   }
 
   getTipoEmpresaCentro(empresaCentro: EmpresaCentro | undefined): string {
@@ -61,6 +66,30 @@ export class PeticionesEmpresasComponent {
     } else {
       return 'Desconocido';
     }
+  }
+
+  borrarEmpresaCentro(idEmpresaCentro: number, nombreEmpresaCentro: string) {
+    console.log(idEmpresaCentro, nombreEmpresaCentro)
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'estas seguro que quieres borrar ' + nombreEmpresaCentro,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._EmpresaCentroService.deleteEmpresaCentro(idEmpresaCentro, this.token)
+          .subscribe(() => {
+            console.log('Tecnologia eliminada.');
+            this._EmpresaCentroService.getEmpresasCentros().subscribe((response) => {
+              this.empresasCentros = response;
+              console.log(response);
+            });
+            Swal.fire('Empresa/Centro borrado!', '', 'success');
+          });
+      }
+    });
   }
 
   mostrarDetallesEmpresaCentro(idEmpresaCentro: number): void {

@@ -8,7 +8,7 @@ import { EmpresaCentro } from '../models/empresa-centro.model';
   providedIn: 'root',
 })
 export class EmpresaCentroService {
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {}
 
   getEmpresasCentros(): Observable<any> {
     var request = 'api/empresascentros';
@@ -33,8 +33,16 @@ export class EmpresaCentroService {
     return this._http.post(url, json, { headers: headers });
   }
 
-  updateEstado(idCentroEmpresa: number, estado: number, token: string): Observable<any> {
-    var request = 'api/EmpresasCentros/UpdateEstadoEmpresaCentro/' + idCentroEmpresa + '/' + estado;
+  updateEstado(
+    idCentroEmpresa: number,
+    estado: number,
+    token: string
+  ): Observable<any> {
+    var request =
+      'api/EmpresasCentros/UpdateEstadoEmpresaCentro/' +
+      idCentroEmpresa +
+      '/' +
+      estado;
     var url = environment.urlApi + request;
     var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
 
@@ -42,5 +50,11 @@ export class EmpresaCentroService {
 
     return this._http.put(url, null, options);
   }
-}
 
+  deleteEmpresaCentro(id: number, token: string): Observable<any> {
+    var request = 'api/EmpresasCentros/' + id;
+    var url = environment.urlApi + request;
+    var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this._http.delete(url, { headers: headers });
+  }
+}

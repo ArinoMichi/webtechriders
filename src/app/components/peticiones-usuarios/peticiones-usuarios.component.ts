@@ -14,7 +14,9 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class PeticionesUsuariosComponent implements OnInit {
   public peticionesAltaUsers!: Array<PeticionAltaUsers>;
-  public usuarios: Usuario[] = [];
+  public usuarios!: Array<Usuario>
+  public usuariosFilter: Usuario[] = [];
+
   public usuario!: Usuario;
   token: string = '';
 
@@ -33,19 +35,22 @@ export class PeticionesUsuariosComponent implements OnInit {
       // Obtener información de cada usuario asociado a una petición
       this.peticionesAltaUsers.forEach((peticion) => {
         this._UsuariosService.getUsuario(peticion.idUser, this.token).subscribe((usuario: Usuario) => {
-          this.usuarios.push(usuario);
+          this.usuariosFilter.push(usuario);
         });
       });
     });
+    this._UsuariosService.getUsuarios(this.token).subscribe((response) => {
+      this.usuarios = response;
+    })
   }
 
   getNombreUsuario(idUsuario: number): string {
-    const usuario = this.usuarios.find(u => u.idUsuario === idUsuario);
+    const usuario = this.usuariosFilter.find(u => u.idUsuario === idUsuario);
     return usuario ? `${usuario.nombre} ${usuario.apellidos}` : '';
   }
 
   getUsuarioInfo(idUsuario: number): Usuario | undefined {
-    return this.usuarios.find(u => u.idUsuario === idUsuario);
+    return this.usuariosFilter.find(u => u.idUsuario === idUsuario);
   }
 
   getTipoUsuario(usuario: Usuario | undefined): string {
