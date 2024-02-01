@@ -5,7 +5,9 @@ import { EmpresasCentrosService } from 'src/app/services/empresas-centros.servic
 import { ProvinciasService } from 'src/app/services/provincias.service';
 import { TecnologiasTechRidersService } from 'src/app/services/tecnologias-tech-riders.service';
 import { TecnologiasService } from 'src/app/services/tecnologias.service';
+import { PeticionesTecnologiasService } from 'src/app/services/peticiones-tecnologias.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-tr',
@@ -35,7 +37,8 @@ export class UserTrComponent implements OnInit {
     private _serviceProvincias: ProvinciasService,
     private _serviceUsuario: UsuariosService,
     private _serviceTecnologias: TecnologiasService,
-    private _servideTecnologiaTechRider: TecnologiasTechRidersService
+    private _serviceTecnologiaTechRider: TecnologiasTechRidersService,
+    private _PeticionesTecnologiasService: PeticionesTecnologiasService
   ) {
     this.loadUser();
   }
@@ -83,7 +86,7 @@ export class UserTrComponent implements OnInit {
     this._serviceTecnologias.getTecnologias().subscribe((result) => {
       this.tecnologias = result;
     })
-    this._servideTecnologiaTechRider.getTecnologiasTechRidersDetalles(this.user.idUsuario).subscribe((result) => {
+    this._serviceTecnologiaTechRider.getTecnologiasTechRidersDetalles(this.user.idUsuario).subscribe((result) => {
       this.tecnologiasTechRiders = result;
       console.log(this.tecnologiasTechRiders);
     })
@@ -106,9 +109,6 @@ export class UserTrComponent implements OnInit {
   getNombreEmpresa(idEmpresaCentro: number): string {
     const empresa = this.empresas.find((e) => e.idEmpresaCentro === idEmpresaCentro);
     return empresa ? empresa.nombre : '';
-  }
-  actualizarTecnologiasTechrider() {
-
   }
 
   guardarCambios() {
@@ -159,6 +159,7 @@ export class UserTrComponent implements OnInit {
     // aqui haz el put asdhajsd
     this.addTecnologiasTechrider();
     this.ngOnInit();
+    this.inicializarFormulario();
     this.toggleEditMode();
   }
 
@@ -180,6 +181,32 @@ export class UserTrComponent implements OnInit {
             response
           );
         });
+    });
+  }
+
+  nuevaTecnologia(): void {
+    Swal.fire({
+      title: '¿Qué tecnología quieres solicitar?',
+      icon: 'question',
+      input: 'text',  
+      inputLabel: 'Nombre de la tecnología',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, solicitar',
+      cancelButtonText: 'Cancelar',
+      inputValidator: (value) => {
+        return !value && 'Por favor, ingresa un nombre para la tecnología';
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const tecnologiaNombre = result.value as string;
+        
+        this._PeticionesTecnologiasService
+          .postPeticionTecnologias(tecnologiaNombre, this.token)
+          .subscribe(() => {
+            console.log('Tecnología solicitada.');
+            Swal.fire('¡Tecnología solicitada!', '', 'success');
+          });
+      }
     });
   }
 }
