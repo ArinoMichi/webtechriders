@@ -5,11 +5,13 @@ import { Charla } from 'src/app/models/charla.model';
 import { Curso } from 'src/app/models/curso.model';
 import { CursosService } from 'src/app/services/cursos.service';
 import { CharlasService } from 'src/app/services/charlas.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-solicitar-charla',
   templateUrl: './solicitar-charla.component.html',
-  styleUrls: ['./solicitar-charla.component.css']
+  styleUrls: ['./solicitar-charla.component.css'],
+  providers: [DatePipe]
 })
 export class SolicitarCharlaComponent implements OnInit{
   @ViewChild('cajadescripcion') cajaDescripcionRef!: ElementRef
@@ -29,7 +31,8 @@ export class SolicitarCharlaComponent implements OnInit{
   constructor(
     private _ProvinciasService: ProvinciasService,
     private _CursosService: CursosService,
-    private _CharlasService: CharlasService
+    private _CharlasService: CharlasService,
+    private datePipe: DatePipe
   )
   {
     this.identity = JSON.parse(localStorage.getItem('identity') || '{}')
@@ -43,21 +46,23 @@ export class SolicitarCharlaComponent implements OnInit{
     this._CursosService.getAllCursosFromProfesor(this.identity.idUsuario).subscribe((response) => {
       this.cursos = response;
     })
+
+    console.log(this.token)
   }
 
   enviarCharla(): void {
 
     var descripcion = this.cajaDescripcionRef.nativeElement.value
-    var fecha: Date = this.cajaFechaRef.nativeElement.value
+    var fecha = this.datePipe.transform(this.cajaFechaRef.nativeElement.value, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     var observaciones = this.cajaObservacionesRef.nativeElement.value
-    var fechaSolicitud: Date = new Date()
+    var fechaSolicitud = new Date().toISOString();
     var turno = this.cajaTurnoRef.nativeElement.value
     var modalidad = this.cajaModalidadRef.nativeElement.value
     var curso = this.cajaCursoRef.nativeElement.value
     var provincia = this.cajaProvinciaRef.nativeElement.value
 
-    this.charla = new Charla (0, descripcion, 2, fecha, observaciones, 0, 
-      fechaSolicitud, turno, modalidad, "", curso, provincia)
+    this.charla = new Charla (0, descripcion, 2, fecha, observaciones, null, 
+      fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
 
       console.log(this.charla)
 
