@@ -92,17 +92,23 @@ export class UserTrComponent implements OnInit {
   guardarCambios() {
     console.log(this.provinciaNueva )
     // Obtener los valores de los campos del formulario
-    const idUsuario = this.user.idUsuario; // Ajusta según tus necesidades
+    const idUsuario = this.user.idUsuario; 
     const nombre = this.user.nombre;
     const apellidos = this.user.apellidos;
     const email = this.user.email;
     const telefono = this.user.telefono;
     const linkedIn = this.user.linkedIn;
-    const password = this.user.password; // Ajusta según tus necesidades
-    const idRole = this.user.idRole; // Ajusta según tus necesidades
-    const idProvincia = this.provinciaNueva // Ajusta según tus necesidades
-    const idEmpresaCentro = this.idEmpresaCentroSeleccionado; // Ajusta según tus necesidades
-    const estado = this.user.estado; // Ajusta según tus necesidades
+    const password = this.user.password; 
+    const idRole = this.user.idRole; 
+    var idProvincia = this.user.idProvincia;
+    var idEmpresaCentro = this.user.idEmpresaCentro;
+    if (this.provinciaNueva != null && this.provinciaNueva != 0) {
+      idProvincia = this.provinciaNueva 
+    }
+    if (this.idEmpresaCentroSeleccionado != null && this.idEmpresaCentroSeleccionado != 0) {
+      idEmpresaCentro = this.idEmpresaCentroSeleccionado; 
+    }
+    const estado = this.user.estado; 
 
     // Construir el objeto Usuario
     const usuario = new Usuario(
