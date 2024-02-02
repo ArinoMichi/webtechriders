@@ -39,9 +39,11 @@ export class ProfesorCharlasComponent {
     }).then((result) => {
       if (result.isConfirmed) {
         const charlaSeleccionada = this.charlas[index];
-        const idCharla = charlaSeleccionada.idCharla;
+        const idCharla = parseInt(charlaSeleccionada.idCharla);
+        console.log(idCharla);
         this._charlasService.deleteCharla(idCharla, this.token).subscribe(
           (result) => {
+            console.log(result);
             Swal.fire({
               title: 'Aceptado',
               text: 'La charla ha sido eliminada.',

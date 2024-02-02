@@ -43,7 +43,7 @@ export class CharlasService {
   }
 
   deleteCharla(id: number, token: string): Observable<any> {
-    var request = 'api/charlas/' + id;
+    var request = 'api/Charlas/' + id;
     var url = environment.urlApi + request;
     var headers = new HttpHeaders().set('Authorization', 'bearer ' + token);
     return this._http.delete(url, { headers: headers });
