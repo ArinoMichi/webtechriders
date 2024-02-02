@@ -19,6 +19,15 @@ export class TecnologiasTechRidersService {
     return this._http.get(url)
   }
 
+  
+  getTecnologiasTechRidersDetalles(idtechrider: number): Observable<any> {
+    var request = "api/QueryTools/FindTecnologiasTechrider?idtechrider=" + idtechrider;
+    var url = environment.urlApi + request;
+
+    return this._http.get(url);
+  }
+  
+
   insertTecnologiaTechRiders(tecnologia: TecnologiaTechRiders, token: string): Observable<any>{
     var request = "api/tecnologiastechriders"
     var url = environment.urlApi + request

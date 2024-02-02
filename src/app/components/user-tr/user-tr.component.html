@@ -1,7 +1,7 @@
 <div class="container my-4">
   <div class="container my-4 d-flex justify-content-center align-items-center">
     <h1 class="text-center mb-0 me-2 ms-2">Información Perfil</h1>
-    <button  class="btn btn-dark ms-2" *ngIf="editMode" (click)="guardarCambios()">Guardar</button>
+    <button class="btn btn-dark ms-2" *ngIf="editMode" (click)="guardarCambios()">Guardar</button>
     <a (click)="toggleEditMode()" class="btn btn-dark ms-2" role="button">
       {{ editMode ? 'Cancelar' : 'Editar' }}
     </a>
@@ -32,9 +32,10 @@
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Provincia</label>
-      <input *ngIf="!editMode" type="text" class="form-control" value="{{ provincia }}" [attr.readonly]="!editMode ? true : null" />
+      <input *ngIf="!editMode" type="text" class="form-control" value="{{ provincia }}"
+        [attr.readonly]="!editMode ? true : null" />
       <div *ngIf="editMode">
-        <select class="form-control"  *ngIf="editMode" (change)="onProvinciaChange($event)" [(ngModel)]="provinciaNueva">
+        <select class="form-control" *ngIf="editMode" (change)="onProvinciaChange($event)" [(ngModel)]="provinciaNueva">
           <option *ngFor="let pro of provincias" [value]="pro.idProvincia">
             {{ pro.nombreProvincia }}
           </option>
@@ -47,28 +48,30 @@
 
   <div class="col-md-12 mb-3" *ngIf="techrider || responsable">
     <div class="text-center">
-      <h2 class="mb-2">Cambiar Empresa: </h2>
+      <h2 class="mb-2">Empresa: </h2>
       <div *ngIf="!editMode">
         <input type="text" class="form-control" [value]="getNombreEmpresa(user.idEmpresaCentro)" readonly />
       </div>
       <div *ngIf="editMode">
-        <select class="form-control" *ngIf="editMode" (change)="onEmpresaCentroChange($event)" [(ngModel)]="idEmpresaCentroSeleccionado">
+        <select class="form-control" *ngIf="editMode" (change)="onEmpresaCentroChange($event)"
+          [(ngModel)]="idEmpresaCentroSeleccionado">
           <option *ngFor="let empresa of empresas" [value]="empresa.idEmpresaCentro">
             {{ empresa.nombre }}
           </option>
         </select>
-        
+
       </div>
     </div>
   </div>
   <div class="col-md-12 mb-3" *ngIf="profesor">
     <div class="text-center">
-      <h2 class="mb-2">Cambiar Centro: </h2>
+      <h2 class="mb-2">Centro: </h2>
       <div *ngIf="!editMode">
         <input type="text" class="form-control" [value]="getNombreCentro(user.idEmpresaCentro)" readonly />
       </div>
       <div *ngIf="editMode">
-        <select class="form-control"  *ngIf="editMode" (change)="onEmpresaCentroChange($event)" [(ngModel)]="idEmpresaCentroSeleccionado">
+        <select class="form-control" *ngIf="editMode" (change)="onEmpresaCentroChange($event)"
+          [(ngModel)]="idEmpresaCentroSeleccionado">
           <option *ngFor="let centro of centros" [value]="centro.idEmpresaCentro">
             {{ centro.nombre }}
           </option>
@@ -76,4 +79,39 @@
       </div>
     </div>
   </div>
-</div>
+
+  <div *ngIf="techrider">
+    <hr>
+    <div class="col-md-12 mb-6">
+      <h2 class="mb-2 text-center">Tecnologias:</h2>
+      <div class=" text-center" style="margin: 0 auto;">
+        <button class="btn btn-dark" style="width: 20%;" *ngIf="!editMode" (click)="nuevaTecnologia()">Solicitar
+          Tecnologia</button>
+      </div>
+      <br>
+      <div *ngIf="!editMode">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let tecnologia of tecnologiasTechRiders; let i = index">
+            <div class="card mb-3">
+              <div class="card-body text-center">
+                {{ tecnologia.tecnologia }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="editMode">
+        <div class="row justify-content-center">
+          <div class="col-md-6"> <!-- Ajusta el ancho de la columna externa según tus necesidades -->
+            <div class="form-group row">
+              <div class="form-check col-md-3" *ngFor="let tecnologia of tecnologias; let i = index">
+                <input class="form-check-input" type="checkbox" [value]="tecnologia.idTecnologia" name="tecnologias">
+                <label class="form-check-label">{{tecnologia.nombreTecnologia}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
