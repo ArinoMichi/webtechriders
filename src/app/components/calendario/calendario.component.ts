@@ -94,10 +94,10 @@ export class CalendarioComponent implements OnInit {
         case 3:
           color = { primary: '#88cfff', secondary: 'lightblue' };
           break;
-        case 4:
+        case 5:
           color = { primary: '#2ECC71', secondary: 'lightgreen' };
           break;
-        case 5:
+        case 6:
           color = { primary: '#9B59B6', secondary: 'lightpurple' };
           break;
         default:
