@@ -53,42 +53,33 @@
   }
 
 
-  .info_detalles{
-    color: #4e2edc;
+  #icon_eliminar :hover, #info__details :hover,  #info__accept :hover{
+    color: rgb(0, 0, 0);
   }
 
-  .icon_eliminar{
-    color: rgb(208, 32, 32);
-  }
+  .info__icons{
+    margin-left: auto;
 
-  h1{
-    text-align: center;
-  }
-
-  p{
-    margin: auto !important;
-  }
-
-  #activos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 90%;
-    position: relative;
-    margin: auto;
-    height: 47px;
-  }
-
-  #activos > div {
-    margin: auto;
-    width: 35%;
-
-  }
-
-  .iconsActivos{display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 10%;
   }
   
+  #info_detalles {
+    cursor: pointer;
+    padding-right: 5%;
+    margin-left: auto;
+    color: #31217a;
+  }
   
+  #icon_eliminar {
+    cursor: pointer;
+    padding-right: 5%;
+    margin-left: auto;
+    color:  #d12929
+  }
+
+  .table-div{
+    margin: 3%;
+  }
+
+  .tabla-div{
+    margin: 3%;
+  }

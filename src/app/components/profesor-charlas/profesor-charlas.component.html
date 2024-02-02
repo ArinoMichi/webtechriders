@@ -1,20 +1,5 @@
-<div>
+<div class="tabla-div">
     <h1>Tus charlas</h1>
-    <div class="border-bottom border-3" *ngFor="let charla of charlas; let i = index" id="activos">
-        <div>
-            <p>{{charla.descripcionCharla}}</p>
-        </div>
-        <div>
-          <p>{{charla.estadoCharla}}</p>
-      </div>
-      <div>
-        <p>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</p>
-    </div>
-        <div class="iconsActivos">
-            <div class="info_detalles"><i class="fa-solid fa-pen fa-2xl" [routerLink]="['/editar-charla', charla.idCharla]"></i></div>
-            <div class="icon_eliminar"><i class="fa-solid fa-trash fa-2xl" (click)="eliminarCharla(i)"></i></div>
-        </div>
-    </div>
 
     <table class="table table-bordered table-hover">
       <thead>
@@ -29,10 +14,10 @@
         <tr *ngFor="let charla of charlas; let i = index">
           <td>{{charla.descripcionCharla}}</td>
           <td>{{charla.estadoCharla}}</td>
-          <td>{{charla.fechaCharla }}</td>
-          <td>
-            <button class="btn btn-warning" [routerLink]="['/editar-charla', charla.idCharla]">Editar</button>
-            <button class="btn btn-danger" (click)="eliminarCharla(i)">Eliminar</button>
+          <td>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</td>
+          <td class="info__icons">
+            <i id="info_detalles" class="fa-solid fa-pen fa-2xl" [routerLink]="['/editar-charla', charla.idCharla]"></i>
+            <i id="icon_eliminar" class="fa-solid fa-trash fa-2xl" (click)="eliminarCharla(i)"></i>
           </td>
         </tr>
       </tbody>

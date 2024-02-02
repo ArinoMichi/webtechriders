@@ -1,21 +1,23 @@
 <nav class="navbar">
-  <div class="navbar-logo">
+  <div id="navbar-div" class="navbar-logo">
     <a routerLink="/"><img src="../../assets/images/techriderslogo.png" alt="Logo" /></a>
   </div>
-  <div class="container">
+  <div id="navbar-div" class="container">
     <div class="nav-item dropdown">
       <a class="nav-link no-caret" style="padding: 0; display: flex; align-items: center;" href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="../../../assets/images/user.png" alt="" width="60" height="60">     
+        <img src="../../../assets/images/user.png" alt="" width="50" height="50">     
       </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 200px; margin-left: auto;">
+      <ul class="dropdown-menu dropdown-menu-lg-end" >
         <li *ngIf="identity && identity.nombre"><a class="dropdown-item" routerLink="/user-tr">Perfil</a></li>
         <li *ngIf="identity && identity.idRole==3"><a class="dropdown-item" routerLink="/panel-tr">Charlas</a></li>
 
         <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/profesor-charlas">Charlas solicitadas</a></li>
         <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/solicitar-charla">Solicitar una charla</a></li>
+        <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/registo-empresascentros">Crear un centro</a></li>
         <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/cursos-profesor">Mis cursos</a></li>
 
-        <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" routerLink="/representante-tr-charlas">Charlas impartidas</a></li>
+        <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" routerLink="/charlas-publico">Charlas impartidas</a></li>
+        <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" routerLink="/registo-empresascentros">Crear una empresa</a></li>
         <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" [routerLink]="['/tr-publico', identity.idEmpresaCentro]">TechRiders</a></li>
 
         <li *ngIf="identity && identity.idRole==1"><a class="dropdown-item" routerLink="/peticiones-usuarios">Gestión de usuarios</a></li>
