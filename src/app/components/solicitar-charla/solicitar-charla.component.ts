@@ -7,6 +7,10 @@ import { CursosService } from 'src/app/services/cursos.service';
 import { CharlasService } from 'src/app/services/charlas.service';
 import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TecnologiasCharlasService } from 'src/app/services/tecnologias-charlas.service';
+import { TecnologiaCharla } from 'src/app/models/tecnologia-charla.model';
+import { TecnologiasService } from 'src/app/services/tecnologias.service';
+import { Tecnologia } from 'src/app/models/tecnologia.model';
 
 @Component({
   selector: 'app-solicitar-charla',
@@ -26,13 +30,18 @@ export class SolicitarCharlaComponent implements OnInit{
   public provincias!: Array<Provincia>
   public cursos!: Array<Curso>
   public charla!: Charla
+  public tecnologiaCharla!: TecnologiaCharla
+  public tecnologias!: Array<Tecnologia>
   public identity: any
   public token: any
+  public idCharla!: number
 
   constructor(
     private _ProvinciasService: ProvinciasService,
     private _CursosService: CursosService,
     private _CharlasService: CharlasService,
+    private _TecnologiasCharlasService: TecnologiasCharlasService,
+    private _TecnologiasService: TecnologiasService,
     private datePipe: DatePipe,
     private _router: Router,
     private _route: ActivatedRoute
@@ -49,6 +58,11 @@ export class SolicitarCharlaComponent implements OnInit{
     });
     this._CursosService.getAllCursosFromProfesor(this.identity.idUsuario).subscribe((response) => {
       this.cursos = response;
+    })
+
+    this._TecnologiasService.getTecnologias().subscribe((response) => {
+      this.tecnologias = response;
+      console.log(response)
     })
     this._route.params.subscribe(params => {
       let id = +params['id'];
@@ -84,11 +98,36 @@ export class SolicitarCharlaComponent implements OnInit{
           fechaSolicitud, turno, modalidad, "", parseInt(curso), parseInt(provincia))
         this._CharlasService.insertCharla(this.charla, this.token).subscribe((response) => {
           console.log(response)
-        })  
+          this.idCharla = response.idCharla
+          console.log(this.idCharla)
+        })
+        this.addTecnologiasTechrider(this.idCharla)  
       }
       this._router.navigate(['/profesor-charlas'])
     }) 
   }
+
+  addTecnologiasTechrider(idCharla: number): void {
+    
+  const checkboxes = document.querySelectorAll('input[name="tecnologias"]:checked');
+
+  checkboxes.forEach((checkbox: any) => {
+  const tecnologiaId = parseInt(checkbox.value);
+  this.tecnologiaCharla = new TecnologiaCharla(idCharla, tecnologiaId)
+
+        // Utilizar el servicio TecnologiasService para agregar tecnología al usuario
+        this._TecnologiasCharlasService
+          .insertTecnologiaCharla(this.tecnologiaCharla, this.token)
+          .subscribe((response) => {
+            console.log(
+              response
+              
+            );
+          });
+      });
+    }
+  }
+
 
   // modificarCharla(): void {
   //   var descripcion = this.cajaDescripcionRef.nativeElement.value
@@ -108,4 +147,3 @@ export class SolicitarCharlaComponent implements OnInit{
   //       this._router.navigate(['/'])
   //     })
   // }
-}

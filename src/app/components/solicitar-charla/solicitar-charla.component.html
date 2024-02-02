@@ -48,6 +48,19 @@
             </div>
 
             <div class="mb-4">
+                <label>Tecnologías</label>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let tecnologia of tecnologias; let i = index">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [value]="tecnologia.idTecnologia"
+                                name="tecnologias">
+                            <label class="form-check-label">{{tecnologia.nombreTecnologia}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
                 <label>Observaciones</label>
                 <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones" [value]="charla.observaciones">
             </div>
