@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Charla } from 'src/app/models/charla.model';
 import { Usuario } from 'src/app/models/usuario.model';
 import { CharlasService } from 'src/app/services/charlas.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -16,6 +17,7 @@ export class PaneltrComponent implements OnInit {
   charlasAsociadas: any[] = [];
   charlasDisponibles: any[] = [];
   token: string = '';
+  charla!: any
 
   constructor(private serviceCharlas: CharlasService) {}
 
@@ -25,8 +27,37 @@ export class PaneltrComponent implements OnInit {
   }
 
   detallesCharla(index: number): void {
-    // Lógica para editar el ítem en el índice dado
-    console.log('Editar ítem en el índice', index);
+    const charlaSeleccionada = this.charlasAsociadas[index];
+    const idCharla = charlaSeleccionada.idCharla;
+    this.serviceCharlas.getCharlaDetalles(idCharla).subscribe(
+      (charla: any) => {
+        const detallesUsuario = `
+          <strong>Descripcion:</strong> ${charla.descripcionCharla}<br>
+          <strong>Fecha:</strong> ${charla.fechaCharla}<br>
+          <strong>Estado:</strong> ${charla.estadoCharla}<br>
+          <strong>TechRider:</strong> ${charla.techRider}<br>
+          <strong>Modalidad:</strong> ${charla.modalidad}<br>
+          <strong>Curso:</strong> ${charla.nombreCurso}<br>
+          <strong>Provincia:</strong> ${charla.provincia}<br>
+          <!-- Agrega más detalles según sea necesario -->
+        `;
+
+        Swal.fire({
+          title: 'Detalles del Usuario',
+          html: detallesUsuario,
+          confirmButtonText: 'Cerrar'
+        });
+      },
+      (error) => {
+        console.error('Error al obtener detalles del usuario:', error);
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo obtener la información del usuario.',
+          icon: 'error',
+          confirmButtonText: 'Cerrar'
+        });
+      }
+    );
   }
 
   cancelarCharla(index: number): void {
