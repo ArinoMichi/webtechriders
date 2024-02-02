@@ -45,31 +45,3 @@
   </div>
 </div>
 <!-- ------------------------------------------ -->
-<div class="containe-tabla">
-<table class="table table-hover" style="width: 100%;">
-    <thead>
-        <tr class="table-dark">
-            <th>Tipo de Charla</th>
-            <th>Estado</th>
-            <th>TechRider</th>
-            <th>Curso</th>
-            <th>Fecha</th>
-            <th>Valoración</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let charla of charlas">
-            <td>{{ charla.descripcionCharla }}</td>
-            <td>{{ charla.idEstadoCharla }}</td>
-            <td>{{ charla.estadoCharla }}</td>
-            <td>{{ charla.nombreCurso }}</td>
-            <td>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</td>
-            <td>
-                <div *ngFor="let valoracion of valoraciones">
-                    <p *ngIf="charla.idCharla == valoracion.idCharla">{{ valoracion.valoracion }}/10 </p>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
-</div>
