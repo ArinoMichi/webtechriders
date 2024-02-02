@@ -19,8 +19,8 @@
           <!-- <p class="card-text">{{ tr.email }}</p> -->
           <a href="{{tr.linkedIn}}"><i class="fa-brands fa-linkedin fa-2xl" style="color: #3f7de9;"></i></a>
         </div>
-        <p *ngIf="!localStorageContent">
-          <a routerLink="/charlas-publico" class="btn btn-primary">Charlas</a>
+        <p *ngIf="localStorageContent">
+          <a [routerLink]="['/representante-tr-charlas', tr.idTechRider]" class="btn btn-primary">Charlas</a>
         </p>
       </div>
     </div>
