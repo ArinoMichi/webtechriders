@@ -25,17 +25,11 @@ export class ProfesorCharlasComponent {
   ngOnInit(): void {
     // Llama al método para obtener los datos al cargar el componente
     this.cargarDatos();
-    
   }
 
-  detallesCharla(index: number): void {
-    // Lógica para editar el ítem en el índice dado
-    console.log('Editar ítem en el índice', index);
-  }
-
-  cancelarCharla(index: number): void {
+  eliminarCharla(index: number): void {
     Swal.fire({
-      title: '¿Estas seguro de cancelar la charla?',
+      title: '¿Estas seguro de eliminar la charla?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -46,11 +40,11 @@ export class ProfesorCharlasComponent {
       if (result.isConfirmed) {
         const charlaSeleccionada = this.charlas[index];
         const idCharla = charlaSeleccionada.idCharla;
-        this._charlasService.associateTechRider(0, idCharla, this.token).subscribe(
+        this._charlasService.deleteCharla(idCharla, this.token).subscribe(
           (result) => {
             Swal.fire({
               title: 'Aceptado',
-              text: 'La charla ha sido cancelada.',
+              text: 'La charla ha sido eliminada.',
               icon: 'success',
             });
             this.cargarDatos();
