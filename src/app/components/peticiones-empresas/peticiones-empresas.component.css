@@ -65,3 +65,102 @@
   color: white;
   border: 1px solid darkred;
 }
+
+.info_detalles{
+  color: #4e2edc;
+}
+
+.icon_eliminar{
+  color: rgb(208, 32, 32);
+}
+
+
+.info {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  width: 85%;
+  padding: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #000000;
+  border-radius: 8px;
+  position: relative;
+  margin: auto;
+  margin-bottom: 1%;
+}
+
+.info__title {
+  font-weight: 400;
+  font-size: 20px;
+  color: #ffffff;
+  width: 40%;
+}
+
+.info__icons{
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 18%;
+}
+
+.info__details {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color: #451ef0;
+}
+
+.info__accept {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color:  #50f23a
+}
+
+.info__cancel {
+  cursor: pointer;
+  padding-right: 5%;
+  margin-left: auto;
+  color:  #d12929
+}
+
+.info__details :hover, .info__accept :hover, .info__cancel :hover {
+  color: white;
+}
+
+.icon_eliminar :hover, .info_detalles :hover {
+  color: rgb(0, 0, 0);
+}
+
+h1{
+  text-align: center;
+}
+
+p{
+  margin: auto !important;
+}
+
+#activos{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  position: relative;
+  margin: auto;
+  height: 47px;
+}
+
+#activos > div {
+  margin: auto;
+  width: 45%;
+
+}
+
+.iconsActivos{display: flex;
+  flex-direction: row;
+  justify-content: end;
+  width: 40%;
+}
