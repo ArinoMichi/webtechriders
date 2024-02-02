@@ -17,7 +17,7 @@
         <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/solicitar-charla">Solicitar una charla</a></li>
         <li *ngIf="identity && identity.idRole==2"><a class="dropdown-item" routerLink="/cursos-profesor">Mis cursos</a></li>
 
-        <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" routerLink="/representante-charlas">Charlas impartidas</a></li>
+        <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" routerLink="/representante-tr-charlas">Charlas impartidas</a></li>
         <li *ngIf="identity && identity.idRole==4"><a class="dropdown-item" [routerLink]="['/tr-publico', identity.idEmpresaCentro]">TechRiders</a></li>
 
         <li *ngIf="identity && identity.idRole==1"><a class="dropdown-item" routerLink="/peticiones-usuarios">Gestión de usuarios</a></li>
