@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         console.log("Respuesta del Servicio:", response);
         this.token = response.response;
         localStorage.setItem('token', this.token);
-        this._router.navigate(['/']);
+        
 
         this.handleGetPerfilUsuario();
       },
@@ -60,23 +60,17 @@ export class LoginComponent implements OnInit {
         this.identity = response;
 
         // Verificar el estado del usuario
-        if (this.identity && this.identity.status === 'activo') {
+        if (this.identity && this.identity.estado == 1) {
           console.log(this.identity);
           console.log(response);
           localStorage.setItem('identity', JSON.stringify(this.identity));
-        } else if (this.identity && this.identity.status === '1') {
-          // Alerta si el usuario está pendiente de activación
+          this._router.navigate(['/']);
+
+        } else {
           Swal.fire({
             icon: 'info',
             title: 'Espera de Activación',
             text: 'Tu cuenta está pendiente de activación. Por favor, espera a que un administrador la active.',
-          });
-        } else {
-          // Alerta si hay un problema de autorización
-          Swal.fire({
-            icon: 'error',
-            title: 'Error de Autenticación',
-            text: 'Usuario o contraseña incorrectos. Por favor, verifica tus credenciales.',
           });
         }
       },
@@ -94,7 +88,7 @@ export class LoginComponent implements OnInit {
         title: 'Error de Autenticación',
         text: 'Usuario o contraseña incorrectos. Por favor, verifica tus credenciales.',
       });
-    } else if (error.status === 403) {
+    } else if (this.usuario.estado != 1) {
       // Alerta si el usuario no está activo
       Swal.fire({
         icon: 'info',
