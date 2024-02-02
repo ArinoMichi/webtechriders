@@ -53,7 +53,7 @@
     margin-top: 40px;
   }
   
-  .icon_detalles{
+  .info_detalles{
     color: #4e2edc;
   }
 
@@ -61,6 +61,13 @@
     color: rgb(208, 32, 32);
   }
 
+  .info__details :hover, .info__accept :hover, .info__cancel :hover {
+    color: white;
+  }
+  
+  .icon_eliminar :hover, .info_detalles :hover {
+    color: rgb(0, 0, 0);
+  }
 
   .info {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -114,9 +121,6 @@
     color:  #d12929
   }
   
-  .info__details :hover, .info__accept :hover, .info__cancel :hover, .icon_eliminar :hover, .icon_detalles :hover {
-    color: white;
-  }
 
   h1{
     text-align: center;

@@ -111,8 +111,12 @@
     color: rgb(208, 32, 32);
   }
   
-  .info__details :hover, .info__accept :hover, .info__cancel :hover, .icon_eliminar :hover, .icon_detalles :hover {
+  .info__details :hover, .info__accept :hover, .info__cancel :hover {
     color: white;
+  }
+  
+  .icon_eliminar :hover, .info__modify :hover {
+    color: rgb(0, 0, 0);
   }
 
   p{

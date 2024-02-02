@@ -1,5 +1,21 @@
-<div class="container mt-4">
+<div>
     <h1>Tus charlas</h1>
+    <div class="border-bottom border-3" *ngFor="let charla of charlas; let i = index" id="activos">
+        <div>
+            <p>{{charla.descripcionCharla}}</p>
+        </div>
+        <div>
+          <p>{{charla.estadoCharla}}</p>
+      </div>
+      <div>
+        <p>{{ charla.fechaCharla | date: 'dd-MM-yyyy' }}</p>
+    </div>
+        <div class="iconsActivos">
+            <div class="info_detalles"><i class="fa-solid fa-pen fa-2xl" [routerLink]="['/editar-charla', charla.idCharla]"></i></div>
+            <div class="icon_eliminar"><i class="fa-solid fa-trash fa-2xl" (click)="eliminarCharla(i)"></i></div>
+        </div>
+    </div>
+
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -21,5 +37,4 @@
         </tr>
       </tbody>
     </table>
-    
   </div>

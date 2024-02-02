@@ -29,7 +29,7 @@
   
   .table th, .table td {
     text-align: center;
-    vertical-align: middle;
+    /* vertical-align: middle; */
   }
   
   .table th {
@@ -53,3 +53,34 @@
     margin-top: 40px;
   }
   
+  /* --------------------------- */
+  
+  #icon_eliminar :hover, #info__details :hover,  #info__accept :hover{
+    color: rgb(0, 0, 0);
+  }
+
+  .info__icons{
+    margin-left: auto;
+
+  }
+  
+  #info__details {
+    cursor: pointer;
+    padding-right: 5%;
+    margin-left: auto;
+    color: #451ef0;
+  }
+  
+  #info__accept {
+    cursor: pointer;
+    padding-right: 5%;
+    margin-left: auto;
+    color:  #50f23a
+  }
+  
+  #info__cancel {
+    cursor: pointer;
+    padding-right: 5%;
+    margin-left: auto;
+    color:  #d12929
+  }

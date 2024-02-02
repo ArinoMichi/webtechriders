@@ -53,5 +53,42 @@
   }
 
 
+  .info_detalles{
+    color: #4e2edc;
+  }
+
+  .icon_eliminar{
+    color: rgb(208, 32, 32);
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  p{
+    margin: auto !important;
+  }
+
+  #activos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+    margin: auto;
+    height: 47px;
+  }
+
+  #activos > div {
+    margin: auto;
+    width: 35%;
+
+  }
+
+  .iconsActivos{display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 10%;
+  }
   
   

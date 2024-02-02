@@ -1,10 +1,10 @@
 <!-- En tu archivo HTML del componente -->
-<div class="container mt-4">
+<div class="container mt-3">
     <h1>Charlas asignadas a {{this.user.nombre}}</h1>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th style="width: 35%;">Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -14,10 +14,10 @@
         <tr *ngFor="let item of charlasAsociadas; let i = index">
           <td>{{item.descripcionCharla}}</td>
           <td>{{ item. estadoCharla}}</td>
-          <td>{{ item.fechaCharla }}</td>
-          <td>
-            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
-            <button class="btn btn-danger" (click)="cancelarCharla(i)">Cancelar</button>
+          <td>{{ item.fechaCharla | date: 'dd-MM-yyyy' }}</td>
+          <td class="info__icons">
+            <i id="info__details" class="fa-solid fa-circle-info fa-2xl" (click)="detallesCharla(i)"></i>
+            <i id="info__cancel" class="fa-solid fa-circle-xmark fa-2xl" (click)="cancelarCharla(i)"></i>
           </td>
         </tr>
       </tbody>
@@ -29,7 +29,7 @@
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
-          <th>Descripcion</th>
+          <th style="width: 35%;">Descripcion</th>
           <th>Estado</th>
           <th>Fecha</th>
           <th>Acciones</th>
@@ -39,10 +39,10 @@
         <tr *ngFor="let item of charlasDisponibles; let i = index">
           <td>{{item.descripcionCharla}}</td>
           <td>{{ item. estadoCharla}}</td>
-          <td>{{ item.fechaCharla }}</td>
-          <td>
-            <button class="btn btn-warning" (click)="detallesCharla(i)">Detalles</button>
-            <button class="btn btn-primary" (click)="aceptarCharla(i)">Aceptar</button>
+          <td>{{ item.fechaCharla | date: 'dd-MM-yyyy' }}</td>
+          <td class="info__icons">
+            <i id="info__details" class="fa-solid fa-circle-info fa-2xl" (click)="detallesCharla(i)"></i>
+            <i id="info__accept" class="fa-solid fa-circle-check fa-2xl" (click)="aceptarCharla(i)"></i>
           </td>
         </tr>
       </tbody>

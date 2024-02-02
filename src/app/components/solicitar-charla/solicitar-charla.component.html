@@ -1,6 +1,7 @@
 <div class="container d-flex justify-content-center align-items-center"
     style="height: 90vh; margin-top: 5vh; margin-bottom: 5vh;">
     <div class="col-md-8 p-4 rounded shadow-lg">
+        <h1 class="text-center mb-4">Solicitar una nueva charla</h1>
         <form #insertForm="ngForm">
             <div class="mb-4">
                 <label>Descripción</label>
@@ -10,11 +11,6 @@
             <div class="mb-4">
                 <label>Fecha</label>
                 <input type="datetime-local" class="form-control" #cajafecha name="cajafecha" [value]="charla.fechaCharla">
-            </div>
-
-            <div class="mb-4">
-                <label>Observaciones</label>
-                <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones" [value]="charla.observaciones">
             </div>
 
             <div class="mb-4">
