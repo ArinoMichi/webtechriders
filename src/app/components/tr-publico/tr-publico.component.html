@@ -17,7 +17,7 @@
         <div class="card-body-data">
           <h5>{{ tr.techRider }}</h5>
           <!-- <p class="card-text">{{ tr.email }}</p> -->
-          <a href="{{tr.linkedIn}}"><i class="fa-brands fa-linkedin fa-2xl" style="color: #3f7de9;"></i></a>
+          <a [href]="'https://' + tr.linkedIn"><i class="fa-brands fa-linkedin fa-2xl" style="color: #3f7de9;"></i></a>
         </div>
         <p *ngIf="localStorageContent">
           <a [routerLink]="['/representante-tr-charlas', tr.idTechRider]" class="btn btn-primary">Charlas</a>
