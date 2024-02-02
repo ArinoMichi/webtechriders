@@ -20,11 +20,17 @@ export class CharlasPublicoComponent {
   constructor(
     private _charlasService: CharlasService,
     private _valoracionesService: ValoracionesCharlasService
-  ) {}
+  ) {
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}')
+  }
 
   ngOnInit(): void {
-    this.getCharlas();
-
+    if(this.user.idEmpresaCentro){
+      this.getCharlasEmpresa();
+    } else {
+      this.getCharlas();
+    }
+    
     this._valoracionesService
       .getValoracionesCharlas()
       .subscribe((response: Array<ValoracionCharla>) => {
@@ -48,8 +54,7 @@ export class CharlasPublicoComponent {
   //   this._charlasService.getCharlasTechRider().subscribe
   // }
 
-  getCharlasEmpresa(idEmpresa: number){
-    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+  getCharlasEmpresa(){
     this._charlasService.getCharlasEmpresa(this.user.idEmpresaCentro).subscribe(
       (charlasEmp: any) => {
         this.charlas = charlasEmp;

@@ -47,6 +47,11 @@
                 </select>
             </div>
 
+            <div class="mb-4">
+                <label>Observaciones</label>
+                <input type="text" class="form-control" #cajaobservaciones name="cajaobservaciones" [value]="charla.observaciones">
+            </div>
+
             <div class="text-center mt-4">
                 <button class="btn btn-dark" (click)="enviarCharla()" style="width: 100%;">
                     Enviar
