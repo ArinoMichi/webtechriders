@@ -43,9 +43,11 @@ export class CalendarioComponent implements OnInit {
 
     switch (this.user.idRole) {
       case 2:
-        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
+        this._charlasService.getCharlasProfesor(this.user.idUsuario).subscribe((techRiderResponse) => {
           this.charlas = techRiderResponse;
+          this.mapCharlasToEvents();
         });
+        
         break
       case 3:
         this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {

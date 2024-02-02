@@ -19,15 +19,15 @@ export class TecnologiasCharlasService {
     return this._http.get(url)
   }
 
-  insertTecnologiaCharla(tecnologia: TecnologiaCharla, token: string): Observable<any>{
+  insertTecnologiaCharla(idCharla: number, idTecnologia: number, token: string): Observable<any>{
     var request = "api/tecnologiascharlas"
     var url = environment.urlApi + request
     var params = new HttpParams()
-    .append('idcharla', tecnologia.idCharla)
-    .append('idtecnologia', tecnologia.idTecnologia)
+    .append('idcharla', idCharla)
+    .append('idtecnologia', idTecnologia)
     var headers = new HttpHeaders()
     .set('Authorization', "bearer " + token)
-    return this._http.post(url, {headers: headers, params: params})
+    return this._http.post(url, {} ,{headers: headers, params: params})
   }
 
   getTecnologiaCharlaByCharla(idcharla: number): Observable<any>{
