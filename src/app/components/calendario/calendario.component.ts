@@ -12,7 +12,6 @@ import { LOCALE_ID } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario.model';
 import { TecnologiaTechRiders } from 'src/app/models/tecnologia-tech-riders.model';
 
-
 interface MyCalendarEvent extends CalendarEvent {
   charla: CharlaDetalles;
 }
@@ -35,7 +34,7 @@ export class CalendarioComponent implements OnInit {
     private _TecnologiasTechRidersService: TecnologiasTechRidersService,
     private _charlasService: CharlasService,
     private dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token') ?? '';
@@ -43,44 +42,55 @@ export class CalendarioComponent implements OnInit {
 
     switch (this.user.idRole) {
       case 2:
-        this._charlasService.getCharlasProfesor(this.user.idUsuario).subscribe((techRiderResponse) => {
-          this.charlas = techRiderResponse;
-          this.mapCharlasToEvents();
-        });
-        
-        break
-      case 3:
-        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
-          this.charlas = techRiderResponse;
-
-          this._charlasService.getCharlasPendientesTecnologiasTechrider(this.token).subscribe((estadoResponse) => {
-            // Concatenar las charlas de tech rider con las charlas de estado
-            this.charlas = this.charlas.concat(estadoResponse);
+        this._charlasService
+          .getCharlasProfesor(this.user.idUsuario)
+          .subscribe((techRiderResponse) => {
+            this.charlas = techRiderResponse;
             this.mapCharlasToEvents();
           });
-        });
+
+        break;
+      case 3:
+        this._charlasService
+          .getCharlasTechRider(this.user.idUsuario)
+          .subscribe((techRiderResponse) => {
+            this.charlas = techRiderResponse;
+
+            this._charlasService
+              .getCharlasPendientesTecnologiasTechrider(this.token)
+              .subscribe((estadoResponse) => {
+                // Concatenar las charlas de tech rider con las charlas de estado
+                this.charlas = this.charlas.concat(estadoResponse);
+                this.mapCharlasToEvents();
+              });
+          });
         break;
       case 4:
-        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
-          this.charlas = techRiderResponse;
+        this._charlasService
+          .getCharlasTechRider(this.user.idUsuario)
+          .subscribe((techRiderResponse) => {
+            this.charlas = techRiderResponse;
 
-          this._charlasService.getCharlasEmpresa(this.user.idEmpresaCentro).subscribe((estadoResponse) => {
-            // Concatenar las charlas de tech rider con las charlas de estado
-            this.charlas = this.charlas.concat(estadoResponse);
-            this.mapCharlasToEvents();
+            this._charlasService
+              .getCharlasEmpresa(this.user.idEmpresaCentro)
+              .subscribe((estadoResponse) => {
+                // Concatenar las charlas de tech rider con las charlas de estado
+                this.charlas = this.charlas.concat(estadoResponse);
+                this.mapCharlasToEvents();
+              });
           });
-        });
         break;
 
       default:
         // Otros roles de usuario
-        this._charlasService.getCharlasDetalles().subscribe((detallesResponse) => {
-          this.charlas = detallesResponse;
-          this.mapCharlasToEvents();
-        });
+        this._charlasService
+          .getCharlasDetalles()
+          .subscribe((detallesResponse) => {
+            this.charlas = detallesResponse;
+            this.mapCharlasToEvents();
+          });
         break;
     }
-
   }
 
   mapCharlasToEvents(): void {
@@ -96,10 +106,10 @@ export class CalendarioComponent implements OnInit {
         case 3:
           color = { primary: '#88cfff', secondary: 'lightblue' };
           break;
-        case 4:
+        case 5:
           color = { primary: '#2ECC71', secondary: 'lightgreen' };
           break;
-        case 5:
+        case 6:
           color = { primary: '#9B59B6', secondary: 'lightpurple' };
           break;
         default:
