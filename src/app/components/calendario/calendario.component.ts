@@ -1,11 +1,17 @@
-// calendario.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CalendarEvent, CalendarMonthViewDay } from 'angular-calendar';
+
+import { TecnologiasTechRidersService } from 'src/app/services/tecnologias-tech-riders.service';
 import { CharlasService } from 'src/app/services/charlas.service';
+
 import { MatDialog } from '@angular/material/dialog';
 import { CharlaDetalleComponent } from 'src/app/components/charla-detalle/charla-detalle.component';
 import { CharlaDetalles } from 'src/app/models/charla-detalles';
 import { LOCALE_ID } from '@angular/core';
+
+import { Usuario } from 'src/app/models/usuario.model';
+import { TecnologiaTechRiders } from 'src/app/models/tecnologia-tech-riders.model';
+
 
 interface MyCalendarEvent extends CalendarEvent {
   charla: CharlaDetalles;
@@ -21,17 +27,58 @@ export class CalendarioComponent implements OnInit {
   public charlas!: Array<CharlaDetalles>;
   viewDate: Date = new Date(); // Inicializamos con la fecha actual
   events: MyCalendarEvent[] = [];
+  tencnologiasTechRider!: Array<TecnologiaTechRiders>;
+  user!: Usuario;
+  token: string = '';
 
   constructor(
+    private _TecnologiasTechRidersService: TecnologiasTechRidersService,
     private _charlasService: CharlasService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this._charlasService.getCharlasDetalles().subscribe((response) => {
-      this.charlas = response;
-      this.mapCharlasToEvents();
-    });
+    this.token = localStorage.getItem('token') ?? '';
+    this.user = JSON.parse(localStorage.getItem('identity') || '{}');
+
+    switch (this.user.idRole) {
+      case 2:
+        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
+          this.charlas = techRiderResponse;
+        });
+        break
+      case 3:
+        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
+          this.charlas = techRiderResponse;
+
+          this._charlasService.getCharlasPendientesTecnologiasTechrider(this.token).subscribe((estadoResponse) => {
+            // Concatenar las charlas de tech rider con las charlas de estado
+            this.charlas = this.charlas.concat(estadoResponse);
+            this.mapCharlasToEvents();
+          });
+        });
+        break;
+      case 4:
+        this._charlasService.getCharlasTechRider(this.user.idUsuario).subscribe((techRiderResponse) => {
+          this.charlas = techRiderResponse;
+
+          this._charlasService.getCharlasEmpresa(this.user.idEmpresaCentro).subscribe((estadoResponse) => {
+            // Concatenar las charlas de tech rider con las charlas de estado
+            this.charlas = this.charlas.concat(estadoResponse);
+            this.mapCharlasToEvents();
+          });
+        });
+        break;
+
+      default:
+        // Otros roles de usuario
+        this._charlasService.getCharlasDetalles().subscribe((detallesResponse) => {
+          this.charlas = detallesResponse;
+          this.mapCharlasToEvents();
+        });
+        break;
+    }
+
   }
 
   mapCharlasToEvents(): void {

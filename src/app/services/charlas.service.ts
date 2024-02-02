@@ -136,4 +136,5 @@ export class CharlasService {
     var url = environment.urlApi + request
     return this._http.get(url)
   }
+
 }
