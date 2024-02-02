@@ -110,6 +110,7 @@ export class SolicitarCharlaComponent implements OnInit {
           .subscribe((response) => {
             console.log(response);
             this.addTecnologiasTechrider(id); // Llama a la función después de actualizar la charla
+            this._router.navigate(['/profesor-charlas']);
           });
       } else {
         this.charla = new Charla(
